@@ -41,3 +41,14 @@ Domain layer only uses canonical models.
 ## Acceptance Criteria
 
 Provider-specific data never leaks outside connectors.
+
+---
+
+## Phase 1 Implementation
+
+Canonical Swift types in `TokenBar/Domain/Models/`:
+
+* `ProviderAccount` — identity and connection state
+* `UsageSnapshot` — usage percent, credits, spend, quota, timestamp
+* `UsageForecast` — burn rate and exhaustion estimate (stub in Phase 1)
+* `UsageAlert` — threshold alert record (defined, not yet evaluated)

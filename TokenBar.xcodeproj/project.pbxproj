@@ -7,14 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0000010000000000000101 /* TokenBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000008 /* TokenBarApp.swift */; };
-		AA0000010000000000000102 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000009 /* MenuBarView.swift */; };
-		AA0000010000000000000103 /* SettingsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000A /* SettingsPlaceholderView.swift */; };
+		BB0000010000000000000102 /* TokenBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000101 /* TokenBarApp.swift */; };
+		BB0000010000000000000104 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000103 /* AppEnvironment.swift */; };
+		BB0000010000000000000106 /* DisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000105 /* DisplayMode.swift */; };
+		BB0000010000000000000108 /* MenuBarDisplayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */; };
+		BB000001000000000000010A /* ProviderAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000109 /* ProviderAccount.swift */; };
+		BB000001000000000000010C /* UsageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000010B /* UsageAlert.swift */; };
+		BB000001000000000000010E /* UsageForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000010D /* UsageForecast.swift */; };
+		BB0000010000000000000110 /* UsageSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000010F /* UsageSnapshot.swift */; };
+		BB0000010000000000000112 /* MockProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000111 /* MockProviderConnector.swift */; };
+		BB0000010000000000000114 /* ProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000113 /* ProviderConnector.swift */; };
+		BB0000010000000000000116 /* ProviderRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000115 /* ProviderRegistry.swift */; };
+		BB0000010000000000000118 /* UsageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000117 /* UsageService.swift */; };
+		BB000001000000000000011A /* UsageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000119 /* UsageStore.swift */; };
+		BB000001000000000000011C /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000011B /* UserPreferences.swift */; };
+		BB000001000000000000011E /* MenuBarLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000011D /* MenuBarLabelView.swift */; };
+		BB0000010000000000000120 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000011F /* MenuBarView.swift */; };
+		BB0000010000000000000122 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000121 /* SettingsView.swift */; };
+		BB0000010000000000000124 /* TokenBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000123 /* TokenBarTests.swift */; };
+		BB0000010000000000000126 /* MenuBarDisplayFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */; };
+		BB0000010000000000000128 /* MockProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000127 /* MockProviderConnectorTests.swift */; };
+		BB000001000000000000012A /* ProviderRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000129 /* ProviderRegistryTests.swift */; };
+		BB000001000000000000012C /* UsageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000012B /* UsageServiceTests.swift */; };
 		AA0000010000000000000104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000B /* Assets.xcassets */; };
-		AA0000010000000000000105 /* TokenBarWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000C /* TokenBarWidgetBundle.swift */; };
-		AA0000010000000000000106 /* TokenBarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000D /* TokenBarWidget.swift */; };
 		AA0000010000000000000107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000E /* Assets.xcassets */; };
-		AA0000010000000000000108 /* TokenBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000F /* TokenBarTests.swift */; };
 		AA0000010000000000000109 /* TokenBarWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000006 /* TokenBarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -53,14 +69,32 @@
 		AA0000010000000000000005 /* TokenBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TokenBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0000010000000000000006 /* TokenBarWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TokenBarWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0000010000000000000007 /* TokenBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TokenBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA0000010000000000000008 /* TokenBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarApp.swift; sourceTree = "<group>"; };
-		AA0000010000000000000009 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
-		AA000001000000000000000A /* SettingsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPlaceholderView.swift; sourceTree = "<group>"; };
 		AA000001000000000000000B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA000001000000000000000C /* TokenBarWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarWidgetBundle.swift; sourceTree = "<group>"; };
 		AA000001000000000000000D /* TokenBarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarWidget.swift; sourceTree = "<group>"; };
 		AA000001000000000000000E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AA000001000000000000000F /* TokenBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarTests.swift; sourceTree = "<group>"; };
+		BB0000010000000000000101 /* TokenBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarApp.swift; sourceTree = "<group>"; };
+		BB0000010000000000000103 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		BB0000010000000000000105 /* DisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMode.swift; sourceTree = "<group>"; };
+		BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarDisplayFormatter.swift; sourceTree = "<group>"; };
+		BB0000010000000000000109 /* ProviderAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAccount.swift; sourceTree = "<group>"; };
+		BB000001000000000000010B /* UsageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageAlert.swift; sourceTree = "<group>"; };
+		BB000001000000000000010D /* UsageForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageForecast.swift; sourceTree = "<group>"; };
+		BB000001000000000000010F /* UsageSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageSnapshot.swift; sourceTree = "<group>"; };
+		BB0000010000000000000111 /* MockProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProviderConnector.swift; sourceTree = "<group>"; };
+		BB0000010000000000000113 /* ProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnector.swift; sourceTree = "<group>"; };
+		BB0000010000000000000115 /* ProviderRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderRegistry.swift; sourceTree = "<group>"; };
+		BB0000010000000000000117 /* UsageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageService.swift; sourceTree = "<group>"; };
+		BB0000010000000000000119 /* UsageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageStore.swift; sourceTree = "<group>"; };
+		BB000001000000000000011B /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		BB000001000000000000011D /* MenuBarLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabelView.swift; sourceTree = "<group>"; };
+		BB000001000000000000011F /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		BB0000010000000000000121 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BB0000010000000000000123 /* TokenBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarTests.swift; sourceTree = "<group>"; };
+		BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarDisplayFormatterTests.swift; sourceTree = "<group>"; };
+		BB0000010000000000000127 /* MockProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProviderConnectorTests.swift; sourceTree = "<group>"; };
+		BB0000010000000000000129 /* ProviderRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderRegistryTests.swift; sourceTree = "<group>"; };
+		BB000001000000000000012B /* UsageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,22 +125,11 @@
 		AA0000010000000000000014 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000010000000000000010 /* TokenBar */,
+				BB000001000000000000012D /* TokenBar */,
 				AA0000010000000000000011 /* TokenBarWidget */,
-				AA0000010000000000000012 /* TokenBarTests */,
+				BB0000010000000000000137 /* TokenBarTests */,
 				AA0000010000000000000013 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		AA0000010000000000000010 /* TokenBar */ = {
-			isa = PBXGroup;
-			children = (
-				AA0000010000000000000008 /* TokenBarApp.swift */,
-				AA0000010000000000000009 /* MenuBarView.swift */,
-				AA000001000000000000000A /* SettingsPlaceholderView.swift */,
-				AA000001000000000000000B /* Assets.xcassets */,
-			);
-			path = TokenBar;
 			sourceTree = "<group>";
 		};
 		AA0000010000000000000011 /* TokenBarWidget */ = {
@@ -119,14 +142,6 @@
 			path = TokenBarWidget;
 			sourceTree = "<group>";
 		};
-		AA0000010000000000000012 /* TokenBarTests */ = {
-			isa = PBXGroup;
-			children = (
-				AA000001000000000000000F /* TokenBarTests.swift */,
-			);
-			path = TokenBarTests;
-			sourceTree = "<group>";
-		};
 		AA0000010000000000000013 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +150,140 @@
 				AA0000010000000000000007 /* TokenBarTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000130 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000109 /* ProviderAccount.swift */,
+				BB000001000000000000010B /* UsageAlert.swift */,
+				BB000001000000000000010D /* UsageForecast.swift */,
+				BB000001000000000000010F /* UsageSnapshot.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB000001000000000000012F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000105 /* DisplayMode.swift */,
+				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
+				BB0000010000000000000130 /* Models */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BB000001000000000000012E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000103 /* AppEnvironment.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000132 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000111 /* MockProviderConnector.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000131 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000113 /* ProviderConnector.swift */,
+				BB0000010000000000000115 /* ProviderRegistry.swift */,
+				BB0000010000000000000132 /* Mock */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000133 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000117 /* UsageService.swift */,
+				BB0000010000000000000119 /* UsageStore.swift */,
+				BB000001000000000000011B /* UserPreferences.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000135 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				BB000001000000000000011D /* MenuBarLabelView.swift */,
+				BB000001000000000000011F /* MenuBarView.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000136 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000121 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000134 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000135 /* MenuBar */,
+				BB0000010000000000000136 /* Settings */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BB000001000000000000012D /* TokenBar */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000101 /* TokenBarApp.swift */,
+				BB000001000000000000012E /* App */,
+				BB000001000000000000012F /* Domain */,
+				BB0000010000000000000131 /* Providers */,
+				BB0000010000000000000133 /* Services */,
+				BB0000010000000000000134 /* UI */,
+				AA000001000000000000000B /* Assets.xcassets */,
+			);
+			path = TokenBar;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000138 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000139 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000127 /* MockProviderConnectorTests.swift */,
+				BB0000010000000000000129 /* ProviderRegistryTests.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		BB000001000000000000013A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BB000001000000000000012B /* UsageServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000137 /* TokenBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000123 /* TokenBarTests.swift */,
+				BB0000010000000000000138 /* Domain */,
+				BB0000010000000000000139 /* Providers */,
+				BB000001000000000000013A /* Services */,
+				BB0000010000000000000123 /* TokenBarTests.swift */,
+			);
+			path = TokenBarTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,10 +408,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0000010000000000000101 /* TokenBarApp.swift in Sources */,
-				AA0000010000000000000102 /* MenuBarView.swift in Sources */,
-				AA0000010000000000000103 /* SettingsPlaceholderView.swift in Sources */,
-			);
+				BB0000010000000000000102 /* TokenBarApp.swift in Sources */,
+				BB0000010000000000000104 /* AppEnvironment.swift in Sources */,
+				BB0000010000000000000106 /* DisplayMode.swift in Sources */,
+				BB0000010000000000000108 /* MenuBarDisplayFormatter.swift in Sources */,
+				BB000001000000000000010A /* ProviderAccount.swift in Sources */,
+				BB000001000000000000010C /* UsageAlert.swift in Sources */,
+				BB000001000000000000010E /* UsageForecast.swift in Sources */,
+				BB0000010000000000000110 /* UsageSnapshot.swift in Sources */,
+				BB0000010000000000000112 /* MockProviderConnector.swift in Sources */,
+				BB0000010000000000000114 /* ProviderConnector.swift in Sources */,
+				BB0000010000000000000116 /* ProviderRegistry.swift in Sources */,
+				BB0000010000000000000118 /* UsageService.swift in Sources */,
+				BB000001000000000000011A /* UsageStore.swift in Sources */,
+				BB000001000000000000011C /* UserPreferences.swift in Sources */,
+				BB000001000000000000011E /* MenuBarLabelView.swift in Sources */,
+				BB0000010000000000000120 /* MenuBarView.swift in Sources */,
+				BB0000010000000000000122 /* SettingsView.swift in Sources */,
+
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000017 /* Sources */ = {
@@ -278,8 +441,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0000010000000000000108 /* TokenBarTests.swift in Sources */,
-			);
+				BB0000010000000000000124 /* TokenBarTests.swift in Sources */,
+				BB0000010000000000000126 /* MenuBarDisplayFormatterTests.swift in Sources */,
+				BB0000010000000000000128 /* MockProviderConnectorTests.swift in Sources */,
+				BB000001000000000000012A /* ProviderRegistryTests.swift in Sources */,
+				BB000001000000000000012C /* UsageServiceTests.swift in Sources */,
+
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */

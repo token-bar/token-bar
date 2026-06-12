@@ -47,3 +47,9 @@ Settings changes apply without restart.
 * display preference changes
 * provider switching
 * refresh interval updates
+
+---
+
+## Phase 1 Implementation
+
+Settings stub with sidebar sections (Providers, Display, Refresh, Notifications). Display mode picker and manual refresh are functional; other sections show placeholder copy until later phases.

@@ -2,9 +2,9 @@
 
 ## Goal
 
-Define the high-level vision for QuotaBar.
+Define the high-level vision for TokenBar.
 
-QuotaBar is a macOS menu bar application that tracks AI usage across multiple providers in real time or near-real time.
+TokenBar is a macOS menu bar application that tracks AI usage across multiple providers in real time or near-real time.
 
 It replaces the need to manually check multiple dashboards for:
 
@@ -36,7 +36,7 @@ Users lack a unified view of:
 
 ## Solution Overview
 
-QuotaBar provides:
+TokenBar provides:
 
 * A unified usage abstraction layer
 * A macOS menu bar indicator

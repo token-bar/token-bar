@@ -56,3 +56,14 @@ Clicking the menu bar opens:
 * Single provider
 * Multiple providers
 * Failed refresh
+
+---
+
+## Phase 1 Implementation
+
+Scope for initial UI shell:
+
+* `MenuBarLabelView` renders active snapshot via `MenuBarDisplayFormatter`
+* `MenuBarView` dropdown shows provider selector, usage summary, forecast stub, last refresh, Settings button
+* Display mode selectable in Settings (percentage, progress bar, spend, credits)
+* Data sourced from `UsageStore` only — no direct provider references in UI

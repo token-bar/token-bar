@@ -51,3 +51,12 @@ No UI changes.
 * provider registration
 * provider removal
 * provider refresh failures
+
+---
+
+## Phase 1 Implementation
+
+* `ProviderConnector` protocol with `authenticate`, `fetchUsage`, `disconnect`, `validateConnection`
+* `ProviderRegistry` actor for registration and lookup
+* `MockProviderConnector` returns static canonical `UsageSnapshot` for UI development
+* `UsageService` fetches usage through registry without UI coupling
