@@ -10,7 +10,7 @@ SwiftUI views for the menu bar, settings, and (later) widget. Views observe `Usa
 
 ### Domain (`TokenBar/Domain/`)
 
-Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForecast`, `UsageAlert`, `UsageHistorySample`, `ForecastingEngine`, and display formatting.
+Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForecast`, `UsageAlert`, `UsageAlertTrigger`, `UsageHistorySample`, `ForecastingEngine`, `AlertEvaluator`, and display formatting.
 
 ### Providers (`TokenBar/Providers/`)
 
@@ -18,7 +18,7 @@ Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForec
 
 ### Services (`TokenBar/Services/`)
 
-`UsageService` orchestrates refresh through the registry. `UsageHistoryStore` persists samples for forecasting. `UsageStore` is the `@Observable` app state consumed by UI.
+`UsageService` orchestrates refresh through the registry. `UsageHistoryStore` persists samples for forecasting. `AlertStateStore` tracks delivered alerts. `NotificationService` delivers native macOS notifications. `UsageStore` is the `@Observable` app state consumed by UI.
 
 ## Data Flow
 
@@ -35,5 +35,7 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 **Phase 3 (complete):** Cursor Personal (experimental), Cursor Team Admin API, custom proxy, Keychain credential store, provider configuration in Settings.
 
 **Phase 4 (complete):** `ForecastingEngine` burn-rate and exhaustion projection, `UsageHistoryStore`, automatic forecast refresh after usage updates.
+
+**Phase 5 (complete):** `AlertEvaluator` threshold and forecast-exhaustion alerts, `AlertStateStore` deduplication, native notifications, Settings toggle.
 
 See `specs/` for detailed requirements per feature.

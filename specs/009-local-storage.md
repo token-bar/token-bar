@@ -20,6 +20,8 @@ Preferences.
 
 Historical usage samples in Application Support (`usage-history.json`).
 
+Alert triggered-state in Application Support (`alert-state.json`).
+
 ---
 
 ## Requirements

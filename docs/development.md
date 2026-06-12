@@ -24,9 +24,9 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 4** — Forecasting engine: burn rate, days remaining, exhaustion date, confidence score. Historical usage persisted to Application Support.
+**Phase 5** — Usage alerts at 50/75/90/100% and forecasted exhaustion (≤ 7 days). Native macOS notifications with per-cycle deduplication.
 
-Phases 1–3 are complete.
+Phases 1–4 are complete.
 
 ### Connecting Cursor Personal (recommended for personal accounts)
 

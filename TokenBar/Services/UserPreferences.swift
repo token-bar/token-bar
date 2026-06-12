@@ -5,6 +5,7 @@ struct UserPreferences {
         static let displayMode = "displayMode"
         static let activeAccountID = "activeAccountID"
         static let showAdvancedProviders = "showAdvancedProviders"
+        static let notificationsEnabled = "notificationsEnabled"
     }
 
     private let defaults: UserDefaults
@@ -29,6 +30,18 @@ struct UserPreferences {
     var showAdvancedProviders: Bool {
         get { defaults.bool(forKey: Key.showAdvancedProviders) }
         set { defaults.set(newValue, forKey: Key.showAdvancedProviders) }
+    }
+
+    var notificationsEnabled: Bool {
+        get {
+            if defaults.object(forKey: Key.notificationsEnabled) == nil {
+                return true
+            }
+            return defaults.bool(forKey: Key.notificationsEnabled)
+        }
+        set {
+            defaults.set(newValue, forKey: Key.notificationsEnabled)
+        }
     }
 
     var activeAccountID: UUID? {

@@ -125,11 +125,39 @@ struct SettingsView: View {
     }
 
     private var notificationsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Notifications")
                 .font(.title2.weight(.semibold))
-            Text("Threshold alerts at 50%, 75%, 90%, and 100% coming in Phase 5.")
+
+            Toggle("Enable usage alerts", isOn: Binding(
+                get: { store.notificationsEnabled },
+                set: { store.notificationsEnabled = $0 }
+            ))
+
+            Text("Alerts fire when usage crosses 50%, 75%, 90%, or 100%, or when quota exhaustion is forecast within 7 days. Each alert is delivered once per billing cycle.")
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            if store.alerts.isEmpty {
+                Text("No alerts yet.")
+                    .foregroundStyle(.secondary)
+            } else {
+                Text("Recent alerts")
+                    .font(.headline)
+                ForEach(store.alerts.prefix(10)) { alert in
+                    if let account = store.accounts.first(where: { $0.id == alert.accountID }) {
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("\(account.displayName): \(alert.summary)")
+                                Text(alert.triggeredAt.formatted(date: .abbreviated, time: .shortened))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                        }
+                    }
+                }
+            }
         }
     }
 }

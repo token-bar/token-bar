@@ -6,6 +6,7 @@ import Observation
 final class UsageStore {
     var snapshots: [UsageSnapshot] = []
     var forecasts: [UUID: UsageForecast] = [:]
+    var alerts: [UsageAlert] = []
     var accounts: [ProviderAccount] = []
     var availableProviders: [ProviderDescriptor] = []
     var advancedProviders: [ProviderDescriptor] = []
@@ -19,6 +20,9 @@ final class UsageStore {
             Task { await refreshProviderLists() }
         }
     }
+    var notificationsEnabled: Bool {
+        didSet { preferences.notificationsEnabled = notificationsEnabled }
+    }
     var lastRefreshAt: Date?
     var isRefreshing = false
     var lastError: String?
@@ -29,6 +33,8 @@ final class UsageStore {
     private let credentialStore: any ProviderCredentialStore
     private let configurationStore: ProviderConfigurationStore
     private var historyStore: UsageHistoryStore
+    private var alertStateStore: AlertStateStore
+    private let notificationService: any NotificationDelivering
     private var preferences: UserPreferences
 
     init(
@@ -38,6 +44,8 @@ final class UsageStore {
         credentialStore: any ProviderCredentialStore,
         configurationStore: ProviderConfigurationStore,
         historyStore: UsageHistoryStore = UsageHistoryStore(),
+        alertStateStore: AlertStateStore = AlertStateStore(),
+        notificationService: any NotificationDelivering = SystemNotificationService(),
         preferences: UserPreferences = UserPreferences()
     ) {
         self.usageService = usageService
@@ -46,10 +54,13 @@ final class UsageStore {
         self.credentialStore = credentialStore
         self.configurationStore = configurationStore
         self.historyStore = historyStore
+        self.alertStateStore = alertStateStore
+        self.notificationService = notificationService
         self.preferences = preferences
         self.displayMode = preferences.displayMode
         self.activeAccountID = preferences.activeAccountID
         self.showAdvancedProviders = preferences.showAdvancedProviders
+        self.notificationsEnabled = preferences.notificationsEnabled
     }
 
     var activeSnapshot: UsageSnapshot? {
@@ -77,6 +88,7 @@ final class UsageStore {
             lifecycle: lifecycle
         )
         mergeAccounts(connectedAccounts)
+        _ = await notificationService.requestAuthorization()
         await refresh()
     }
 
@@ -87,8 +99,14 @@ final class UsageStore {
         lastError = nil
         defer { isRefreshing = false }
 
+        let previousSnapshots = Dictionary(uniqueKeysWithValues: snapshots.map { ($0.accountID, $0) })
+        let previousForecasts = forecasts
         let results = await usageService.fetchAllUsage()
         applyRefreshResults(results)
+        await evaluateAlerts(
+            previousSnapshots: previousSnapshots,
+            previousForecasts: previousForecasts
+        )
         lastRefreshAt = .now
         persistActiveAccount()
     }
@@ -164,6 +182,8 @@ final class UsageStore {
         if let accountID = accounts.first(where: { $0.providerID == providerID })?.id {
             historyStore.removeHistory(for: accountID)
             forecasts.removeValue(forKey: accountID)
+            alertStateStore.clear(accountID: accountID)
+            alerts.removeAll { $0.accountID == accountID }
         }
         await refresh()
     }
@@ -176,6 +196,8 @@ final class UsageStore {
         for accountID in removedAccountIDs {
             historyStore.removeHistory(for: accountID)
             forecasts.removeValue(forKey: accountID)
+            alertStateStore.clear(accountID: accountID)
+            alerts.removeAll { $0.accountID == accountID }
         }
         configurationStore.delete(providerID: providerID)
 
@@ -245,6 +267,44 @@ final class UsageStore {
         }
 
         forecasts = nextForecasts
+    }
+
+    private func evaluateAlerts(
+        previousSnapshots: [UUID: UsageSnapshot],
+        previousForecasts: [UUID: UsageForecast]
+    ) async {
+        guard notificationsEnabled else { return }
+
+        for snapshot in snapshots {
+            let output = AlertEvaluator.evaluate(
+                input: AlertEvaluator.Input(
+                    accountID: snapshot.accountID,
+                    previousUsagePercent: previousSnapshots[snapshot.accountID]?.normalizedUsagePercent,
+                    currentUsagePercent: snapshot.normalizedUsagePercent,
+                    previousDaysRemaining: previousForecasts[snapshot.accountID]?.daysRemaining,
+                    currentDaysRemaining: forecasts[snapshot.accountID]?.daysRemaining,
+                    triggered: alertStateStore.triggered(for: snapshot.accountID)
+                )
+            )
+
+            alertStateStore.setTriggered(output.updatedTriggered, for: snapshot.accountID)
+
+            guard !output.newAlerts.isEmpty else { continue }
+
+            for alert in output.newAlerts {
+                alerts.insert(alert, at: 0)
+                let notification = UsageNotificationBuilder.build(
+                    alert: alert,
+                    snapshot: snapshot,
+                    forecast: forecasts[snapshot.accountID]
+                )
+                await notificationService.send(notification: notification)
+            }
+        }
+
+        if alerts.count > 50 {
+            alerts = Array(alerts.prefix(50))
+        }
     }
 
     private func updateAccountConnection(

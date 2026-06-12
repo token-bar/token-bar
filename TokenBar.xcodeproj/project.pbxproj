@@ -72,6 +72,13 @@
 		FF0000010000000000000106 /* UsageHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000105 /* UsageHistoryStore.swift */; };
 		FF0000010000000000000108 /* ForecastingEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000107 /* ForecastingEngineTests.swift */; };
 		FF000001000000000000010A /* UsageHistoryStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000109 /* UsageHistoryStoreTests.swift */; };
+		GG0000010000000000000102 /* UsageAlertTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG0000010000000000000101 /* UsageAlertTrigger.swift */; };
+		GG0000010000000000000104 /* AlertEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG0000010000000000000103 /* AlertEvaluator.swift */; };
+		GG0000010000000000000106 /* AlertStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG0000010000000000000105 /* AlertStateStore.swift */; };
+		GG0000010000000000000108 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG0000010000000000000107 /* NotificationService.swift */; };
+		GG000001000000000000010A /* AlertEvaluatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG0000010000000000000109 /* AlertEvaluatorTests.swift */; };
+		GG000001000000000000010C /* AlertStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG000001000000000000010B /* AlertStateStoreTests.swift */; };
+		GG000001000000000000010E /* UsageNotificationBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG000001000000000000010D /* UsageNotificationBuilderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +182,13 @@
 		FF0000010000000000000105 /* UsageHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistoryStore.swift; sourceTree = "<group>"; };
 		FF0000010000000000000107 /* ForecastingEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastingEngineTests.swift; sourceTree = "<group>"; };
 		FF0000010000000000000109 /* UsageHistoryStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistoryStoreTests.swift; sourceTree = "<group>"; };
+		GG0000010000000000000101 /* UsageAlertTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageAlertTrigger.swift; sourceTree = "<group>"; };
+		GG0000010000000000000103 /* AlertEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEvaluator.swift; sourceTree = "<group>"; };
+		GG0000010000000000000105 /* AlertStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStateStore.swift; sourceTree = "<group>"; };
+		GG0000010000000000000107 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		GG0000010000000000000109 /* AlertEvaluatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEvaluatorTests.swift; sourceTree = "<group>"; };
+		GG000001000000000000010B /* AlertStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStateStoreTests.swift; sourceTree = "<group>"; };
+		GG000001000000000000010D /* UsageNotificationBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageNotificationBuilderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +273,7 @@
 			children = (
 				BB0000010000000000000105 /* DisplayMode.swift */,
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
+				GG0000010000000000000103 /* AlertEvaluator.swift */,
 				FF0000010000000000000103 /* ForecastingEngine.swift */,
 				EE0000010000000000000101 /* ProviderStability.swift */,
 				EE0000010000000000000103 /* ProviderConnectionStatus.swift */,
@@ -273,6 +288,7 @@
 			children = (
 				BB0000010000000000000109 /* ProviderAccount.swift */,
 				BB000001000000000000010B /* UsageAlert.swift */,
+				GG0000010000000000000101 /* UsageAlertTrigger.swift */,
 				BB000001000000000000010D /* UsageForecast.swift */,
 				FF0000010000000000000101 /* UsageHistorySample.swift */,
 				BB000001000000000000010F /* UsageSnapshot.swift */,
@@ -311,6 +327,8 @@
 		BB0000010000000000000133 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				GG0000010000000000000105 /* AlertStateStore.swift */,
+				GG0000010000000000000107 /* NotificationService.swift */,
 				BB0000010000000000000117 /* UsageService.swift */,
 				FF0000010000000000000105 /* UsageHistoryStore.swift */,
 				BB0000010000000000000119 /* UsageStore.swift */,
@@ -363,6 +381,7 @@
 		BB0000010000000000000138 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				GG0000010000000000000109 /* AlertEvaluatorTests.swift */,
 				FF0000010000000000000107 /* ForecastingEngineTests.swift */,
 				BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */,
 			);
@@ -387,7 +406,9 @@
 		BB000001000000000000013A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				GG000001000000000000010B /* AlertStateStoreTests.swift */,
 				BB000001000000000000012B /* UsageServiceTests.swift */,
+				GG000001000000000000010D /* UsageNotificationBuilderTests.swift */,
 				FF0000010000000000000109 /* UsageHistoryStoreTests.swift */,
 			);
 			path = Services;
@@ -614,6 +635,10 @@
 				FF0000010000000000000102 /* UsageHistorySample.swift in Sources */,
 				FF0000010000000000000104 /* ForecastingEngine.swift in Sources */,
 				FF0000010000000000000106 /* UsageHistoryStore.swift in Sources */,
+				GG0000010000000000000102 /* UsageAlertTrigger.swift in Sources */,
+				GG0000010000000000000104 /* AlertEvaluator.swift in Sources */,
+				GG0000010000000000000106 /* AlertStateStore.swift in Sources */,
+				GG0000010000000000000108 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +668,9 @@
 				EE0000010000000000000116 /* CursorPersonalSessionValidatorTests.swift in Sources */,
 				FF0000010000000000000108 /* ForecastingEngineTests.swift in Sources */,
 				FF000001000000000000010A /* UsageHistoryStoreTests.swift in Sources */,
+				GG000001000000000000010A /* AlertEvaluatorTests.swift in Sources */,
+				GG000001000000000000010C /* AlertStateStoreTests.swift in Sources */,
+				GG000001000000000000010E /* UsageNotificationBuilderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

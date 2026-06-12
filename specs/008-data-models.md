@@ -52,4 +52,5 @@ Canonical Swift types in `TokenBar/Domain/Models/`:
 * `UsageSnapshot` — usage percent, credits, spend, quota, timestamp
 * `UsageForecast` — burn rate, days remaining, exhaustion date, confidence, risk level
 * `UsageHistorySample` — point-in-time usage for forecasting (Phase 4)
-* `UsageAlert` — threshold alert record (defined, not yet evaluated)
+* `UsageAlert` — triggered alert record with `UsageAlertTrigger`
+* `UsageAlertTrigger` — threshold (50/75/90/100) or forecast exhaustion
