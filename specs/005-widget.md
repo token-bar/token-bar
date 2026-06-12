@@ -2,28 +2,32 @@
 
 ## Goal
 
-Provide optional Notification Center and Desktop widgets.
+Provide optional Notification Center and Desktop widgets showing cached usage.
 
 ---
 
 ## Display
 
-* Provider
+* Provider name
 * Usage %
 * Progress bar
-* Reset date
+* Reset date (forecast exhaustion)
 
 ---
 
 ## Constraints
 
-Must tolerate infrequent WidgetKit refreshes.
+* Must tolerate infrequent WidgetKit refreshes
+* Reads cached data from App Group storage (`WidgetSnapshotStore`)
+* No provider networking inside the widget extension
 
 ---
 
 ## Acceptance Criteria
 
-Widget remains functional independently from menu bar.
+* Widget remains functional independently from the menu bar app
+* Main app publishes snapshot after each refresh
+* Widget shows no-provider, stale, and error states
 
 ---
 
@@ -32,3 +36,12 @@ Widget remains functional independently from menu bar.
 * no provider configured
 * stale data
 * refresh failure
+
+---
+
+## Phase 7 Implementation
+
+* `WidgetUsagePayload` — canonical cached widget state
+* `WidgetPayloadBuilder` — builds payload from active snapshot/forecast
+* `WidgetSnapshotStore` — App Group `UserDefaults` persistence
+* `TokenBarWidget` timeline reloads every 15 minutes; app triggers reload on refresh

@@ -50,3 +50,4 @@ enum MenuBarDisplayFormatter {
         return formatter
     }()
 }
+

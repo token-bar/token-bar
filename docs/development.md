@@ -24,9 +24,15 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 6** — Full settings: automatic refresh (1/5/15/30 min), burn rate menu bar display, default provider selection.
+**Phase 7** — WidgetKit extension with cached usage display (provider, %, progress bar, reset date).
 
-Phases 1–5 are complete.
+Phases 1–6 are complete.
+
+### Adding the widget
+
+1. Run the app at least once to populate shared widget data
+2. Open Notification Center or Desktop widget gallery
+3. Add **TokenBar**
 
 ### Connecting Cursor Personal (recommended for personal accounts)
 

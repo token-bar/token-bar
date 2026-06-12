@@ -42,6 +42,7 @@ final class UsageStore {
     private var alertStateStore: AlertStateStore
     private let notificationService: any NotificationDelivering
     private let refreshScheduler: any RefreshScheduling
+    private let widgetSnapshotStore: WidgetSnapshotStore
     private var preferences: UserPreferences
 
     init(
@@ -54,6 +55,7 @@ final class UsageStore {
         alertStateStore: AlertStateStore = AlertStateStore(),
         notificationService: any NotificationDelivering = SystemNotificationService(),
         refreshScheduler: any RefreshScheduling = RefreshScheduler(),
+        widgetSnapshotStore: WidgetSnapshotStore = WidgetSnapshotStore(),
         preferences: UserPreferences = UserPreferences()
     ) {
         self.usageService = usageService
@@ -65,6 +67,7 @@ final class UsageStore {
         self.alertStateStore = alertStateStore
         self.notificationService = notificationService
         self.refreshScheduler = refreshScheduler
+        self.widgetSnapshotStore = widgetSnapshotStore
         self.preferences = preferences
         self.displayMode = preferences.displayMode
         self.activeAccountID = preferences.activeAccountID
@@ -131,11 +134,13 @@ final class UsageStore {
         )
         lastRefreshAt = .now
         persistActiveAccount()
+        publishWidgetSnapshot()
     }
 
     func selectAccount(_ accountID: UUID) {
         activeAccountID = accountID
         preferences.activeAccountID = accountID
+        publishWidgetSnapshot()
     }
 
     func configuration(for providerID: String) -> ProviderConfiguration {
@@ -360,5 +365,16 @@ final class UsageStore {
         refreshScheduler.apply(interval: refreshInterval) { [weak self] in
             await self?.refresh()
         }
+    }
+
+    private func publishWidgetSnapshot() {
+        let payload = WidgetPayloadBuilder.build(
+            snapshot: activeSnapshot,
+            forecast: activeForecast,
+            lastRefreshAt: lastRefreshAt,
+            lastError: lastError
+        )
+        widgetSnapshotStore.save(payload)
+        WidgetTimelineRefresher.reload()
     }
 }

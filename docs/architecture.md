@@ -40,4 +40,6 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 
 **Phase 6 (complete):** Settings refresh intervals via `RefreshScheduler`, burn rate display mode, default provider picker.
 
+**Phase 7 (complete):** WidgetKit extension reads `WidgetUsagePayload` from App Group storage; main app publishes on refresh.
+
 See `specs/` for detailed requirements per feature.
