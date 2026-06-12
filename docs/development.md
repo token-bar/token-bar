@@ -24,9 +24,9 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 3 (revised)** — Cursor Personal (session cookie, experimental), Cursor Team (stable Admin API), advanced custom proxy.
+**Phase 4** — Forecasting engine: burn rate, days remaining, exhaustion date, confidence score. Historical usage persisted to Application Support.
 
-Phases 1–2 are complete.
+Phases 1–3 are complete.
 
 ### Connecting Cursor Personal (recommended for personal accounts)
 

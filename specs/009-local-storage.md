@@ -16,15 +16,15 @@ Credentials.
 
 Preferences.
 
-### Local Database
+### Local File (Phase 4)
 
-Historical usage.
+Historical usage samples in Application Support (`usage-history.json`).
 
 ---
 
 ## Requirements
 
-Historical records must support forecasting.
+Historical records must support forecasting via `UsageHistoryStore`.
 
 ---
 

@@ -67,6 +67,11 @@
 		EE0000010000000000000112 /* AdvancedProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000111 /* AdvancedProvidersView.swift */; };
 		EE0000010000000000000114 /* CursorPersonalDashboardClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000113 /* CursorPersonalDashboardClientTests.swift */; };
 		EE0000010000000000000116 /* CursorPersonalSessionValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000115 /* CursorPersonalSessionValidatorTests.swift */; };
+		FF0000010000000000000102 /* UsageHistorySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000101 /* UsageHistorySample.swift */; };
+		FF0000010000000000000104 /* ForecastingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000103 /* ForecastingEngine.swift */; };
+		FF0000010000000000000106 /* UsageHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000105 /* UsageHistoryStore.swift */; };
+		FF0000010000000000000108 /* ForecastingEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000107 /* ForecastingEngineTests.swift */; };
+		FF000001000000000000010A /* UsageHistoryStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0000010000000000000109 /* UsageHistoryStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +170,11 @@
 		EE0000010000000000000111 /* AdvancedProvidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedProvidersView.swift; sourceTree = "<group>"; };
 		EE0000010000000000000113 /* CursorPersonalDashboardClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalDashboardClientTests.swift; sourceTree = "<group>"; };
 		EE0000010000000000000115 /* CursorPersonalSessionValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalSessionValidatorTests.swift; sourceTree = "<group>"; };
+		FF0000010000000000000101 /* UsageHistorySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistorySample.swift; sourceTree = "<group>"; };
+		FF0000010000000000000103 /* ForecastingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastingEngine.swift; sourceTree = "<group>"; };
+		FF0000010000000000000105 /* UsageHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistoryStore.swift; sourceTree = "<group>"; };
+		FF0000010000000000000107 /* ForecastingEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastingEngineTests.swift; sourceTree = "<group>"; };
+		FF0000010000000000000109 /* UsageHistoryStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageHistoryStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +259,7 @@
 			children = (
 				BB0000010000000000000105 /* DisplayMode.swift */,
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
+				FF0000010000000000000103 /* ForecastingEngine.swift */,
 				EE0000010000000000000101 /* ProviderStability.swift */,
 				EE0000010000000000000103 /* ProviderConnectionStatus.swift */,
 				EE0000010000000000000105 /* CursorPersonalConnectionMethod.swift */,
@@ -263,52 +274,10 @@
 				BB0000010000000000000109 /* ProviderAccount.swift */,
 				BB000001000000000000010B /* UsageAlert.swift */,
 				BB000001000000000000010D /* UsageForecast.swift */,
+				FF0000010000000000000101 /* UsageHistorySample.swift */,
 				BB000001000000000000010F /* UsageSnapshot.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		DD0000010000000000000201 /* Credentials */ = {
-			isa = PBXGroup;
-			children = (
-				DD0000010000000000000101 /* CredentialKey.swift */,
-				DD0000010000000000000103 /* ProviderCredentialStore.swift */,
-				DD0000010000000000000105 /* KeychainCredentialStore.swift */,
-			);
-			path = Credentials;
-			sourceTree = "<group>";
-		};
-		EE0000010000000000000201 /* Personal */ = {
-			isa = PBXGroup;
-			children = (
-				EE0000010000000000000107 /* CursorPersonalDashboardServing.swift */,
-				EE0000010000000000000109 /* CursorPersonalSessionValidator.swift */,
-				EE000001000000000000010B /* ExperimentalCursorPersonalDashboardClient.swift */,
-				EE000001000000000000010D /* CursorPersonalProviderConnector.swift */,
-				EE000001000000000000010F /* CursorPersonalProviderFactory.swift */,
-			);
-			path = Personal;
-			sourceTree = "<group>";
-		};
-		DD0000010000000000000202 /* Cursor */ = {
-			isa = PBXGroup;
-			children = (
-				DD000001000000000000010B /* CursorTeamAPIClient.swift */,
-				DD000001000000000000010D /* CursorTeamSpendMapper.swift */,
-				DD000001000000000000010F /* CursorTeamProviderConnector.swift */,
-				DD0000010000000000000111 /* CursorTeamProviderFactory.swift */,
-				EE0000010000000000000201 /* Personal */,
-			);
-			path = Cursor;
-			sourceTree = "<group>";
-		};
-		DD0000010000000000000203 /* Proxy */ = {
-			isa = PBXGroup;
-			children = (
-				DD0000010000000000000113 /* ProxyProviderConnector.swift */,
-				DD0000010000000000000115 /* ProxyProviderFactory.swift */,
-			);
-			path = Proxy;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000131 /* Providers */ = {
@@ -343,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000117 /* UsageService.swift */,
+				FF0000010000000000000105 /* UsageHistoryStore.swift */,
 				BB0000010000000000000119 /* UsageStore.swift */,
 				BB000001000000000000011B /* UserPreferences.swift */,
 				DD0000010000000000000107 /* ProviderConfigurationStore.swift */,
@@ -393,18 +363,10 @@
 		BB0000010000000000000138 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FF0000010000000000000107 /* ForecastingEngineTests.swift */,
 				BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		DD0000010000000000000204 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				DD0000010000000000000119 /* InMemoryCredentialStore.swift */,
-				DD000001000000000000011B /* MockURLProtocol.swift */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000139 /* Providers */ = {
@@ -426,8 +388,61 @@
 			isa = PBXGroup;
 			children = (
 				BB000001000000000000012B /* UsageServiceTests.swift */,
+				FF0000010000000000000109 /* UsageHistoryStoreTests.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DD0000010000000000000201 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000010000000000000101 /* CredentialKey.swift */,
+				DD0000010000000000000103 /* ProviderCredentialStore.swift */,
+				DD0000010000000000000105 /* KeychainCredentialStore.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		DD0000010000000000000202 /* Cursor */ = {
+			isa = PBXGroup;
+			children = (
+				DD000001000000000000010B /* CursorTeamAPIClient.swift */,
+				DD000001000000000000010D /* CursorTeamSpendMapper.swift */,
+				DD000001000000000000010F /* CursorTeamProviderConnector.swift */,
+				DD0000010000000000000111 /* CursorTeamProviderFactory.swift */,
+				EE0000010000000000000201 /* Personal */,
+			);
+			path = Cursor;
+			sourceTree = "<group>";
+		};
+		DD0000010000000000000203 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000010000000000000113 /* ProxyProviderConnector.swift */,
+				DD0000010000000000000115 /* ProxyProviderFactory.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		DD0000010000000000000204 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000010000000000000119 /* InMemoryCredentialStore.swift */,
+				DD000001000000000000011B /* MockURLProtocol.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		EE0000010000000000000201 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				EE0000010000000000000107 /* CursorPersonalDashboardServing.swift */,
+				EE0000010000000000000109 /* CursorPersonalSessionValidator.swift */,
+				EE000001000000000000010B /* ExperimentalCursorPersonalDashboardClient.swift */,
+				EE000001000000000000010D /* CursorPersonalProviderConnector.swift */,
+				EE000001000000000000010F /* CursorPersonalProviderFactory.swift */,
+			);
+			path = Personal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,6 +611,9 @@
 				EE000001000000000000010E /* CursorPersonalProviderConnector.swift in Sources */,
 				EE0000010000000000000110 /* CursorPersonalProviderFactory.swift in Sources */,
 				EE0000010000000000000112 /* AdvancedProvidersView.swift in Sources */,
+				FF0000010000000000000102 /* UsageHistorySample.swift in Sources */,
+				FF0000010000000000000104 /* ForecastingEngine.swift in Sources */,
+				FF0000010000000000000106 /* UsageHistoryStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +641,8 @@
 				DD0000010000000000000122 /* ProxyProviderConnectorTests.swift in Sources */,
 				EE0000010000000000000114 /* CursorPersonalDashboardClientTests.swift in Sources */,
 				EE0000010000000000000116 /* CursorPersonalSessionValidatorTests.swift in Sources */,
+				FF0000010000000000000108 /* ForecastingEngineTests.swift in Sources */,
+				FF000001000000000000010A /* UsageHistoryStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +863,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar.TokenBarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -869,6 +890,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar.TokenBarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -886,6 +908,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -903,6 +926,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

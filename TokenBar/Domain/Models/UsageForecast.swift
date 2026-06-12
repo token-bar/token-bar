@@ -10,6 +10,8 @@ enum ForecastRiskLevel: String, Equatable, Sendable {
 struct UsageForecast: Equatable, Sendable {
     let accountID: UUID
     let burnRatePerDay: Double?
+    let daysRemaining: Double?
     let estimatedExhaustionDate: Date?
+    let confidenceScore: Double?
     let riskLevel: ForecastRiskLevel
 }

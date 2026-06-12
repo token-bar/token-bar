@@ -25,11 +25,13 @@ final class ProviderRegistryTests: XCTestCase {
         let mock = MockProviderConnector()
         await registry.installConnector(mock)
 
-        XCTAssertNotNil(await registry.connector(for: "mock"))
+        let connector = await registry.connector(for: "mock")
+        XCTAssertNotNil(connector)
 
         await registry.removeConnector(providerID: "mock")
 
-        XCTAssertNil(await registry.connector(for: "mock"))
+        let removedConnector = await registry.connector(for: "mock")
+        XCTAssertNil(removedConnector)
     }
 
     func testUnregisterFactoryRemovesCatalogEntry() async {
@@ -38,7 +40,8 @@ final class ProviderRegistryTests: XCTestCase {
 
         await registry.unregisterFactory(providerID: "mock")
 
-        XCTAssertNil(await registry.factory(for: "mock"))
+        let factory = await registry.factory(for: "mock")
+        XCTAssertNil(factory)
     }
 
     func testLaunchProviderIDsReturnsConnectOnLaunchFactories() async {
@@ -49,3 +52,4 @@ final class ProviderRegistryTests: XCTestCase {
         XCTAssertEqual(launchIDs, ["mock"])
     }
 }
+

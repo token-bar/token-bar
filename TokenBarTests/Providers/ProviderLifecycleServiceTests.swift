@@ -26,7 +26,8 @@ final class ProviderLifecycleServiceTests: XCTestCase {
 
         XCTAssertEqual(account.providerID, "mock")
         XCTAssertTrue(account.isConnected)
-        XCTAssertNotNil(await registry.connector(for: "mock"))
+        let connector = await registry.connector(for: "mock")
+        XCTAssertNotNil(connector)
     }
 
     func testDisconnectRemovesActiveConnector() async throws {
@@ -37,7 +38,8 @@ final class ProviderLifecycleServiceTests: XCTestCase {
 
         await lifecycle.disconnect(providerID: "mock")
 
-        XCTAssertNil(await registry.connector(for: "mock"))
+        let connector = await registry.connector(for: "mock")
+        XCTAssertNil(connector)
     }
 
     func testConnectUnknownProviderThrows() async {
@@ -114,3 +116,4 @@ final class ProviderLifecycleServiceTests: XCTestCase {
         }
     }
 }
+

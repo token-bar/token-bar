@@ -22,8 +22,8 @@ final class CursorTeamSpendMapperTests: XCTestCase {
 
         XCTAssertEqual(snapshot.providerName, "Cursor")
         XCTAssertEqual(snapshot.spendAmount, Decimal(string: "24.5012"))
-        XCTAssertEqual(snapshot.usagePercent, 12.2506, accuracy: 0.001)
-        XCTAssertEqual(snapshot.quotaLimit, 20_000)
+        XCTAssertEqual(snapshot.usagePercent ?? -1, 12.2506, accuracy: 0.001)
+        XCTAssertEqual(snapshot.quotaLimit ?? -1, 20_000)
     }
 
     func testSelectMemberPrefersConfiguredEmail() {

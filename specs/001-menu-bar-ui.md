@@ -64,6 +64,6 @@ Clicking the menu bar opens:
 Scope for initial UI shell:
 
 * `MenuBarLabelView` renders active snapshot via `MenuBarDisplayFormatter`
-* `MenuBarView` dropdown shows provider selector, usage summary, forecast stub, last refresh, Settings button
+* `MenuBarView` dropdown shows provider selector, usage summary, forecast (burn rate, days remaining, exhaustion, confidence, risk), last refresh, Settings button
 * Display mode selectable in Settings (percentage, progress bar, spend, credits)
 * Data sourced from `UsageStore` only — no direct provider references in UI

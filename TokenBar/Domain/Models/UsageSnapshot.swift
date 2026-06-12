@@ -16,4 +16,14 @@ struct UsageSnapshot: Equatable, Sendable {
         guard let usagePercent else { return nil }
         return usagePercent / 100
     }
+
+    var normalizedUsagePercent: Double? {
+        if let usagePercent {
+            return usagePercent
+        }
+        guard let quotaUsed, let quotaLimit, quotaLimit > 0 else {
+            return nil
+        }
+        return (quotaUsed / quotaLimit) * 100
+    }
 }

@@ -28,6 +28,7 @@ final class UsageStore {
     private let lifecycle: ProviderLifecycleService
     private let credentialStore: any ProviderCredentialStore
     private let configurationStore: ProviderConfigurationStore
+    private var historyStore: UsageHistoryStore
     private var preferences: UserPreferences
 
     init(
@@ -36,6 +37,7 @@ final class UsageStore {
         lifecycle: ProviderLifecycleService,
         credentialStore: any ProviderCredentialStore,
         configurationStore: ProviderConfigurationStore,
+        historyStore: UsageHistoryStore = UsageHistoryStore(),
         preferences: UserPreferences = UserPreferences()
     ) {
         self.usageService = usageService
@@ -43,6 +45,7 @@ final class UsageStore {
         self.lifecycle = lifecycle
         self.credentialStore = credentialStore
         self.configurationStore = configurationStore
+        self.historyStore = historyStore
         self.preferences = preferences
         self.displayMode = preferences.displayMode
         self.activeAccountID = preferences.activeAccountID
@@ -158,13 +161,22 @@ final class UsageStore {
             return updated
         }
         snapshots.removeAll { $0.providerID == providerID }
+        if let accountID = accounts.first(where: { $0.providerID == providerID })?.id {
+            historyStore.removeHistory(for: accountID)
+            forecasts.removeValue(forKey: accountID)
+        }
         await refresh()
     }
 
     func removeProvider(providerID: String) async {
         await lifecycle.remove(providerID: providerID)
+        let removedAccountIDs = accounts.filter { $0.providerID == providerID }.map(\.id)
         accounts.removeAll { $0.providerID == providerID }
         snapshots.removeAll { $0.providerID == providerID }
+        for accountID in removedAccountIDs {
+            historyStore.removeHistory(for: accountID)
+            forecasts.removeValue(forKey: accountID)
+        }
         configurationStore.delete(providerID: providerID)
 
         if let activeAccountID,
@@ -207,10 +219,32 @@ final class UsageStore {
         }
 
         snapshots = nextSnapshots
+        updateForecasts(for: nextSnapshots)
 
         if !errors.isEmpty {
             lastError = errors.joined(separator: ", ")
         }
+    }
+
+    private func updateForecasts(for snapshots: [UsageSnapshot]) {
+        var nextForecasts = forecasts
+
+        for snapshot in snapshots {
+            historyStore.append(snapshot: snapshot)
+            let history = historyStore.allHistory()
+            nextForecasts[snapshot.accountID] = ForecastingEngine.forecast(
+                accountID: snapshot.accountID,
+                current: snapshot,
+                history: history
+            )
+        }
+
+        let activeAccountIDs = Set(snapshots.map(\.accountID))
+        for accountID in nextForecasts.keys where !activeAccountIDs.contains(accountID) {
+            nextForecasts.removeValue(forKey: accountID)
+        }
+
+        forecasts = nextForecasts
     }
 
     private func updateAccountConnection(

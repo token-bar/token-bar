@@ -7,7 +7,7 @@ enum CursorTeamSpendMapper {
         providerID: String,
         capturedAt: Date = .now
     ) -> UsageSnapshot {
-        let spendDollars = Decimal(member.overallSpendCents) / 100
+        let spendDollars = dollars(fromCents: member.overallSpendCents)
         let usagePercent = usagePercent(for: member)
 
         return UsageSnapshot(
@@ -52,5 +52,10 @@ enum CursorTeamSpendMapper {
 
     private static func monthlyLimitCents(for member: CursorTeamMemberSpend) -> Double? {
         member.monthlyLimitDollars.map { $0 * 100 }
+    }
+
+    /// Converts API cent values (JSON `Double`) to dollars without binary floating-point drift.
+    private static func dollars(fromCents cents: Double) -> Decimal {
+        Decimal(string: String(format: "%.4f", cents / 100)) ?? Decimal(cents / 100)
     }
 }

@@ -50,5 +50,6 @@ Canonical Swift types in `TokenBar/Domain/Models/`:
 
 * `ProviderAccount` — identity and connection state
 * `UsageSnapshot` — usage percent, credits, spend, quota, timestamp
-* `UsageForecast` — burn rate and exhaustion estimate (stub in Phase 1)
+* `UsageForecast` — burn rate, days remaining, exhaustion date, confidence, risk level
+* `UsageHistorySample` — point-in-time usage for forecasting (Phase 4)
 * `UsageAlert` — threshold alert record (defined, not yet evaluated)

@@ -69,17 +69,41 @@ struct MenuBarView: View {
     private var forecastSection: some View {
         if let forecast = store.activeForecast {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Forecast")
-                    .font(.subheadline.weight(.semibold))
+                HStack {
+                    Text("Forecast")
+                        .font(.subheadline.weight(.semibold))
+                    Spacer()
+                    Text(forecast.riskLevel.rawValue.capitalized)
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(riskColor(for: forecast.riskLevel))
+                }
                 if let burnRate = forecast.burnRatePerDay {
                     Text("Burn rate: \(burnRate.formatted(.number.precision(.fractionLength(1))))%/day")
+                        .foregroundStyle(.secondary)
+                }
+                if let daysRemaining = forecast.daysRemaining {
+                    Text("Days remaining: \(daysRemaining.formatted(.number.precision(.fractionLength(0...1))))")
                         .foregroundStyle(.secondary)
                 }
                 if let exhaustion = forecast.estimatedExhaustionDate {
                     Text("Est. exhaustion: \(exhaustion.formatted(date: .abbreviated, time: .omitted))")
                         .foregroundStyle(.secondary)
                 }
+                if let confidence = forecast.confidenceScore {
+                    Text("Confidence: \(Int((confidence * 100).rounded()))%")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
+        }
+    }
+
+    private func riskColor(for risk: ForecastRiskLevel) -> Color {
+        switch risk {
+        case .low: .green
+        case .medium: .yellow
+        case .high: .orange
+        case .critical: .red
         }
     }
 
