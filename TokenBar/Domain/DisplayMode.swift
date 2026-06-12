@@ -6,6 +6,7 @@ enum DisplayMode: String, CaseIterable, Identifiable, Sendable {
     case spend
     case credits
     case burnRate
+    case aggregate
 
     var id: String { rawValue }
 
@@ -16,6 +17,7 @@ enum DisplayMode: String, CaseIterable, Identifiable, Sendable {
         case .spend: "Spend"
         case .credits: "Credits"
         case .burnRate: "Burn Rate"
+        case .aggregate: "All Providers"
         }
     }
 }

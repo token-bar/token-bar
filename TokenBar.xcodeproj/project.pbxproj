@@ -97,6 +97,10 @@
 		II000001000000000000011E /* UsageForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000010D /* UsageForecast.swift */; };
 		II0000010000000000000116 /* WidgetPayloadBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II000001000000000000010D /* WidgetPayloadBuilderTests.swift */; };
 		II0000010000000000000118 /* WidgetSnapshotStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II000001000000000000010F /* WidgetSnapshotStoreTests.swift */; };
+		JJ0000010000000000000102 /* AggregatedUsageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000101 /* AggregatedUsageSummary.swift */; };
+		JJ0000010000000000000104 /* UsageAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000103 /* UsageAggregator.swift */; };
+		JJ0000010000000000000106 /* UsageAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000105 /* UsageAggregatorTests.swift */; };
+		JJ0000010000000000000108 /* AggregatedUsageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000101 /* AggregatedUsageSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +223,9 @@
 		II000001000000000000010B /* TokenBarWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TokenBarWidget.entitlements; sourceTree = "<group>"; };
 		II000001000000000000010D /* WidgetPayloadBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPayloadBuilderTests.swift; sourceTree = "<group>"; };
 		II000001000000000000010F /* WidgetSnapshotStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotStoreTests.swift; sourceTree = "<group>"; };
+		JJ0000010000000000000101 /* AggregatedUsageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatedUsageSummary.swift; sourceTree = "<group>"; };
+		JJ0000010000000000000103 /* UsageAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageAggregator.swift; sourceTree = "<group>"; };
+		JJ0000010000000000000105 /* UsageAggregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageAggregatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +315,7 @@
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
 				GG0000010000000000000103 /* AlertEvaluator.swift */,
 				II0000010000000000000103 /* WidgetPayloadBuilder.swift */,
+				JJ0000010000000000000103 /* UsageAggregator.swift */,
 				FF0000010000000000000103 /* ForecastingEngine.swift */,
 				EE0000010000000000000101 /* ProviderStability.swift */,
 				EE0000010000000000000103 /* ProviderConnectionStatus.swift */,
@@ -320,6 +328,7 @@
 		BB0000010000000000000130 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				JJ0000010000000000000101 /* AggregatedUsageSummary.swift */,
 				BB0000010000000000000109 /* ProviderAccount.swift */,
 				BB000001000000000000010B /* UsageAlert.swift */,
 				GG0000010000000000000101 /* UsageAlertTrigger.swift */,
@@ -421,6 +430,7 @@
 			children = (
 				GG0000010000000000000109 /* AlertEvaluatorTests.swift */,
 				II000001000000000000010D /* WidgetPayloadBuilderTests.swift */,
+				JJ0000010000000000000105 /* UsageAggregatorTests.swift */,
 				FF0000010000000000000107 /* ForecastingEngineTests.swift */,
 				BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */,
 			);
@@ -687,6 +697,8 @@
 				II0000010000000000000104 /* WidgetPayloadBuilder.swift in Sources */,
 				II0000010000000000000106 /* WidgetSnapshotStore.swift in Sources */,
 				II0000010000000000000108 /* WidgetTimelineRefresher.swift in Sources */,
+				JJ0000010000000000000102 /* AggregatedUsageSummary.swift in Sources */,
+				JJ0000010000000000000104 /* UsageAggregator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +714,7 @@
 				II000001000000000000011A /* DisplayMode.swift in Sources */,
 				II000001000000000000011C /* UsageSnapshot.swift in Sources */,
 				II000001000000000000011E /* UsageForecast.swift in Sources */,
+				JJ0000010000000000000108 /* AggregatedUsageSummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +744,7 @@
 				HH0000010000000000000108 /* RefreshSchedulerTests.swift in Sources */,
 				II0000010000000000000116 /* WidgetPayloadBuilderTests.swift in Sources */,
 				II0000010000000000000118 /* WidgetSnapshotStoreTests.swift in Sources */,
+				JJ0000010000000000000106 /* UsageAggregatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

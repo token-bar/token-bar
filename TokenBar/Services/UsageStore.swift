@@ -88,10 +88,15 @@ final class UsageStore {
         return forecasts[activeSnapshot.accountID]
     }
 
+    var aggregatedSummary: AggregatedUsageSummary {
+        UsageAggregator.aggregate(snapshots: snapshots, forecasts: forecasts)
+    }
+
     var menuBarLabel: String {
         MenuBarDisplayFormatter.format(
             snapshot: activeSnapshot,
             forecast: activeForecast,
+            aggregate: aggregatedSummary,
             mode: displayMode
         )
     }

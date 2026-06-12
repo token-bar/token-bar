@@ -3,6 +3,6 @@ import XCTest
 
 final class TokenBarTests: XCTestCase {
     func testDisplayModeHasExpectedCases() {
-        XCTAssertEqual(DisplayMode.allCases.count, 5)
+        XCTAssertEqual(DisplayMode.allCases.count, 6)
     }
 }

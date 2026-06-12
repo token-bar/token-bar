@@ -174,6 +174,14 @@ Threshold alerts:
 
 ---
 
+## Phase 8 — Multi-Provider Aggregation
+
+* Cross-provider usage summary
+* Aggregate menu bar display mode
+* All-providers panel in dropdown
+
+---
+
 # Security Requirements
 
 * Store secrets in Keychain only

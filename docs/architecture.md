@@ -10,7 +10,7 @@ SwiftUI views for the menu bar, settings, and (later) widget. Views observe `Usa
 
 ### Domain (`TokenBar/Domain/`)
 
-Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForecast`, `UsageAlert`, `UsageAlertTrigger`, `UsageHistorySample`, `ForecastingEngine`, `AlertEvaluator`, and display formatting.
+Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForecast`, `UsageAlert`, `UsageAlertTrigger`, `UsageHistorySample`, `AggregatedUsageSummary`, `ForecastingEngine`, `UsageAggregator`, `AlertEvaluator`, and display formatting.
 
 ### Providers (`TokenBar/Providers/`)
 
@@ -41,5 +41,7 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 **Phase 6 (complete):** Settings refresh intervals via `RefreshScheduler`, burn rate display mode, default provider picker.
 
 **Phase 7 (complete):** WidgetKit extension reads `WidgetUsagePayload` from App Group storage; main app publishes on refresh.
+
+**Phase 8 (complete):** `UsageAggregator` cross-provider summary and aggregate menu bar display mode.
 
 See `specs/` for detailed requirements per feature.

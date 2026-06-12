@@ -24,9 +24,9 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 7** — WidgetKit extension with cached usage display (provider, %, progress bar, reset date).
+**Phase 8** — Multi-provider aggregation: combined summary in the menu bar dropdown and **All Providers** display mode.
 
-Phases 1–6 are complete.
+Phases 1–7 are complete.
 
 ### Adding the widget
 

@@ -6,8 +6,13 @@ enum MenuBarDisplayFormatter {
     static func format(
         snapshot: UsageSnapshot?,
         forecast: UsageForecast? = nil,
+        aggregate: AggregatedUsageSummary? = nil,
         mode: DisplayMode
     ) -> String {
+        if mode == .aggregate, let aggregate, aggregate.providerCount > 1 {
+            return formatAggregate(aggregate)
+        }
+
         guard let snapshot else { return "TokenBar" }
 
         switch mode {
@@ -33,7 +38,21 @@ enum MenuBarDisplayFormatter {
             }
             let formatted = burnRate.formatted(.number.precision(.fractionLength(1)))
             return "\(snapshot.providerName) \(formatted)%/d"
+        case .aggregate:
+            let percent = snapshot.usagePercent.map { Int($0.rounded()) } ?? 0
+            return "\(snapshot.providerName) \(percent)%"
         }
+    }
+
+    static func formatAggregate(_ aggregate: AggregatedUsageSummary) -> String {
+        if let percent = aggregate.highestUsagePercent {
+            return "TokenBar \(Int(percent.rounded()))% max"
+        }
+        if let spend = aggregate.totalSpendUSD {
+            let formatted = Self.currencyFormatter.string(from: spend as NSDecimalNumber) ?? "\(spend)"
+            return "TokenBar \(formatted)"
+        }
+        return "TokenBar \(aggregate.providerCount) providers"
     }
 
     static func progressBar(for usagePercent: Double?) -> String {
@@ -50,4 +69,3 @@ enum MenuBarDisplayFormatter {
         return formatter
     }()
 }
-

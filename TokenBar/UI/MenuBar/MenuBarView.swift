@@ -7,8 +7,10 @@ struct MenuBarView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             providerSection
+            aggregateSection
             Divider()
             usageSection
+            allProvidersSection
             forecastSection
             refreshSection
             Divider()
@@ -32,6 +34,54 @@ struct MenuBarView: View {
                 }
             }
             .pickerStyle(.menu)
+        }
+    }
+
+    @ViewBuilder
+    private var aggregateSection: some View {
+        let summary = store.aggregatedSummary
+        if summary.providerCount > 1 {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("All providers")
+                    .font(.subheadline.weight(.semibold))
+                Text("\(summary.providerCount) connected")
+                    .foregroundStyle(.secondary)
+                if let percent = summary.highestUsagePercent,
+                   let provider = summary.highestUsageProviderName {
+                    Text("Highest: \(Int(percent.rounded()))% · \(provider)")
+                        .foregroundStyle(.secondary)
+                }
+                if let spend = summary.totalSpendUSD {
+                    Text("Total spend: \(spend.formatted(.currency(code: "USD")))")
+                        .foregroundStyle(.secondary)
+                }
+                if let risk = summary.highestRiskLevel {
+                    Text("Top risk: \(risk.rawValue.capitalized)")
+                        .font(.caption)
+                        .foregroundStyle(riskColor(for: risk))
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var allProvidersSection: some View {
+        if store.snapshots.count > 1 {
+            VStack(alignment: .leading, spacing: 6) {
+                Text("By provider")
+                    .font(.subheadline.weight(.semibold))
+                ForEach(store.snapshots, id: \.accountID) { snapshot in
+                    HStack {
+                        Text(snapshot.providerName)
+                        Spacer()
+                        if let percent = snapshot.usagePercent {
+                            Text("\(Int(percent.rounded()))%")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .font(.caption)
+                }
+            }
         }
     }
 
