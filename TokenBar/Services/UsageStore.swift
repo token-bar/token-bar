@@ -189,6 +189,16 @@ final class UsageStore {
         configurationStore.save(configuration, providerID: providerID)
     }
 
+    func saveMonthlyBudget(_ budget: String, providerID: String) {
+        var configuration = configurationStore.load(providerID: providerID)
+        if budget.isEmpty {
+            configuration.monthlyBudgetUSD = nil
+        } else {
+            configuration.monthlyBudgetUSD = Double(budget)
+        }
+        configurationStore.save(configuration, providerID: providerID)
+    }
+
     func connectProvider(providerID: String) async {
         do {
             let account = try await lifecycle.connect(providerID: providerID)

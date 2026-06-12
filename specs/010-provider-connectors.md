@@ -10,8 +10,8 @@ Define implementation rules for provider integrations.
 
 * Cursor Personal (experimental)
 * Cursor Team (stable)
-* OpenAI
-* Anthropic
+* OpenAI (stable — Organization Admin API)
+* Anthropic (stable — Admin API)
 
 Additional providers must be pluggable.
 

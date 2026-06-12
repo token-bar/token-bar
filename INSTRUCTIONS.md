@@ -182,6 +182,14 @@ Threshold alerts:
 
 ---
 
+## Phase 9 — OpenAI & Anthropic Providers
+
+* OpenAI Organization Admin API (`/v1/organization/costs`)
+* Anthropic Admin API (`/v1/organizations/cost_report`)
+* Optional monthly budget for spend-based usage %
+
+---
+
 # Security Requirements
 
 * Store secrets in Keychain only

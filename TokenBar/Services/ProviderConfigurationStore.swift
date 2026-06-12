@@ -4,6 +4,7 @@ struct ProviderConfiguration: Codable, Equatable, Sendable {
     var memberEmail: String?
     var proxyURL: String?
     var connectionMethod: CursorPersonalConnectionMethod?
+    var monthlyBudgetUSD: Double?
 
     static let empty = ProviderConfiguration()
 }

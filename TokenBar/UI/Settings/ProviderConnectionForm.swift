@@ -6,6 +6,7 @@ struct ProviderConnectionForm: View {
 
     @State private var apiKey = ""
     @State private var memberEmail = ""
+    @State private var monthlyBudget = ""
     @State private var sessionCookie = ""
     @State private var connectionMethod: CursorPersonalConnectionMethod = .sessionCookie
     @State private var proxyURL = ""
@@ -74,10 +75,16 @@ struct ProviderConnectionForm: View {
             Text("No credentials required.")
                 .foregroundStyle(.secondary)
         case .apiKey:
-            SecureField("Admin API Key", text: $apiKey)
-            TextField("Member email (optional)", text: $memberEmail)
-                .textFieldStyle(.roundedBorder)
-            Text("Requires a Cursor Team/Enterprise admin API key.")
+            SecureField(apiKeyPlaceholder, text: $apiKey)
+            if showsMemberEmailField {
+                TextField("Member email (optional)", text: $memberEmail)
+                    .textFieldStyle(.roundedBorder)
+            }
+            if showsMonthlyBudgetField {
+                TextField("Monthly budget USD (optional)", text: $monthlyBudget)
+                    .textFieldStyle(.roundedBorder)
+            }
+            Text(apiKeyHelpText)
                 .font(.caption)
                 .foregroundStyle(.secondary)
         case .sessionToken:
@@ -114,6 +121,36 @@ struct ProviderConnectionForm: View {
         }
     }
 
+    private var showsMemberEmailField: Bool {
+        provider.id == "cursor-team"
+    }
+
+    private var showsMonthlyBudgetField: Bool {
+        provider.id == "openai" || provider.id == "anthropic"
+    }
+
+    private var apiKeyPlaceholder: String {
+        switch provider.id {
+        case "openai":
+            return "Organization Admin API Key"
+        case "anthropic":
+            return "Admin API Key (sk-ant-admin...)"
+        default:
+            return "Admin API Key"
+        }
+    }
+
+    private var apiKeyHelpText: String {
+        switch provider.id {
+        case "openai":
+            return "Requires an OpenAI Organization Admin API key. Optional monthly budget enables usage %."
+        case "anthropic":
+            return "Requires an Anthropic Admin API key for organization accounts. Optional monthly budget enables usage %."
+        default:
+            return "Requires a Cursor Team/Enterprise admin API key."
+        }
+    }
+
     private var isConnected: Bool {
         connectedAccount?.isConnected == true
     }
@@ -125,6 +162,7 @@ struct ProviderConnectionForm: View {
     private func loadExistingValues() {
         let configuration = store.configuration(for: provider.id)
         memberEmail = configuration.memberEmail ?? ""
+        monthlyBudget = configuration.monthlyBudgetUSD.map { String($0) } ?? ""
         proxyURL = configuration.proxyURL ?? ""
         connectionMethod = configuration.connectionMethod ?? .sessionCookie
     }
@@ -134,7 +172,12 @@ struct ProviderConnectionForm: View {
             switch provider.authenticationMethod {
             case .apiKey:
                 try store.saveAPIKey(apiKey, providerID: provider.id)
-                store.saveMemberEmail(memberEmail, providerID: provider.id)
+                if showsMemberEmailField {
+                    store.saveMemberEmail(memberEmail, providerID: provider.id)
+                }
+                if showsMonthlyBudgetField {
+                    store.saveMonthlyBudget(monthlyBudget, providerID: provider.id)
+                }
             case .sessionToken:
                 store.saveConnectionMethod(connectionMethod, providerID: provider.id)
                 if connectionMethod == .sessionCookie {

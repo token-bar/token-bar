@@ -101,6 +101,18 @@
 		JJ0000010000000000000104 /* UsageAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000103 /* UsageAggregator.swift */; };
 		JJ0000010000000000000106 /* UsageAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000105 /* UsageAggregatorTests.swift */; };
 		JJ0000010000000000000108 /* AggregatedUsageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000101 /* AggregatedUsageSummary.swift */; };
+		KK0000010000000000000102 /* OpenAIAdminAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000101 /* OpenAIAdminAPIClient.swift */; };
+		KK0000010000000000000104 /* OpenAICostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000103 /* OpenAICostMapper.swift */; };
+		KK0000010000000000000106 /* OpenAIProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000105 /* OpenAIProviderConnector.swift */; };
+		KK0000010000000000000108 /* OpenAIProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000107 /* OpenAIProviderFactory.swift */; };
+		KK000001000000000000010A /* AnthropicAdminAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000109 /* AnthropicAdminAPIClient.swift */; };
+		KK000001000000000000010C /* AnthropicCostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK000001000000000000010B /* AnthropicCostMapper.swift */; };
+		KK000001000000000000010E /* AnthropicProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK000001000000000000010D /* AnthropicProviderConnector.swift */; };
+		KK0000010000000000000110 /* AnthropicProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK000001000000000000010F /* AnthropicProviderFactory.swift */; };
+		KK0000010000000000000112 /* OpenAICostMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000111 /* OpenAICostMapperTests.swift */; };
+		KK0000010000000000000114 /* OpenAIProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000113 /* OpenAIProviderConnectorTests.swift */; };
+		KK0000010000000000000116 /* AnthropicCostMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000115 /* AnthropicCostMapperTests.swift */; };
+		KK0000010000000000000118 /* AnthropicProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000117 /* AnthropicProviderConnectorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +238,18 @@
 		JJ0000010000000000000101 /* AggregatedUsageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatedUsageSummary.swift; sourceTree = "<group>"; };
 		JJ0000010000000000000103 /* UsageAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageAggregator.swift; sourceTree = "<group>"; };
 		JJ0000010000000000000105 /* UsageAggregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageAggregatorTests.swift; sourceTree = "<group>"; };
+		KK0000010000000000000101 /* OpenAIAdminAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAdminAPIClient.swift; sourceTree = "<group>"; };
+		KK0000010000000000000103 /* OpenAICostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICostMapper.swift; sourceTree = "<group>"; };
+		KK0000010000000000000105 /* OpenAIProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProviderConnector.swift; sourceTree = "<group>"; };
+		KK0000010000000000000107 /* OpenAIProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProviderFactory.swift; sourceTree = "<group>"; };
+		KK0000010000000000000109 /* AnthropicAdminAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicAdminAPIClient.swift; sourceTree = "<group>"; };
+		KK000001000000000000010B /* AnthropicCostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicCostMapper.swift; sourceTree = "<group>"; };
+		KK000001000000000000010D /* AnthropicProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicProviderConnector.swift; sourceTree = "<group>"; };
+		KK000001000000000000010F /* AnthropicProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicProviderFactory.swift; sourceTree = "<group>"; };
+		KK0000010000000000000111 /* OpenAICostMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICostMapperTests.swift; sourceTree = "<group>"; };
+		KK0000010000000000000113 /* OpenAIProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProviderConnectorTests.swift; sourceTree = "<group>"; };
+		KK0000010000000000000115 /* AnthropicCostMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicCostMapperTests.swift; sourceTree = "<group>"; };
+		KK0000010000000000000117 /* AnthropicProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicProviderConnectorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +376,8 @@
 				CC0000010000000000000107 /* BuiltinProviderRegistration.swift */,
 				DD0000010000000000000201 /* Credentials */,
 				DD0000010000000000000202 /* Cursor */,
+				KK0000010000000000000201 /* OpenAI */,
+				KK0000010000000000000202 /* Anthropic */,
 				DD0000010000000000000203 /* Proxy */,
 				BB0000010000000000000132 /* Mock */,
 			);
@@ -448,6 +474,10 @@
 				DD0000010000000000000121 /* ProxyProviderConnectorTests.swift */,
 				EE0000010000000000000113 /* CursorPersonalDashboardClientTests.swift */,
 				EE0000010000000000000115 /* CursorPersonalSessionValidatorTests.swift */,
+				KK0000010000000000000111 /* OpenAICostMapperTests.swift */,
+				KK0000010000000000000113 /* OpenAIProviderConnectorTests.swift */,
+				KK0000010000000000000115 /* AnthropicCostMapperTests.swift */,
+				KK0000010000000000000117 /* AnthropicProviderConnectorTests.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -516,6 +546,28 @@
 				EE000001000000000000010F /* CursorPersonalProviderFactory.swift */,
 			);
 			path = Personal;
+			sourceTree = "<group>";
+		};
+		KK0000010000000000000201 /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				KK0000010000000000000101 /* OpenAIAdminAPIClient.swift */,
+				KK0000010000000000000103 /* OpenAICostMapper.swift */,
+				KK0000010000000000000105 /* OpenAIProviderConnector.swift */,
+				KK0000010000000000000107 /* OpenAIProviderFactory.swift */,
+			);
+			path = OpenAI;
+			sourceTree = "<group>";
+		};
+		KK0000010000000000000202 /* Anthropic */ = {
+			isa = PBXGroup;
+			children = (
+				KK0000010000000000000109 /* AnthropicAdminAPIClient.swift */,
+				KK000001000000000000010B /* AnthropicCostMapper.swift */,
+				KK000001000000000000010D /* AnthropicProviderConnector.swift */,
+				KK000001000000000000010F /* AnthropicProviderFactory.swift */,
+			);
+			path = Anthropic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -699,6 +751,14 @@
 				II0000010000000000000108 /* WidgetTimelineRefresher.swift in Sources */,
 				JJ0000010000000000000102 /* AggregatedUsageSummary.swift in Sources */,
 				JJ0000010000000000000104 /* UsageAggregator.swift in Sources */,
+				KK0000010000000000000102 /* OpenAIAdminAPIClient.swift in Sources */,
+				KK0000010000000000000104 /* OpenAICostMapper.swift in Sources */,
+				KK0000010000000000000106 /* OpenAIProviderConnector.swift in Sources */,
+				KK0000010000000000000108 /* OpenAIProviderFactory.swift in Sources */,
+				KK000001000000000000010A /* AnthropicAdminAPIClient.swift in Sources */,
+				KK000001000000000000010C /* AnthropicCostMapper.swift in Sources */,
+				KK000001000000000000010E /* AnthropicProviderConnector.swift in Sources */,
+				KK0000010000000000000110 /* AnthropicProviderFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +805,10 @@
 				II0000010000000000000116 /* WidgetPayloadBuilderTests.swift in Sources */,
 				II0000010000000000000118 /* WidgetSnapshotStoreTests.swift in Sources */,
 				JJ0000010000000000000106 /* UsageAggregatorTests.swift in Sources */,
+				KK0000010000000000000112 /* OpenAICostMapperTests.swift in Sources */,
+				KK0000010000000000000114 /* OpenAIProviderConnectorTests.swift in Sources */,
+				KK0000010000000000000116 /* AnthropicCostMapperTests.swift in Sources */,
+				KK0000010000000000000118 /* AnthropicProviderConnectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,8 @@ enum BuiltinProviderRegistration {
         await registry.register(MockProviderFactory())
         await registry.register(CursorTeamProviderFactory())
         await registry.register(CursorPersonalProviderFactory())
+        await registry.register(OpenAIProviderFactory())
+        await registry.register(AnthropicProviderFactory())
         await registry.register(ProxyProviderFactory())
     }
 

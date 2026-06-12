@@ -24,9 +24,9 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 8** — Multi-provider aggregation: combined summary in the menu bar dropdown and **All Providers** display mode.
+**Phase 9** — OpenAI and Anthropic organization Admin API connectors with optional monthly budget for usage %.
 
-Phases 1–7 are complete.
+Phases 1–8 are complete.
 
 ### Adding the widget
 

@@ -44,4 +44,6 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 
 **Phase 8 (complete):** `UsageAggregator` cross-provider summary and aggregate menu bar display mode.
 
+**Phase 9 (complete):** OpenAI (`/v1/organization/costs`) and Anthropic (`/v1/organizations/cost_report`) Admin API connectors registered via `BuiltinProviderRegistration`.
+
 See `specs/` for detailed requirements per feature.
