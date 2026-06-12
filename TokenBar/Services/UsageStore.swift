@@ -8,6 +8,7 @@ final class UsageStore {
     var snapshots: [UsageSnapshot] = []
     var forecasts: [UUID: UsageForecast] = [:]
     var accounts: [ProviderAccount] = []
+    var availableProviders: [ProviderDescriptor] = []
     var activeAccountID: UUID?
     var displayMode: DisplayMode {
         didSet { preferences.displayMode = displayMode }
@@ -18,15 +19,18 @@ final class UsageStore {
 
     private let usageService: UsageService
     private let registry: ProviderRegistry
+    private let lifecycle: ProviderLifecycleService
     private var preferences: UserPreferences
 
     init(
         usageService: UsageService,
         registry: ProviderRegistry,
+        lifecycle: ProviderLifecycleService,
         preferences: UserPreferences = UserPreferences()
     ) {
         self.usageService = usageService
         self.registry = registry
+        self.lifecycle = lifecycle
         self.preferences = preferences
         self.displayMode = preferences.displayMode
         self.activeAccountID = preferences.activeAccountID
@@ -49,7 +53,14 @@ final class UsageStore {
     }
 
     func bootstrap() async {
-        await registerDefaultProviders()
+        await BuiltinProviderRegistration.registerFactories(with: registry)
+        availableProviders = await registry.availableProviders()
+
+        let connectedAccounts = await BuiltinProviderRegistration.connectLaunchProviders(
+            registry: registry,
+            lifecycle: lifecycle
+        )
+        mergeAccounts(connectedAccounts)
         await refresh()
     }
 
@@ -71,18 +82,50 @@ final class UsageStore {
         preferences.activeAccountID = accountID
     }
 
-    private func registerDefaultProviders() async {
-        let mock = MockProviderConnector()
-        await registry.register(mock)
-        accounts = [
-            ProviderAccount(
-                id: mock.accountID,
-                providerID: mock.providerID,
-                displayName: mock.displayName,
-                isConnected: true
-            )
-        ]
-        forecasts[mock.accountID] = mock.fetchForecast()
+    func connectProvider(providerID: String) async {
+        do {
+            let account = try await lifecycle.connect(providerID: providerID)
+            mergeAccounts([account])
+            await refresh()
+        } catch {
+            lastError = "\(providerID): \(error)"
+        }
+    }
+
+    func disconnectProvider(providerID: String) async {
+        await lifecycle.disconnect(providerID: providerID)
+        accounts = accounts.map { account in
+            guard account.providerID == providerID else { return account }
+            var updated = account
+            updated.isConnected = false
+            return updated
+        }
+        snapshots.removeAll { $0.providerID == providerID }
+        await refresh()
+    }
+
+    func removeProvider(providerID: String) async {
+        await lifecycle.remove(providerID: providerID)
+        accounts.removeAll { $0.providerID == providerID }
+        snapshots.removeAll { $0.providerID == providerID }
+
+        if let activeAccountID,
+           accounts.contains(where: { $0.id == activeAccountID }) == false {
+            self.activeAccountID = accounts.first?.id
+            preferences.activeAccountID = self.activeAccountID
+        }
+
+        await refresh()
+    }
+
+    private func mergeAccounts(_ newAccounts: [ProviderAccount]) {
+        for account in newAccounts {
+            if let index = accounts.firstIndex(where: { $0.providerID == account.providerID }) {
+                accounts[index] = account
+            } else {
+                accounts.append(account)
+            }
+        }
     }
 
     private func applyRefreshResults(_ results: [ProviderRefreshResult]) {
@@ -101,9 +144,7 @@ final class UsageStore {
 
         snapshots = nextSnapshots
 
-        if !errors.isEmpty, nextSnapshots.isEmpty {
-            lastError = errors.joined(separator: ", ")
-        } else if !errors.isEmpty {
+        if !errors.isEmpty {
             lastError = errors.joined(separator: ", ")
         }
     }

@@ -11,6 +11,8 @@ protocol ProviderConnector: Sendable {
 }
 
 enum ProviderError: Error, Equatable {
+    case unknownProvider
+    case alreadyConnected
     case notAuthenticated
     case fetchFailed
     case validationFailed

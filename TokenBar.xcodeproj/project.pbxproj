@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0000010000000000000104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000B /* Assets.xcassets */; };
+		AA0000010000000000000107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000E /* Assets.xcassets */; };
+		AA0000010000000000000109 /* TokenBarWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000006 /* TokenBarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BB0000010000000000000102 /* TokenBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000101 /* TokenBarApp.swift */; };
 		BB0000010000000000000104 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000103 /* AppEnvironment.swift */; };
 		BB0000010000000000000106 /* DisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000105 /* DisplayMode.swift */; };
@@ -29,9 +32,13 @@
 		BB0000010000000000000128 /* MockProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000127 /* MockProviderConnectorTests.swift */; };
 		BB000001000000000000012A /* ProviderRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000129 /* ProviderRegistryTests.swift */; };
 		BB000001000000000000012C /* UsageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000012B /* UsageServiceTests.swift */; };
-		AA0000010000000000000104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000B /* Assets.xcassets */; };
-		AA0000010000000000000107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000000E /* Assets.xcassets */; };
-		AA0000010000000000000109 /* TokenBarWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000006 /* TokenBarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CC0000010000000000000102 /* ProviderDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0000010000000000000101 /* ProviderDescriptor.swift */; };
+		CC0000010000000000000104 /* ProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0000010000000000000103 /* ProviderFactory.swift */; };
+		CC0000010000000000000106 /* ProviderLifecycleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0000010000000000000105 /* ProviderLifecycleService.swift */; };
+		CC0000010000000000000108 /* BuiltinProviderRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0000010000000000000107 /* BuiltinProviderRegistration.swift */; };
+		CC000001000000000000010A /* MockProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0000010000000000000109 /* MockProviderFactory.swift */; };
+		CC000001000000000000010C /* FailingMockProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC000001000000000000010B /* FailingMockProviderConnector.swift */; };
+		CC000001000000000000010E /* ProviderLifecycleServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC000001000000000000010D /* ProviderLifecycleServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +102,13 @@
 		BB0000010000000000000127 /* MockProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProviderConnectorTests.swift; sourceTree = "<group>"; };
 		BB0000010000000000000129 /* ProviderRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderRegistryTests.swift; sourceTree = "<group>"; };
 		BB000001000000000000012B /* UsageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageServiceTests.swift; sourceTree = "<group>"; };
+		CC0000010000000000000101 /* ProviderDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDescriptor.swift; sourceTree = "<group>"; };
+		CC0000010000000000000103 /* ProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderFactory.swift; sourceTree = "<group>"; };
+		CC0000010000000000000105 /* ProviderLifecycleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLifecycleService.swift; sourceTree = "<group>"; };
+		CC0000010000000000000107 /* BuiltinProviderRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltinProviderRegistration.swift; sourceTree = "<group>"; };
+		CC0000010000000000000109 /* MockProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProviderFactory.swift; sourceTree = "<group>"; };
+		CC000001000000000000010B /* FailingMockProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingMockProviderConnector.swift; sourceTree = "<group>"; };
+		CC000001000000000000010D /* ProviderLifecycleServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLifecycleServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,16 +136,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA0000010000000000000014 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				BB000001000000000000012D /* TokenBar */,
-				AA0000010000000000000011 /* TokenBarWidget */,
-				BB0000010000000000000137 /* TokenBarTests */,
-				AA0000010000000000000013 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
 		AA0000010000000000000011 /* TokenBarWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,15 +156,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BB0000010000000000000130 /* Models */ = {
+		AA0000010000000000000014 = {
 			isa = PBXGroup;
 			children = (
-				BB0000010000000000000109 /* ProviderAccount.swift */,
-				BB000001000000000000010B /* UsageAlert.swift */,
-				BB000001000000000000010D /* UsageForecast.swift */,
-				BB000001000000000000010F /* UsageSnapshot.swift */,
+				BB000001000000000000012D /* TokenBar */,
+				AA0000010000000000000011 /* TokenBarWidget */,
+				BB0000010000000000000137 /* TokenBarTests */,
+				AA0000010000000000000013 /* Products */,
 			);
-			path = Models;
+			sourceTree = "<group>";
+		};
+		BB000001000000000000012D /* TokenBar */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000101 /* TokenBarApp.swift */,
+				BB000001000000000000012E /* App */,
+				BB000001000000000000012F /* Domain */,
+				BB0000010000000000000131 /* Providers */,
+				BB0000010000000000000133 /* Services */,
+				BB0000010000000000000134 /* UI */,
+				AA000001000000000000000B /* Assets.xcassets */,
+			);
+			path = TokenBar;
+			sourceTree = "<group>";
+		};
+		BB000001000000000000012E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000103 /* AppEnvironment.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		BB000001000000000000012F /* Domain */ = {
@@ -173,30 +198,39 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		BB000001000000000000012E /* App */ = {
+		BB0000010000000000000130 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000010000000000000103 /* AppEnvironment.swift */,
+				BB0000010000000000000109 /* ProviderAccount.swift */,
+				BB000001000000000000010B /* UsageAlert.swift */,
+				BB000001000000000000010D /* UsageForecast.swift */,
+				BB000001000000000000010F /* UsageSnapshot.swift */,
 			);
-			path = App;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000131 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000010000000000000101 /* ProviderDescriptor.swift */,
+				CC0000010000000000000103 /* ProviderFactory.swift */,
+				BB0000010000000000000113 /* ProviderConnector.swift */,
+				BB0000010000000000000115 /* ProviderRegistry.swift */,
+				CC0000010000000000000105 /* ProviderLifecycleService.swift */,
+				CC0000010000000000000107 /* BuiltinProviderRegistration.swift */,
+				BB0000010000000000000132 /* Mock */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000132 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000111 /* MockProviderConnector.swift */,
+				CC0000010000000000000109 /* MockProviderFactory.swift */,
+				CC000001000000000000010B /* FailingMockProviderConnector.swift */,
 			);
 			path = Mock;
-			sourceTree = "<group>";
-		};
-		BB0000010000000000000131 /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				BB0000010000000000000113 /* ProviderConnector.swift */,
-				BB0000010000000000000115 /* ProviderRegistry.swift */,
-				BB0000010000000000000132 /* Mock */,
-			);
-			path = Providers;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000133 /* Services */ = {
@@ -207,6 +241,15 @@
 				BB000001000000000000011B /* UserPreferences.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BB0000010000000000000134 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000010000000000000135 /* MenuBar */,
+				BB0000010000000000000136 /* Settings */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000135 /* MenuBar */ = {
@@ -226,27 +269,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		BB0000010000000000000134 /* UI */ = {
+		BB0000010000000000000137 /* TokenBarTests */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000010000000000000135 /* MenuBar */,
-				BB0000010000000000000136 /* Settings */,
+				BB0000010000000000000123 /* TokenBarTests.swift */,
+				BB0000010000000000000138 /* Domain */,
+				BB0000010000000000000139 /* Providers */,
+				BB000001000000000000013A /* Services */,
 			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		BB000001000000000000012D /* TokenBar */ = {
-			isa = PBXGroup;
-			children = (
-				BB0000010000000000000101 /* TokenBarApp.swift */,
-				BB000001000000000000012E /* App */,
-				BB000001000000000000012F /* Domain */,
-				BB0000010000000000000131 /* Providers */,
-				BB0000010000000000000133 /* Services */,
-				BB0000010000000000000134 /* UI */,
-				AA000001000000000000000B /* Assets.xcassets */,
-			);
-			path = TokenBar;
+			path = TokenBarTests;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000138 /* Domain */ = {
@@ -262,6 +293,7 @@
 			children = (
 				BB0000010000000000000127 /* MockProviderConnectorTests.swift */,
 				BB0000010000000000000129 /* ProviderRegistryTests.swift */,
+				CC000001000000000000010D /* ProviderLifecycleServiceTests.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -272,17 +304,6 @@
 				BB000001000000000000012B /* UsageServiceTests.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		BB0000010000000000000137 /* TokenBarTests */ = {
-			isa = PBXGroup;
-			children = (
-				BB0000010000000000000123 /* TokenBarTests.swift */,
-				BB0000010000000000000138 /* Domain */,
-				BB0000010000000000000139 /* Providers */,
-				BB000001000000000000013A /* Services */,
-			);
-			path = TokenBarTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,7 +392,7 @@
 				en,
 				Base,
 			);
-			mainGroup = AA0000010000000000000014 /* Root */;
+			mainGroup = AA0000010000000000000014;
 			productRefGroup = AA0000010000000000000013 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -424,6 +445,12 @@
 				BB000001000000000000011E /* MenuBarLabelView.swift in Sources */,
 				BB0000010000000000000120 /* MenuBarView.swift in Sources */,
 				BB0000010000000000000122 /* SettingsView.swift in Sources */,
+				CC0000010000000000000102 /* ProviderDescriptor.swift in Sources */,
+				CC0000010000000000000104 /* ProviderFactory.swift in Sources */,
+				CC0000010000000000000106 /* ProviderLifecycleService.swift in Sources */,
+				CC0000010000000000000108 /* BuiltinProviderRegistration.swift in Sources */,
+				CC000001000000000000010A /* MockProviderFactory.swift in Sources */,
+				CC000001000000000000010C /* FailingMockProviderConnector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,8 +458,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0000010000000000000105 /* TokenBarWidgetBundle.swift in Sources */,
-				AA0000010000000000000106 /* TokenBarWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +470,7 @@
 				BB0000010000000000000128 /* MockProviderConnectorTests.swift in Sources */,
 				BB000001000000000000012A /* ProviderRegistryTests.swift in Sources */,
 				BB000001000000000000012C /* UsageServiceTests.swift in Sources */,
+				CC000001000000000000010E /* ProviderLifecycleServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,12 +628,15 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Token Bar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -628,12 +657,15 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Token Bar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,8 +684,8 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TokenBarWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -678,8 +710,8 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TokenBarWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

@@ -2,32 +2,50 @@ import XCTest
 @testable import TokenBar
 
 final class ProviderRegistryTests: XCTestCase {
-    func testRegisterAndLookup() async {
+    func testRegisterFactoryAndLookup() async {
+        let registry = ProviderRegistry()
+        await registry.register(MockProviderFactory())
+
+        let factory = await registry.factory(for: "mock")
+        XCTAssertNotNil(factory)
+        XCTAssertEqual(factory?.descriptor.displayName, "Cursor (Mock)")
+    }
+
+    func testAvailableProvidersReturnsRegisteredFactories() async {
+        let registry = ProviderRegistry()
+        await registry.register(MockProviderFactory())
+
+        let providers = await registry.availableProviders()
+        XCTAssertEqual(providers.count, 1)
+        XCTAssertEqual(providers.first?.id, "mock")
+    }
+
+    func testInstallAndRemoveConnector() async {
         let registry = ProviderRegistry()
         let mock = MockProviderConnector()
+        await registry.installConnector(mock)
 
-        await registry.register(mock)
+        XCTAssertNotNil(await registry.connector(for: "mock"))
 
-        let connector = await registry.connector(for: "mock")
-        XCTAssertNotNil(connector)
-        XCTAssertEqual(connector?.providerID, "mock")
+        await registry.removeConnector(providerID: "mock")
+
+        XCTAssertNil(await registry.connector(for: "mock"))
     }
 
-    func testUnregisterRemovesProvider() async {
+    func testUnregisterFactoryRemovesCatalogEntry() async {
         let registry = ProviderRegistry()
-        await registry.register(MockProviderConnector())
+        await registry.register(MockProviderFactory())
 
-        await registry.unregister(providerID: "mock")
+        await registry.unregisterFactory(providerID: "mock")
 
-        let connector = await registry.connector(for: "mock")
-        XCTAssertNil(connector)
+        XCTAssertNil(await registry.factory(for: "mock"))
     }
 
-    func testAllConnectorsReturnsRegisteredProviders() async {
+    func testLaunchProviderIDsReturnsConnectOnLaunchFactories() async {
         let registry = ProviderRegistry()
-        await registry.register(MockProviderConnector())
+        await registry.register(MockProviderFactory())
 
-        let connectors = await registry.allConnectors()
-        XCTAssertEqual(connectors.count, 1)
+        let launchIDs = await registry.launchProviderIDs()
+        XCTAssertEqual(launchIDs, ["mock"])
     }
 }

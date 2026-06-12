@@ -46,6 +46,12 @@ struct UsageService: Sendable {
                 snapshot: snapshot,
                 error: nil
             )
+        } catch let error as ProviderError {
+            return ProviderRefreshResult(
+                providerID: connector.providerID,
+                snapshot: nil,
+                error: error
+            )
         } catch {
             return ProviderRefreshResult(
                 providerID: connector.providerID,

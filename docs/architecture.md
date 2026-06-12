@@ -26,11 +26,10 @@ Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForec
 ProviderConnector → UsageService → UsageStore → SwiftUI Views
 ```
 
-## Phase 1 Status
+## Phase Status
 
-* Menu bar label and dropdown UI
-* Mock provider with static usage data
-* Settings stub with functional display mode picker
-* Unit tests for formatter, registry, mock provider, and usage service
+**Phase 1 (complete):** Menu bar UI, mock usage display, settings stub.
+
+**Phase 2 (complete):** `ProviderFactory`, `ProviderDescriptor`, lifecycle service, factory-based registry, builtin registration. `UsageStore` has no direct provider imports.
 
 See `specs/` for detailed requirements per feature.

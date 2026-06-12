@@ -31,13 +31,4 @@ struct MockProviderConnector: ProviderConnector {
             capturedAt: .now
         )
     }
-
-    func fetchForecast() -> UsageForecast {
-        UsageForecast(
-            accountID: accountID,
-            burnRatePerDay: 8.5,
-            estimatedExhaustionDate: Calendar.current.date(byAdding: .day, value: 4, to: .now),
-            riskLevel: .medium
-        )
-    }
 }

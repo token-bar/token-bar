@@ -24,4 +24,6 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 1 — UI Shell** — menu bar display, mock provider, settings stub.
+**Phase 2 — Provider Framework** — factories, registry lifecycle, connect/disconnect/remove, failing mock for tests.
+
+Phase 1 (UI shell) is complete.

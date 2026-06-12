@@ -60,3 +60,15 @@ No UI changes.
 * `ProviderRegistry` actor for registration and lookup
 * `MockProviderConnector` returns static canonical `UsageSnapshot` for UI development
 * `UsageService` fetches usage through registry without UI coupling
+
+---
+
+## Phase 2 Implementation
+
+* `ProviderDescriptor` — metadata for provider discovery without UI coupling to implementations
+* `ProviderFactory` — creates connectors; registration requires only a factory
+* `ProviderRegistry` — separates factory catalog from active connector instances
+* `ProviderLifecycleService` — connect, disconnect, and remove providers
+* `BuiltinProviderRegistration` — wires built-in factories at app startup
+* `FailingMockProviderConnector` — test double for refresh/validation failures
+* `UsageStore` no longer imports concrete provider types

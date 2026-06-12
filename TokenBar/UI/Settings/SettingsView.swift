@@ -36,24 +36,71 @@ struct SettingsView: View {
     }
 
     private var providersSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Providers")
                 .font(.title2.weight(.semibold))
-            Text("Add, remove, and reconnect providers. Coming in a later phase.")
-                .foregroundStyle(.secondary)
-            if store.accounts.isEmpty {
-                Text("No providers registered.")
-            } else {
-                ForEach(store.accounts) { account in
-                    HStack {
-                        Text(account.displayName)
-                        Spacer()
-                        Text(account.isConnected ? "Connected" : "Disconnected")
-                            .foregroundStyle(account.isConnected ? .green : .secondary)
+
+            Group {
+                Text("Connected")
+                    .font(.headline)
+                if store.accounts.isEmpty {
+                    Text("No providers connected.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(store.accounts) { account in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(account.displayName)
+                                Text(account.isConnected ? "Connected" : "Disconnected")
+                                    .font(.caption)
+                                    .foregroundStyle(account.isConnected ? .green : .secondary)
+                            }
+                            Spacer()
+                            if account.isConnected {
+                                Button("Disconnect") {
+                                    Task { await store.disconnectProvider(providerID: account.providerID) }
+                                }
+                            } else {
+                                Button("Reconnect") {
+                                    Task { await store.connectProvider(providerID: account.providerID) }
+                                }
+                            }
+                            Button("Remove", role: .destructive) {
+                                Task { await store.removeProvider(providerID: account.providerID) }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Group {
+                Text("Available")
+                    .font(.headline)
+                if store.availableProviders.isEmpty {
+                    Text("No provider types registered.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(store.availableProviders) { provider in
+                        HStack {
+                            Text(provider.displayName)
+                            Spacer()
+                            if isConnected(providerID: provider.id) {
+                                Text("Connected")
+                                    .foregroundStyle(.green)
+                            } else {
+                                Button("Connect") {
+                                    Task { await store.connectProvider(providerID: provider.id) }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+
+    private func isConnected(providerID: String) -> Bool {
+        store.accounts.contains { $0.providerID == providerID && $0.isConnected }
     }
 
     private var displaySection: some View {
