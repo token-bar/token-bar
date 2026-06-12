@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 
+@available(macOS 14.0, *)
 @MainActor
 @Observable
 final class UsageStore {
@@ -17,7 +18,7 @@ final class UsageStore {
 
     private let usageService: UsageService
     private let registry: ProviderRegistry
-    private let preferences: UserPreferences
+    private var preferences: UserPreferences
 
     init(
         usageService: UsageService,

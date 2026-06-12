@@ -1,6 +1,6 @@
 import Foundation
 
-struct UserPreferences: Sendable {
+struct UserPreferences {
     private enum Key {
         static let displayMode = "displayMode"
         static let activeAccountID = "activeAccountID"
@@ -41,3 +41,4 @@ struct UserPreferences: Sendable {
         }
     }
 }
+

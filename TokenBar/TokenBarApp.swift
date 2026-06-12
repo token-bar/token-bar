@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(macOS 14.0, *)
 @main
 struct TokenBarApp: App {
     private let store = AppEnvironment.shared
@@ -7,6 +8,7 @@ struct TokenBarApp: App {
     var body: some Scene {
         MenuBarExtra {
             MenuBarView(store: store)
+                .task { await store.bootstrap() }
         } label: {
             MenuBarLabelView(store: store)
         }
@@ -17,7 +19,4 @@ struct TokenBarApp: App {
         }
     }
 
-    init() {
-        Task { await store.bootstrap() }
-    }
 }

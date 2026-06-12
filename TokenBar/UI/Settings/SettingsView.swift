@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(macOS 14.0, *)
 struct SettingsView: View {
     let store: UsageStore
 
