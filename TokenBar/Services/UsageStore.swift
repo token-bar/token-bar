@@ -23,6 +23,12 @@ final class UsageStore {
     var notificationsEnabled: Bool {
         didSet { preferences.notificationsEnabled = notificationsEnabled }
     }
+    var refreshInterval: RefreshInterval {
+        didSet {
+            preferences.refreshInterval = refreshInterval
+            updateRefreshSchedule()
+        }
+    }
     var lastRefreshAt: Date?
     var isRefreshing = false
     var lastError: String?
@@ -35,6 +41,7 @@ final class UsageStore {
     private var historyStore: UsageHistoryStore
     private var alertStateStore: AlertStateStore
     private let notificationService: any NotificationDelivering
+    private let refreshScheduler: any RefreshScheduling
     private var preferences: UserPreferences
 
     init(
@@ -46,6 +53,7 @@ final class UsageStore {
         historyStore: UsageHistoryStore = UsageHistoryStore(),
         alertStateStore: AlertStateStore = AlertStateStore(),
         notificationService: any NotificationDelivering = SystemNotificationService(),
+        refreshScheduler: any RefreshScheduling = RefreshScheduler(),
         preferences: UserPreferences = UserPreferences()
     ) {
         self.usageService = usageService
@@ -56,11 +64,13 @@ final class UsageStore {
         self.historyStore = historyStore
         self.alertStateStore = alertStateStore
         self.notificationService = notificationService
+        self.refreshScheduler = refreshScheduler
         self.preferences = preferences
         self.displayMode = preferences.displayMode
         self.activeAccountID = preferences.activeAccountID
         self.showAdvancedProviders = preferences.showAdvancedProviders
         self.notificationsEnabled = preferences.notificationsEnabled
+        self.refreshInterval = preferences.refreshInterval
     }
 
     var activeSnapshot: UsageSnapshot? {
@@ -76,7 +86,18 @@ final class UsageStore {
     }
 
     var menuBarLabel: String {
-        MenuBarDisplayFormatter.format(snapshot: activeSnapshot, mode: displayMode)
+        MenuBarDisplayFormatter.format(
+            snapshot: activeSnapshot,
+            forecast: activeForecast,
+            mode: displayMode
+        )
+    }
+
+    var nextRefreshAt: Date? {
+        guard let lastRefreshAt, let seconds = refreshInterval.seconds else {
+            return nil
+        }
+        return lastRefreshAt.addingTimeInterval(seconds)
     }
 
     func bootstrap() async {
@@ -90,6 +111,7 @@ final class UsageStore {
         mergeAccounts(connectedAccounts)
         _ = await notificationService.requestAuthorization()
         await refresh()
+        updateRefreshSchedule()
     }
 
     func refresh() async {
@@ -332,5 +354,11 @@ final class UsageStore {
             activeAccountID = snapshots.first?.accountID
         }
         preferences.activeAccountID = activeAccountID
+    }
+
+    private func updateRefreshSchedule() {
+        refreshScheduler.apply(interval: refreshInterval) { [weak self] in
+            await self?.refresh()
+        }
     }
 }

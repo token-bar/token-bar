@@ -38,4 +38,6 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 
 **Phase 5 (complete):** `AlertEvaluator` threshold and forecast-exhaustion alerts, `AlertStateStore` deduplication, native notifications, Settings toggle.
 
+**Phase 6 (complete):** Settings refresh intervals via `RefreshScheduler`, burn rate display mode, default provider picker.
+
 See `specs/` for detailed requirements per feature.

@@ -17,6 +17,7 @@ Display:
 * Optional progress bar
 * Optional credits remaining
 * Optional spend amount
+* Optional burn rate (from forecast)
 
 User must be able to choose display mode.
 

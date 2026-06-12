@@ -3,7 +3,11 @@ import Foundation
 enum MenuBarDisplayFormatter {
     private static let progressSegments = 10
 
-    static func format(snapshot: UsageSnapshot?, mode: DisplayMode) -> String {
+    static func format(
+        snapshot: UsageSnapshot?,
+        forecast: UsageForecast? = nil,
+        mode: DisplayMode
+    ) -> String {
         guard let snapshot else { return "TokenBar" }
 
         switch mode {
@@ -23,6 +27,12 @@ enum MenuBarDisplayFormatter {
             return "\(snapshot.providerName) \(Int(credits)) cr"
         case .progressBar:
             return progressBar(for: snapshot.usagePercent)
+        case .burnRate:
+            guard let burnRate = forecast?.burnRatePerDay else {
+                return snapshot.providerName
+            }
+            let formatted = burnRate.formatted(.number.precision(.fractionLength(1)))
+            return "\(snapshot.providerName) \(formatted)%/d"
         }
     }
 

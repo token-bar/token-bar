@@ -42,6 +42,20 @@ struct SettingsView: View {
                 Text("Providers")
                     .font(.title2.weight(.semibold))
 
+                if store.accounts.count > 1 {
+                    Group {
+                        Text("Default provider")
+                            .font(.headline)
+                        Picker("Menu bar provider", selection: activeAccountBinding) {
+                            ForEach(store.accounts) { account in
+                                Text(account.displayName).tag(Optional(account.id))
+                            }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(.menu)
+                    }
+                }
+
                 Group {
                     Text("Connected")
                         .font(.headline)
@@ -105,6 +119,11 @@ struct SettingsView: View {
                 }
             }
             .pickerStyle(.radioGroup)
+            if store.displayMode == .burnRate {
+                Text("Burn rate requires usage history from automatic or manual refreshes.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
             Text("Preview: \(store.menuBarLabel)")
                 .font(.body.monospaced())
                 .padding(.top, 8)
@@ -115,13 +134,38 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Refresh")
                 .font(.title2.weight(.semibold))
-            Text("Automatic refresh intervals coming in a later phase.")
-                .foregroundStyle(.secondary)
+            Picker("Automatic refresh", selection: Binding(
+                get: { store.refreshInterval },
+                set: { store.refreshInterval = $0 }
+            )) {
+                ForEach(RefreshInterval.allCases) { interval in
+                    Text(interval.label).tag(interval)
+                }
+            }
+            .pickerStyle(.radioGroup)
+            if let lastRefresh = store.lastRefreshAt {
+                Text("Last refresh: \(lastRefresh.formatted(date: .abbreviated, time: .shortened))")
+                    .foregroundStyle(.secondary)
+            }
+            if let nextRefresh = store.nextRefreshAt {
+                Text("Next refresh: \(nextRefresh.formatted(date: .abbreviated, time: .shortened))")
+                    .foregroundStyle(.secondary)
+            }
             Button("Refresh Now") {
                 Task { await store.refresh() }
             }
             .disabled(store.isRefreshing)
         }
+    }
+
+    private var activeAccountBinding: Binding<UUID?> {
+        Binding(
+            get: { store.activeAccountID },
+            set: { newValue in
+                guard let newValue else { return }
+                store.selectAccount(newValue)
+            }
+        )
     }
 
     private var notificationsSection: some View {

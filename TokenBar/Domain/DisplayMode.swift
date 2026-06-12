@@ -5,6 +5,7 @@ enum DisplayMode: String, CaseIterable, Identifiable, Sendable {
     case progressBar
     case spend
     case credits
+    case burnRate
 
     var id: String { rawValue }
 
@@ -14,6 +15,7 @@ enum DisplayMode: String, CaseIterable, Identifiable, Sendable {
         case .progressBar: "Progress Bar"
         case .spend: "Spend"
         case .credits: "Credits"
+        case .burnRate: "Burn Rate"
         }
     }
 }

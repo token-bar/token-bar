@@ -24,9 +24,9 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 5** — Usage alerts at 50/75/90/100% and forecasted exhaustion (≤ 7 days). Native macOS notifications with per-cycle deduplication.
+**Phase 6** — Full settings: automatic refresh (1/5/15/30 min), burn rate menu bar display, default provider selection.
 
-Phases 1–4 are complete.
+Phases 1–5 are complete.
 
 ### Connecting Cursor Personal (recommended for personal accounts)
 

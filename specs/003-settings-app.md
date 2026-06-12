@@ -13,6 +13,7 @@ Allow users to manage providers and customize display.
 * Add provider
 * Remove provider
 * Reconnect provider
+* Choose default menu bar provider
 
 ### Display
 
@@ -32,7 +33,12 @@ Allow users to manage providers and customize display.
 
 ### Notifications
 
-* Configure thresholds
+* Enable/disable alerts
+* View recent alerts
+
+### Advanced
+
+* Show advanced provider integrations (custom proxy)
 
 ---
 
@@ -50,6 +56,9 @@ Settings changes apply without restart.
 
 ---
 
-## Phase 1 Implementation
+## Phase 6 Implementation
 
-Settings stub with sidebar sections (Providers, Display, Refresh, Notifications). Display mode picker and manual refresh are functional; other sections show placeholder copy until later phases.
+* `RefreshInterval` preference with automatic scheduling via `RefreshScheduler`
+* Burn rate display mode in menu bar
+* Default provider picker in Providers section
+* Refresh interval picker with last/next refresh status

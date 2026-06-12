@@ -79,6 +79,10 @@
 		GG000001000000000000010A /* AlertEvaluatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG0000010000000000000109 /* AlertEvaluatorTests.swift */; };
 		GG000001000000000000010C /* AlertStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG000001000000000000010B /* AlertStateStoreTests.swift */; };
 		GG000001000000000000010E /* UsageNotificationBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = GG000001000000000000010D /* UsageNotificationBuilderTests.swift */; };
+		HH0000010000000000000102 /* RefreshInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = HH0000010000000000000101 /* RefreshInterval.swift */; };
+		HH0000010000000000000104 /* RefreshScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = HH0000010000000000000103 /* RefreshScheduler.swift */; };
+		HH0000010000000000000106 /* UserPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = HH0000010000000000000105 /* UserPreferencesTests.swift */; };
+		HH0000010000000000000108 /* RefreshSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = HH0000010000000000000107 /* RefreshSchedulerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +193,10 @@
 		GG0000010000000000000109 /* AlertEvaluatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEvaluatorTests.swift; sourceTree = "<group>"; };
 		GG000001000000000000010B /* AlertStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStateStoreTests.swift; sourceTree = "<group>"; };
 		GG000001000000000000010D /* UsageNotificationBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageNotificationBuilderTests.swift; sourceTree = "<group>"; };
+		HH0000010000000000000101 /* RefreshInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshInterval.swift; sourceTree = "<group>"; };
+		HH0000010000000000000103 /* RefreshScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshScheduler.swift; sourceTree = "<group>"; };
+		HH0000010000000000000105 /* UserPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesTests.swift; sourceTree = "<group>"; };
+		HH0000010000000000000107 /* RefreshSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshSchedulerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000105 /* DisplayMode.swift */,
+				HH0000010000000000000101 /* RefreshInterval.swift */,
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
 				GG0000010000000000000103 /* AlertEvaluator.swift */,
 				FF0000010000000000000103 /* ForecastingEngine.swift */,
@@ -329,6 +338,7 @@
 			children = (
 				GG0000010000000000000105 /* AlertStateStore.swift */,
 				GG0000010000000000000107 /* NotificationService.swift */,
+				HH0000010000000000000103 /* RefreshScheduler.swift */,
 				BB0000010000000000000117 /* UsageService.swift */,
 				FF0000010000000000000105 /* UsageHistoryStore.swift */,
 				BB0000010000000000000119 /* UsageStore.swift */,
@@ -407,7 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				GG000001000000000000010B /* AlertStateStoreTests.swift */,
+				HH0000010000000000000108 /* RefreshSchedulerTests.swift */,
 				BB000001000000000000012B /* UsageServiceTests.swift */,
+				HH0000010000000000000106 /* UserPreferencesTests.swift */,
 				GG000001000000000000010D /* UsageNotificationBuilderTests.swift */,
 				FF0000010000000000000109 /* UsageHistoryStoreTests.swift */,
 			);
@@ -639,6 +651,8 @@
 				GG0000010000000000000104 /* AlertEvaluator.swift in Sources */,
 				GG0000010000000000000106 /* AlertStateStore.swift in Sources */,
 				GG0000010000000000000108 /* NotificationService.swift in Sources */,
+				HH0000010000000000000102 /* RefreshInterval.swift in Sources */,
+				HH0000010000000000000104 /* RefreshScheduler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +685,8 @@
 				GG000001000000000000010A /* AlertEvaluatorTests.swift in Sources */,
 				GG000001000000000000010C /* AlertStateStoreTests.swift in Sources */,
 				GG000001000000000000010E /* UsageNotificationBuilderTests.swift in Sources */,
+				HH0000010000000000000106 /* UserPreferencesTests.swift in Sources */,
+				HH0000010000000000000108 /* RefreshSchedulerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

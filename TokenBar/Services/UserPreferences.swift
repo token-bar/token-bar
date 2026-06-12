@@ -6,6 +6,7 @@ struct UserPreferences {
         static let activeAccountID = "activeAccountID"
         static let showAdvancedProviders = "showAdvancedProviders"
         static let notificationsEnabled = "notificationsEnabled"
+        static let refreshInterval = "refreshInterval"
     }
 
     private let defaults: UserDefaults
@@ -41,6 +42,19 @@ struct UserPreferences {
         }
         set {
             defaults.set(newValue, forKey: Key.notificationsEnabled)
+        }
+    }
+
+    var refreshInterval: RefreshInterval {
+        get {
+            guard let raw = defaults.string(forKey: Key.refreshInterval),
+                  let interval = RefreshInterval(rawValue: raw) else {
+                return .fiveMinutes
+            }
+            return interval
+        }
+        set {
+            defaults.set(newValue.rawValue, forKey: Key.refreshInterval)
         }
     }
 

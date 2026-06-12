@@ -39,4 +39,33 @@ final class MenuBarDisplayFormatterTests: XCTestCase {
         XCTAssertEqual(MenuBarDisplayFormatter.progressBar(for: 150), "▰▰▰▰▰▰▰▰▰▰")
         XCTAssertEqual(MenuBarDisplayFormatter.progressBar(for: -10), "▱▱▱▱▱▱▱▱▱▱")
     }
+
+    func testBurnRateFormat() {
+        let forecast = UsageForecast(
+            accountID: snapshot.accountID,
+            burnRatePerDay: 2.5,
+            daysRemaining: 14,
+            estimatedExhaustionDate: nil,
+            confidenceScore: 0.8,
+            riskLevel: .medium
+        )
+
+        let result = MenuBarDisplayFormatter.format(
+            snapshot: snapshot,
+            forecast: forecast,
+            mode: .burnRate
+        )
+
+        XCTAssertEqual(result, "Cursor 2.5%/d")
+    }
+
+    func testBurnRateWithoutForecastShowsProviderName() {
+        let result = MenuBarDisplayFormatter.format(
+            snapshot: snapshot,
+            forecast: nil,
+            mode: .burnRate
+        )
+
+        XCTAssertEqual(result, "Cursor")
+    }
 }
