@@ -281,7 +281,6 @@
 				BB0000010000000000000138 /* Domain */,
 				BB0000010000000000000139 /* Providers */,
 				BB000001000000000000013A /* Services */,
-				BB0000010000000000000123 /* TokenBarTests.swift */,
 			);
 			path = TokenBarTests;
 			sourceTree = "<group>";
@@ -425,7 +424,7 @@
 				BB000001000000000000011E /* MenuBarLabelView.swift in Sources */,
 				BB0000010000000000000120 /* MenuBarView.swift in Sources */,
 				BB0000010000000000000122 /* SettingsView.swift in Sources */,
-
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000017 /* Sources */ = {
@@ -446,7 +445,7 @@
 				BB0000010000000000000128 /* MockProviderConnectorTests.swift in Sources */,
 				BB000001000000000000012A /* ProviderRegistryTests.swift in Sources */,
 				BB000001000000000000012C /* UsageServiceTests.swift in Sources */,
-
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
