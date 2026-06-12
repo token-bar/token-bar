@@ -5,8 +5,17 @@ struct MockProviderConnector: ProviderConnector {
     let displayName = "Cursor"
     let accountID: UUID
 
-    init(accountID: UUID = UUID()) {
+    private let configurationStore: ProviderConfigurationStore
+    private let scenarioStateStore: DemoScenarioStateStore
+
+    init(
+        accountID: UUID = UUID(),
+        configurationStore: ProviderConfigurationStore = ProviderConfigurationStore(),
+        scenarioStateStore: DemoScenarioStateStore = DemoScenarioStateStore()
+    ) {
         self.accountID = accountID
+        self.configurationStore = configurationStore
+        self.scenarioStateStore = scenarioStateStore
     }
 
     func authenticate() async throws {}
@@ -18,17 +27,21 @@ struct MockProviderConnector: ProviderConnector {
     }
 
     func fetchUsage() async throws -> UsageSnapshot {
-        UsageSnapshot(
+        let configuration = configurationStore.load(providerID: providerID)
+        let existingState = scenarioStateStore.load(providerID: providerID)
+        let (usagePercent, nextState) = DemoScenarioEngine.resolveUsagePercent(
+            configuration: configuration,
+            state: existingState,
+            incrementPerRefresh: configuration.demoUsageIncrementPerRefresh
+        )
+        scenarioStateStore.save(nextState, providerID: providerID)
+
+        return DemoScenarioEngine.makeSnapshot(
             accountID: accountID,
             providerID: providerID,
-            providerName: displayName,
-            usagePercent: 64,
-            creditsRemaining: 1_200,
-            spendAmount: 12.44,
-            spendCurrency: "USD",
-            quotaUsed: 640,
-            quotaLimit: 1_000,
-            capturedAt: .now
+            displayName: displayName,
+            configuration: configuration,
+            usagePercent: usagePercent
         )
     }
 }

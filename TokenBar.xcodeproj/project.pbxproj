@@ -113,6 +113,9 @@
 		KK0000010000000000000114 /* OpenAIProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000113 /* OpenAIProviderConnectorTests.swift */; };
 		KK0000010000000000000116 /* AnthropicCostMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000115 /* AnthropicCostMapperTests.swift */; };
 		KK0000010000000000000118 /* AnthropicProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = KK0000010000000000000117 /* AnthropicProviderConnectorTests.swift */; };
+		LL0000010000000000000102 /* DemoScenarioStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL0000010000000000000101 /* DemoScenarioStateStore.swift */; };
+		LL0000010000000000000104 /* DemoScenarioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL0000010000000000000103 /* DemoScenarioEngine.swift */; };
+		LL0000010000000000000106 /* DemoScenarioEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL0000010000000000000105 /* DemoScenarioEngineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +253,9 @@
 		KK0000010000000000000113 /* OpenAIProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProviderConnectorTests.swift; sourceTree = "<group>"; };
 		KK0000010000000000000115 /* AnthropicCostMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicCostMapperTests.swift; sourceTree = "<group>"; };
 		KK0000010000000000000117 /* AnthropicProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicProviderConnectorTests.swift; sourceTree = "<group>"; };
+		LL0000010000000000000101 /* DemoScenarioStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenarioStateStore.swift; sourceTree = "<group>"; };
+		LL0000010000000000000103 /* DemoScenarioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenarioEngine.swift; sourceTree = "<group>"; };
+		LL0000010000000000000105 /* DemoScenarioEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenarioEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +396,7 @@
 				BB0000010000000000000111 /* MockProviderConnector.swift */,
 				CC0000010000000000000109 /* MockProviderFactory.swift */,
 				CC000001000000000000010B /* FailingMockProviderConnector.swift */,
+				LL0000010000000000000103 /* DemoScenarioEngine.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -407,6 +414,7 @@
 				BB0000010000000000000119 /* UsageStore.swift */,
 				BB000001000000000000011B /* UserPreferences.swift */,
 				DD0000010000000000000107 /* ProviderConfigurationStore.swift */,
+				LL0000010000000000000101 /* DemoScenarioStateStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -459,6 +467,7 @@
 				JJ0000010000000000000105 /* UsageAggregatorTests.swift */,
 				FF0000010000000000000107 /* ForecastingEngineTests.swift */,
 				BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */,
+				LL0000010000000000000105 /* DemoScenarioEngineTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -759,6 +768,8 @@
 				KK000001000000000000010C /* AnthropicCostMapper.swift in Sources */,
 				KK000001000000000000010E /* AnthropicProviderConnector.swift in Sources */,
 				KK0000010000000000000110 /* AnthropicProviderFactory.swift in Sources */,
+				LL0000010000000000000102 /* DemoScenarioStateStore.swift in Sources */,
+				LL0000010000000000000104 /* DemoScenarioEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +820,7 @@
 				KK0000010000000000000114 /* OpenAIProviderConnectorTests.swift in Sources */,
 				KK0000010000000000000116 /* AnthropicCostMapperTests.swift in Sources */,
 				KK0000010000000000000118 /* AnthropicProviderConnectorTests.swift in Sources */,
+				LL0000010000000000000106 /* DemoScenarioEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

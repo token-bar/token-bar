@@ -190,6 +190,14 @@ Threshold alerts:
 
 ---
 
+## Phase 10 — Demo Scenario Provider
+
+* Configurable mock usage (%, spend, credits)
+* Per-refresh usage increment for burn-rate and alert testing
+* No org/team accounts required for end-to-end validation
+
+---
+
 # Security Requirements
 
 * Store secrets in Keychain only

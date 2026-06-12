@@ -38,6 +38,7 @@ final class UsageStore {
     private let lifecycle: ProviderLifecycleService
     private let credentialStore: any ProviderCredentialStore
     private let configurationStore: ProviderConfigurationStore
+    private let demoScenarioStateStore: DemoScenarioStateStore
     private var historyStore: UsageHistoryStore
     private var alertStateStore: AlertStateStore
     private let notificationService: any NotificationDelivering
@@ -51,6 +52,7 @@ final class UsageStore {
         lifecycle: ProviderLifecycleService,
         credentialStore: any ProviderCredentialStore,
         configurationStore: ProviderConfigurationStore,
+        demoScenarioStateStore: DemoScenarioStateStore = DemoScenarioStateStore(),
         historyStore: UsageHistoryStore = UsageHistoryStore(),
         alertStateStore: AlertStateStore = AlertStateStore(),
         notificationService: any NotificationDelivering = SystemNotificationService(),
@@ -63,6 +65,7 @@ final class UsageStore {
         self.lifecycle = lifecycle
         self.credentialStore = credentialStore
         self.configurationStore = configurationStore
+        self.demoScenarioStateStore = demoScenarioStateStore
         self.historyStore = historyStore
         self.alertStateStore = alertStateStore
         self.notificationService = notificationService
@@ -199,6 +202,26 @@ final class UsageStore {
         configurationStore.save(configuration, providerID: providerID)
     }
 
+    func saveDemoScenario(
+        usagePercent: String,
+        spendUSD: String,
+        creditsRemaining: String,
+        usageIncrementPerRefresh: String,
+        providerID: String
+    ) {
+        var configuration = configurationStore.load(providerID: providerID)
+        configuration.demoUsagePercent = Self.optionalDouble(from: usagePercent)
+        configuration.demoSpendUSD = Self.optionalDouble(from: spendUSD)
+        configuration.demoCreditsRemaining = Self.optionalDouble(from: creditsRemaining)
+        configuration.demoUsageIncrementPerRefresh = Self.optionalDouble(from: usageIncrementPerRefresh)
+        configurationStore.save(configuration, providerID: providerID)
+        demoScenarioStateStore.delete(providerID: providerID)
+    }
+
+    func resetDemoSimulation(providerID: String) {
+        demoScenarioStateStore.delete(providerID: providerID)
+    }
+
     func connectProvider(providerID: String) async {
         do {
             let account = try await lifecycle.connect(providerID: providerID)
@@ -242,6 +265,7 @@ final class UsageStore {
             alerts.removeAll { $0.accountID == accountID }
         }
         configurationStore.delete(providerID: providerID)
+        demoScenarioStateStore.delete(providerID: providerID)
 
         if let activeAccountID,
            accounts.contains(where: { $0.id == activeAccountID }) == false {
@@ -391,5 +415,11 @@ final class UsageStore {
         )
         widgetSnapshotStore.save(payload)
         WidgetTimelineRefresher.reload()
+    }
+
+    private static func optionalDouble(from raw: String) -> Double? {
+        let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        return Double(trimmed)
     }
 }

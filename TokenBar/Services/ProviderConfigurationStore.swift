@@ -5,6 +5,10 @@ struct ProviderConfiguration: Codable, Equatable, Sendable {
     var proxyURL: String?
     var connectionMethod: CursorPersonalConnectionMethod?
     var monthlyBudgetUSD: Double?
+    var demoUsagePercent: Double?
+    var demoSpendUSD: Double?
+    var demoCreditsRemaining: Double?
+    var demoUsageIncrementPerRefresh: Double?
 
     static let empty = ProviderConfiguration()
 }

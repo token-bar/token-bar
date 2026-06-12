@@ -58,7 +58,7 @@ No UI changes.
 
 * `ProviderConnector` protocol with `authenticate`, `fetchUsage`, `disconnect`, `validateConnection`
 * `ProviderRegistry` actor for registration and lookup
-* `MockProviderConnector` returns static canonical `UsageSnapshot` for UI development
+* `MockProviderConnector` returns configurable demo scenario snapshots for UI development and alert/forecast testing
 * `UsageService` fetches usage through registry without UI coupling
 
 ---

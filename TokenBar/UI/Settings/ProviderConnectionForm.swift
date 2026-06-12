@@ -11,6 +11,10 @@ struct ProviderConnectionForm: View {
     @State private var connectionMethod: CursorPersonalConnectionMethod = .sessionCookie
     @State private var proxyURL = ""
     @State private var proxyToken = ""
+    @State private var demoUsagePercent = ""
+    @State private var demoSpendUSD = ""
+    @State private var demoCreditsRemaining = ""
+    @State private var demoUsageIncrement = ""
     @State private var statusMessage: String?
 
     var body: some View {
@@ -72,8 +76,26 @@ struct ProviderConnectionForm: View {
     private var connectionFields: some View {
         switch provider.authenticationMethod {
         case .none:
-            Text("No credentials required.")
-                .foregroundStyle(.secondary)
+            if showsDemoScenarioFields {
+                TextField("Usage %", text: $demoUsagePercent)
+                    .textFieldStyle(.roundedBorder)
+                TextField("Spend USD", text: $demoSpendUSD)
+                    .textFieldStyle(.roundedBorder)
+                TextField("Credits remaining", text: $demoCreditsRemaining)
+                    .textFieldStyle(.roundedBorder)
+                TextField("Usage increment per refresh (%)", text: $demoUsageIncrement)
+                    .textFieldStyle(.roundedBorder)
+                Button("Reset simulation") {
+                    store.resetDemoSimulation(providerID: provider.id)
+                    statusMessage = "Simulation reset."
+                }
+                Text("Leave fields empty to use defaults. Increment simulates climbing usage for burn-rate and alert testing.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            } else {
+                Text("No credentials required.")
+                    .foregroundStyle(.secondary)
+            }
         case .apiKey:
             SecureField(apiKeyPlaceholder, text: $apiKey)
             if showsMemberEmailField {
@@ -121,6 +143,10 @@ struct ProviderConnectionForm: View {
         }
     }
 
+    private var showsDemoScenarioFields: Bool {
+        provider.id == "mock"
+    }
+
     private var showsMemberEmailField: Bool {
         provider.id == "cursor-team"
     }
@@ -163,6 +189,10 @@ struct ProviderConnectionForm: View {
         let configuration = store.configuration(for: provider.id)
         memberEmail = configuration.memberEmail ?? ""
         monthlyBudget = configuration.monthlyBudgetUSD.map { String($0) } ?? ""
+        demoUsagePercent = configuration.demoUsagePercent.map { String($0) } ?? ""
+        demoSpendUSD = configuration.demoSpendUSD.map { String($0) } ?? ""
+        demoCreditsRemaining = configuration.demoCreditsRemaining.map { String($0) } ?? ""
+        demoUsageIncrement = configuration.demoUsageIncrementPerRefresh.map { String($0) } ?? ""
         proxyURL = configuration.proxyURL ?? ""
         connectionMethod = configuration.connectionMethod ?? .sessionCookie
     }
@@ -189,7 +219,17 @@ struct ProviderConnectionForm: View {
             case .proxy:
                 store.saveProxyURL(proxyURL, providerID: provider.id)
                 try store.saveProxyToken(proxyToken, providerID: provider.id)
-            case .none, .oauth:
+            case .none:
+                if showsDemoScenarioFields {
+                    store.saveDemoScenario(
+                        usagePercent: demoUsagePercent,
+                        spendUSD: demoSpendUSD,
+                        creditsRemaining: demoCreditsRemaining,
+                        usageIncrementPerRefresh: demoUsageIncrement,
+                        providerID: provider.id
+                    )
+                }
+            case .oauth:
                 break
             }
             statusMessage = "Saved."

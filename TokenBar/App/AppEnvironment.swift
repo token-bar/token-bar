@@ -16,7 +16,8 @@ enum AppEnvironment {
             registry: registry,
             lifecycle: lifecycle,
             credentialStore: factoryContext.credentials,
-            configurationStore: factoryContext.configuration
+            configurationStore: factoryContext.configuration,
+            demoScenarioStateStore: factoryContext.demoScenarioState
         )
     }()
 }

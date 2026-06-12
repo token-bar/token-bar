@@ -46,4 +46,6 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 
 **Phase 9 (complete):** OpenAI (`/v1/organization/costs`) and Anthropic (`/v1/organizations/cost_report`) Admin API connectors registered via `BuiltinProviderRegistration`.
 
+**Phase 10 (complete):** Configurable demo scenario via `DemoScenarioEngine`, `DemoScenarioStateStore`, and enhanced `MockProviderConnector`.
+
 See `specs/` for detailed requirements per feature.

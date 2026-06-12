@@ -6,14 +6,18 @@ struct MockProviderFactory: ProviderFactory {
     var descriptor: ProviderDescriptor {
         ProviderDescriptor(
             id: Self.providerID,
-            displayName: "Cursor (Mock)",
+            displayName: "Demo Provider",
             authenticationMethod: .none,
             stability: .stable,
-            connectsOnLaunch: true
+            connectsOnLaunch: true,
+            experimentalNotice: "Simulated usage for testing alerts, forecasts, and display modes without real provider accounts."
         )
     }
 
     func makeConnector(context: ProviderFactoryContext) -> any ProviderConnector {
-        MockProviderConnector()
+        return MockProviderConnector(
+            configurationStore: context.configuration,
+            scenarioStateStore: context.demoScenarioState
+        )
     }
 }

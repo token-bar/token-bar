@@ -8,7 +8,7 @@ final class ProviderRegistryTests: XCTestCase {
 
         let factory = await registry.factory(for: "mock")
         XCTAssertNotNil(factory)
-        XCTAssertEqual(factory?.descriptor.displayName, "Cursor (Mock)")
+        XCTAssertEqual(factory?.descriptor.displayName, "Demo Provider")
     }
 
     func testAvailableProvidersReturnsRegisteredFactories() async {

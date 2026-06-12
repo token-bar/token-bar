@@ -24,9 +24,16 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 9** — OpenAI and Anthropic organization Admin API connectors with optional monthly budget for usage %.
+**Phase 10** — Configurable demo scenario provider for testing alerts, forecasts, and display modes without org/team API accounts.
 
-Phases 1–8 are complete.
+Phases 1–9 are complete.
+
+### Testing without org accounts
+
+1. Open **Settings → Providers → Demo Provider**
+2. Set usage %, optional increment per refresh, and save
+3. Use **Refresh Now** or enable automatic refresh to simulate climbing usage
+4. Combine with **Cursor Personal** for multi-provider aggregation testing
 
 ### Adding the widget
 
