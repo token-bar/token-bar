@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(macOS 14.0, *)
 struct MenuBarView: View {
     let store: UsageStore
     @Environment(\.openSettings) private var openSettings

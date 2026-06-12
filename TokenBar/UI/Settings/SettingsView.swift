@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(macOS 14.0, *)
 struct SettingsView: View {
     let store: UsageStore
 
@@ -26,6 +25,8 @@ struct SettingsView: View {
         switch section {
         case .providers:
             providersSection
+        case .advanced:
+            AdvancedProvidersView(store: store)
         case .display:
             displaySection
         case .refresh:
@@ -36,71 +37,59 @@ struct SettingsView: View {
     }
 
     private var providersSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Providers")
-                .font(.title2.weight(.semibold))
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Providers")
+                    .font(.title2.weight(.semibold))
 
-            Group {
-                Text("Connected")
-                    .font(.headline)
-                if store.accounts.isEmpty {
-                    Text("No providers connected.")
-                        .foregroundStyle(.secondary)
-                } else {
-                    ForEach(store.accounts) { account in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(account.displayName)
-                                Text(account.isConnected ? "Connected" : "Disconnected")
+                Group {
+                    Text("Connected")
+                        .font(.headline)
+                    if store.accounts.isEmpty {
+                        Text("No providers connected.")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(store.accounts) { account in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(account.displayName)
+                                Text(account.connectionStatus.label)
                                     .font(.caption)
-                                    .foregroundStyle(account.isConnected ? .green : .secondary)
-                            }
-                            Spacer()
-                            if account.isConnected {
-                                Button("Disconnect") {
-                                    Task { await store.disconnectProvider(providerID: account.providerID) }
+                                    .foregroundStyle(account.connectionStatus == .connected ? .green : .orange)
                                 }
-                            } else {
-                                Button("Reconnect") {
-                                    Task { await store.connectProvider(providerID: account.providerID) }
+                                Spacer()
+                                if account.isConnected {
+                                    Button("Disconnect") {
+                                        Task { await store.disconnectProvider(providerID: account.providerID) }
+                                    }
+                                } else {
+                                    Button("Reconnect") {
+                                        Task { await store.connectProvider(providerID: account.providerID) }
+                                    }
                                 }
-                            }
-                            Button("Remove", role: .destructive) {
-                                Task { await store.removeProvider(providerID: account.providerID) }
+                                Button("Remove", role: .destructive) {
+                                    Task { await store.removeProvider(providerID: account.providerID) }
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            Group {
-                Text("Available")
-                    .font(.headline)
-                if store.availableProviders.isEmpty {
-                    Text("No provider types registered.")
-                        .foregroundStyle(.secondary)
-                } else {
-                    ForEach(store.availableProviders) { provider in
-                        HStack {
-                            Text(provider.displayName)
-                            Spacer()
-                            if isConnected(providerID: provider.id) {
-                                Text("Connected")
-                                    .foregroundStyle(.green)
-                            } else {
-                                Button("Connect") {
-                                    Task { await store.connectProvider(providerID: provider.id) }
-                                }
-                            }
+                Group {
+                    Text("Available")
+                        .font(.headline)
+                    if store.availableProviders.isEmpty {
+                        Text("No provider types registered.")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(store.availableProviders) { provider in
+                            ProviderConnectionForm(provider: provider, store: store)
+                            Divider()
                         }
                     }
                 }
             }
         }
-    }
-
-    private func isConnected(providerID: String) -> Bool {
-        store.accounts.contains { $0.providerID == providerID && $0.isConnected }
     }
 
     private var displaySection: some View {
@@ -147,6 +136,7 @@ struct SettingsView: View {
 
 private enum SettingsSection: String, CaseIterable, Identifiable, Hashable {
     case providers
+    case advanced
     case display
     case refresh
     case notifications
@@ -156,6 +146,7 @@ private enum SettingsSection: String, CaseIterable, Identifiable, Hashable {
     var title: String {
         switch self {
         case .providers: "Providers"
+        case .advanced: "Advanced"
         case .display: "Display"
         case .refresh: "Refresh"
         case .notifications: "Notifications"
@@ -165,6 +156,7 @@ private enum SettingsSection: String, CaseIterable, Identifiable, Hashable {
     var icon: String {
         switch self {
         case .providers: "server.rack"
+        case .advanced: "wrench.and.screwdriver"
         case .display: "menubar.rectangle"
         case .refresh: "arrow.clockwise"
         case .notifications: "bell"

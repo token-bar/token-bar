@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(macOS 14.0, *)
 @main
 struct TokenBarApp: App {
     private let store = AppEnvironment.shared
@@ -18,5 +17,4 @@ struct TokenBarApp: App {
             SettingsView(store: store)
         }
     }
-
 }

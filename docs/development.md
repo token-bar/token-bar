@@ -24,6 +24,23 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 2 — Provider Framework** — factories, registry lifecycle, connect/disconnect/remove, failing mock for tests.
+**Phase 3 (revised)** — Cursor Personal (session cookie, experimental), Cursor Team (stable Admin API), advanced custom proxy.
 
-Phase 1 (UI shell) is complete.
+Phases 1–2 are complete.
+
+### Connecting Cursor Personal (recommended for personal accounts)
+
+1. Open [cursor.com/dashboard/usage](https://cursor.com/dashboard/usage)
+2. DevTools → Application → Cookies → copy `WorkosCursorSessionToken`
+3. Settings → Providers → **Cursor Personal**
+4. Paste session cookie → Save → Connect
+
+### Connecting Cursor Team (Team / Enterprise)
+
+1. Settings → Providers → **Cursor Team**
+2. Enter admin API key → Save → Connect
+
+### Advanced custom proxy (power users)
+
+1. Settings → **Advanced** → enable advanced providers
+2. Configure **Custom Proxy** with URL and optional bearer token

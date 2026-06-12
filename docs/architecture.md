@@ -32,4 +32,6 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 
 **Phase 2 (complete):** `ProviderFactory`, `ProviderDescriptor`, lifecycle service, factory-based registry, builtin registration. `UsageStore` has no direct provider imports.
 
+**Phase 3 (complete):** Cursor Team Admin API connector, proxy connector, Keychain credential store, provider configuration in Settings.
+
 See `specs/` for detailed requirements per feature.

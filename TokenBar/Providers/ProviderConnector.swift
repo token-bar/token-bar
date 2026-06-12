@@ -13,7 +13,13 @@ protocol ProviderConnector: Sendable {
 enum ProviderError: Error, Equatable {
     case unknownProvider
     case alreadyConnected
+    case missingCredentials
+    case invalidConfiguration
     case notAuthenticated
+    case unauthorized
+    case expiredSession
+    case dashboardAPIChanged
+    case rateLimited
     case fetchFailed
     case validationFailed
 }

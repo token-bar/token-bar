@@ -39,6 +39,34 @@
 		CC000001000000000000010A /* MockProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0000010000000000000109 /* MockProviderFactory.swift */; };
 		CC000001000000000000010C /* FailingMockProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC000001000000000000010B /* FailingMockProviderConnector.swift */; };
 		CC000001000000000000010E /* ProviderLifecycleServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC000001000000000000010D /* ProviderLifecycleServiceTests.swift */; };
+		DD0000010000000000000102 /* CredentialKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000101 /* CredentialKey.swift */; };
+		DD0000010000000000000104 /* ProviderCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000103 /* ProviderCredentialStore.swift */; };
+		DD0000010000000000000106 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000105 /* KeychainCredentialStore.swift */; };
+		DD0000010000000000000108 /* ProviderConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000107 /* ProviderConfigurationStore.swift */; };
+		DD000001000000000000010A /* ProviderFactoryContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000109 /* ProviderFactoryContext.swift */; };
+		DD000001000000000000010C /* CursorTeamAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000010B /* CursorTeamAPIClient.swift */; };
+		DD000001000000000000010E /* CursorTeamSpendMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000010D /* CursorTeamSpendMapper.swift */; };
+		DD0000010000000000000110 /* CursorTeamProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000010F /* CursorTeamProviderConnector.swift */; };
+		DD0000010000000000000112 /* CursorTeamProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000111 /* CursorTeamProviderFactory.swift */; };
+		DD0000010000000000000114 /* ProxyProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000113 /* ProxyProviderConnector.swift */; };
+		DD0000010000000000000116 /* ProxyProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000115 /* ProxyProviderFactory.swift */; };
+		DD0000010000000000000118 /* ProviderConnectionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000117 /* ProviderConnectionForm.swift */; };
+		DD000001000000000000011A /* InMemoryCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000119 /* InMemoryCredentialStore.swift */; };
+		DD000001000000000000011C /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000011B /* MockURLProtocol.swift */; };
+		DD000001000000000000011E /* CursorTeamSpendMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000011D /* CursorTeamSpendMapperTests.swift */; };
+		DD0000010000000000000120 /* CursorTeamProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD000001000000000000011F /* CursorTeamProviderConnectorTests.swift */; };
+		DD0000010000000000000122 /* ProxyProviderConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0000010000000000000121 /* ProxyProviderConnectorTests.swift */; };
+		EE0000010000000000000102 /* ProviderStability.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000101 /* ProviderStability.swift */; };
+		EE0000010000000000000104 /* ProviderConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000103 /* ProviderConnectionStatus.swift */; };
+		EE0000010000000000000106 /* CursorPersonalConnectionMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000105 /* CursorPersonalConnectionMethod.swift */; };
+		EE0000010000000000000108 /* CursorPersonalDashboardServing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000107 /* CursorPersonalDashboardServing.swift */; };
+		EE000001000000000000010A /* CursorPersonalSessionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000109 /* CursorPersonalSessionValidator.swift */; };
+		EE000001000000000000010C /* ExperimentalCursorPersonalDashboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE000001000000000000010B /* ExperimentalCursorPersonalDashboardClient.swift */; };
+		EE000001000000000000010E /* CursorPersonalProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE000001000000000000010D /* CursorPersonalProviderConnector.swift */; };
+		EE0000010000000000000110 /* CursorPersonalProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE000001000000000000010F /* CursorPersonalProviderFactory.swift */; };
+		EE0000010000000000000112 /* AdvancedProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000111 /* AdvancedProvidersView.swift */; };
+		EE0000010000000000000114 /* CursorPersonalDashboardClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000113 /* CursorPersonalDashboardClientTests.swift */; };
+		EE0000010000000000000116 /* CursorPersonalSessionValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0000010000000000000115 /* CursorPersonalSessionValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +137,34 @@
 		CC0000010000000000000109 /* MockProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProviderFactory.swift; sourceTree = "<group>"; };
 		CC000001000000000000010B /* FailingMockProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingMockProviderConnector.swift; sourceTree = "<group>"; };
 		CC000001000000000000010D /* ProviderLifecycleServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLifecycleServiceTests.swift; sourceTree = "<group>"; };
+		DD0000010000000000000101 /* CredentialKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialKey.swift; sourceTree = "<group>"; };
+		DD0000010000000000000103 /* ProviderCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCredentialStore.swift; sourceTree = "<group>"; };
+		DD0000010000000000000105 /* KeychainCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStore.swift; sourceTree = "<group>"; };
+		DD0000010000000000000107 /* ProviderConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConfigurationStore.swift; sourceTree = "<group>"; };
+		DD0000010000000000000109 /* ProviderFactoryContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderFactoryContext.swift; sourceTree = "<group>"; };
+		DD000001000000000000010B /* CursorTeamAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTeamAPIClient.swift; sourceTree = "<group>"; };
+		DD000001000000000000010D /* CursorTeamSpendMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTeamSpendMapper.swift; sourceTree = "<group>"; };
+		DD000001000000000000010F /* CursorTeamProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTeamProviderConnector.swift; sourceTree = "<group>"; };
+		DD0000010000000000000111 /* CursorTeamProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTeamProviderFactory.swift; sourceTree = "<group>"; };
+		DD0000010000000000000113 /* ProxyProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyProviderConnector.swift; sourceTree = "<group>"; };
+		DD0000010000000000000115 /* ProxyProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyProviderFactory.swift; sourceTree = "<group>"; };
+		DD0000010000000000000117 /* ProviderConnectionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnectionForm.swift; sourceTree = "<group>"; };
+		DD0000010000000000000119 /* InMemoryCredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryCredentialStore.swift; sourceTree = "<group>"; };
+		DD000001000000000000011B /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		DD000001000000000000011D /* CursorTeamSpendMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTeamSpendMapperTests.swift; sourceTree = "<group>"; };
+		DD000001000000000000011F /* CursorTeamProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTeamProviderConnectorTests.swift; sourceTree = "<group>"; };
+		DD0000010000000000000121 /* ProxyProviderConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyProviderConnectorTests.swift; sourceTree = "<group>"; };
+		EE0000010000000000000101 /* ProviderStability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStability.swift; sourceTree = "<group>"; };
+		EE0000010000000000000103 /* ProviderConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnectionStatus.swift; sourceTree = "<group>"; };
+		EE0000010000000000000105 /* CursorPersonalConnectionMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalConnectionMethod.swift; sourceTree = "<group>"; };
+		EE0000010000000000000107 /* CursorPersonalDashboardServing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalDashboardServing.swift; sourceTree = "<group>"; };
+		EE0000010000000000000109 /* CursorPersonalSessionValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalSessionValidator.swift; sourceTree = "<group>"; };
+		EE000001000000000000010B /* ExperimentalCursorPersonalDashboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalCursorPersonalDashboardClient.swift; sourceTree = "<group>"; };
+		EE000001000000000000010D /* CursorPersonalProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalProviderConnector.swift; sourceTree = "<group>"; };
+		EE000001000000000000010F /* CursorPersonalProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalProviderFactory.swift; sourceTree = "<group>"; };
+		EE0000010000000000000111 /* AdvancedProvidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedProvidersView.swift; sourceTree = "<group>"; };
+		EE0000010000000000000113 /* CursorPersonalDashboardClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalDashboardClientTests.swift; sourceTree = "<group>"; };
+		EE0000010000000000000115 /* CursorPersonalSessionValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorPersonalSessionValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +249,9 @@
 			children = (
 				BB0000010000000000000105 /* DisplayMode.swift */,
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
+				EE0000010000000000000101 /* ProviderStability.swift */,
+				EE0000010000000000000103 /* ProviderConnectionStatus.swift */,
+				EE0000010000000000000105 /* CursorPersonalConnectionMethod.swift */,
 				BB0000010000000000000130 /* Models */,
 			);
 			path = Domain;
@@ -209,15 +268,62 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		DD0000010000000000000201 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000010000000000000101 /* CredentialKey.swift */,
+				DD0000010000000000000103 /* ProviderCredentialStore.swift */,
+				DD0000010000000000000105 /* KeychainCredentialStore.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		EE0000010000000000000201 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				EE0000010000000000000107 /* CursorPersonalDashboardServing.swift */,
+				EE0000010000000000000109 /* CursorPersonalSessionValidator.swift */,
+				EE000001000000000000010B /* ExperimentalCursorPersonalDashboardClient.swift */,
+				EE000001000000000000010D /* CursorPersonalProviderConnector.swift */,
+				EE000001000000000000010F /* CursorPersonalProviderFactory.swift */,
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		DD0000010000000000000202 /* Cursor */ = {
+			isa = PBXGroup;
+			children = (
+				DD000001000000000000010B /* CursorTeamAPIClient.swift */,
+				DD000001000000000000010D /* CursorTeamSpendMapper.swift */,
+				DD000001000000000000010F /* CursorTeamProviderConnector.swift */,
+				DD0000010000000000000111 /* CursorTeamProviderFactory.swift */,
+				EE0000010000000000000201 /* Personal */,
+			);
+			path = Cursor;
+			sourceTree = "<group>";
+		};
+		DD0000010000000000000203 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000010000000000000113 /* ProxyProviderConnector.swift */,
+				DD0000010000000000000115 /* ProxyProviderFactory.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
 		BB0000010000000000000131 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
 				CC0000010000000000000101 /* ProviderDescriptor.swift */,
 				CC0000010000000000000103 /* ProviderFactory.swift */,
+				DD0000010000000000000109 /* ProviderFactoryContext.swift */,
 				BB0000010000000000000113 /* ProviderConnector.swift */,
 				BB0000010000000000000115 /* ProviderRegistry.swift */,
 				CC0000010000000000000105 /* ProviderLifecycleService.swift */,
 				CC0000010000000000000107 /* BuiltinProviderRegistration.swift */,
+				DD0000010000000000000201 /* Credentials */,
+				DD0000010000000000000202 /* Cursor */,
+				DD0000010000000000000203 /* Proxy */,
 				BB0000010000000000000132 /* Mock */,
 			);
 			path = Providers;
@@ -239,6 +345,7 @@
 				BB0000010000000000000117 /* UsageService.swift */,
 				BB0000010000000000000119 /* UsageStore.swift */,
 				BB000001000000000000011B /* UserPreferences.swift */,
+				DD0000010000000000000107 /* ProviderConfigurationStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -265,6 +372,8 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000121 /* SettingsView.swift */,
+				DD0000010000000000000117 /* ProviderConnectionForm.swift */,
+				EE0000010000000000000111 /* AdvancedProvidersView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -273,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000123 /* TokenBarTests.swift */,
+				DD0000010000000000000204 /* Support */,
 				BB0000010000000000000138 /* Domain */,
 				BB0000010000000000000139 /* Providers */,
 				BB000001000000000000013A /* Services */,
@@ -288,12 +398,26 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		DD0000010000000000000204 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000010000000000000119 /* InMemoryCredentialStore.swift */,
+				DD000001000000000000011B /* MockURLProtocol.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		BB0000010000000000000139 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000127 /* MockProviderConnectorTests.swift */,
 				BB0000010000000000000129 /* ProviderRegistryTests.swift */,
 				CC000001000000000000010D /* ProviderLifecycleServiceTests.swift */,
+				DD000001000000000000011D /* CursorTeamSpendMapperTests.swift */,
+				DD000001000000000000011F /* CursorTeamProviderConnectorTests.swift */,
+				DD0000010000000000000121 /* ProxyProviderConnectorTests.swift */,
+				EE0000010000000000000113 /* CursorPersonalDashboardClientTests.swift */,
+				EE0000010000000000000115 /* CursorPersonalSessionValidatorTests.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -451,6 +575,27 @@
 				CC0000010000000000000108 /* BuiltinProviderRegistration.swift in Sources */,
 				CC000001000000000000010A /* MockProviderFactory.swift in Sources */,
 				CC000001000000000000010C /* FailingMockProviderConnector.swift in Sources */,
+				DD0000010000000000000102 /* CredentialKey.swift in Sources */,
+				DD0000010000000000000104 /* ProviderCredentialStore.swift in Sources */,
+				DD0000010000000000000106 /* KeychainCredentialStore.swift in Sources */,
+				DD0000010000000000000108 /* ProviderConfigurationStore.swift in Sources */,
+				DD000001000000000000010A /* ProviderFactoryContext.swift in Sources */,
+				DD000001000000000000010C /* CursorTeamAPIClient.swift in Sources */,
+				DD000001000000000000010E /* CursorTeamSpendMapper.swift in Sources */,
+				DD0000010000000000000110 /* CursorTeamProviderConnector.swift in Sources */,
+				DD0000010000000000000112 /* CursorTeamProviderFactory.swift in Sources */,
+				DD0000010000000000000114 /* ProxyProviderConnector.swift in Sources */,
+				DD0000010000000000000116 /* ProxyProviderFactory.swift in Sources */,
+				DD0000010000000000000118 /* ProviderConnectionForm.swift in Sources */,
+				EE0000010000000000000102 /* ProviderStability.swift in Sources */,
+				EE0000010000000000000104 /* ProviderConnectionStatus.swift in Sources */,
+				EE0000010000000000000106 /* CursorPersonalConnectionMethod.swift in Sources */,
+				EE0000010000000000000108 /* CursorPersonalDashboardServing.swift in Sources */,
+				EE000001000000000000010A /* CursorPersonalSessionValidator.swift in Sources */,
+				EE000001000000000000010C /* ExperimentalCursorPersonalDashboardClient.swift in Sources */,
+				EE000001000000000000010E /* CursorPersonalProviderConnector.swift in Sources */,
+				EE0000010000000000000110 /* CursorPersonalProviderFactory.swift in Sources */,
+				EE0000010000000000000112 /* AdvancedProvidersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +616,13 @@
 				BB000001000000000000012A /* ProviderRegistryTests.swift in Sources */,
 				BB000001000000000000012C /* UsageServiceTests.swift in Sources */,
 				CC000001000000000000010E /* ProviderLifecycleServiceTests.swift in Sources */,
+				DD000001000000000000011A /* InMemoryCredentialStore.swift in Sources */,
+				DD000001000000000000011C /* MockURLProtocol.swift in Sources */,
+				DD000001000000000000011E /* CursorTeamSpendMapperTests.swift in Sources */,
+				DD0000010000000000000120 /* CursorTeamProviderConnectorTests.swift in Sources */,
+				DD0000010000000000000122 /* ProxyProviderConnectorTests.swift in Sources */,
+				EE0000010000000000000114 /* CursorPersonalDashboardClientTests.swift in Sources */,
+				EE0000010000000000000116 /* CursorPersonalSessionValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

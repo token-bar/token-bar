@@ -38,3 +38,11 @@ Provider reconnect survives application restart.
 * valid credentials
 * expired credentials
 * revoked credentials
+
+---
+
+## Phase 3 Implementation
+
+* `KeychainCredentialStore` persists API keys and proxy tokens
+* `ProviderConfigurationStore` holds non-secret per-provider settings (member email, proxy URL)
+* Connectors load secrets via `ProviderFactoryContext` — never from UserDefaults or logs

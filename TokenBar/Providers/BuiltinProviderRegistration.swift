@@ -3,6 +3,9 @@ import Foundation
 enum BuiltinProviderRegistration {
     static func registerFactories(with registry: ProviderRegistry) async {
         await registry.register(MockProviderFactory())
+        await registry.register(CursorTeamProviderFactory())
+        await registry.register(CursorPersonalProviderFactory())
+        await registry.register(ProxyProviderFactory())
     }
 
     static func connectLaunchProviders(

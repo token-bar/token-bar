@@ -8,11 +8,12 @@ struct MockProviderFactory: ProviderFactory {
             id: Self.providerID,
             displayName: "Cursor (Mock)",
             authenticationMethod: .none,
+            stability: .stable,
             connectsOnLaunch: true
         )
     }
 
-    func makeConnector() -> any ProviderConnector {
+    func makeConnector(context: ProviderFactoryContext) -> any ProviderConnector {
         MockProviderConnector()
     }
 }

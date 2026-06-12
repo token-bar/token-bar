@@ -4,6 +4,7 @@ struct UserPreferences {
     private enum Key {
         static let displayMode = "displayMode"
         static let activeAccountID = "activeAccountID"
+        static let showAdvancedProviders = "showAdvancedProviders"
     }
 
     private let defaults: UserDefaults
@@ -23,6 +24,11 @@ struct UserPreferences {
         set {
             defaults.set(newValue.rawValue, forKey: Key.displayMode)
         }
+    }
+
+    var showAdvancedProviders: Bool {
+        get { defaults.bool(forKey: Key.showAdvancedProviders) }
+        set { defaults.set(newValue, forKey: Key.showAdvancedProviders) }
     }
 
     var activeAccountID: UUID? {
