@@ -417,9 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				GG000001000000000000010B /* AlertStateStoreTests.swift */,
-				HH0000010000000000000108 /* RefreshSchedulerTests.swift */,
+				HH0000010000000000000107 /* RefreshSchedulerTests.swift */,
 				BB000001000000000000012B /* UsageServiceTests.swift */,
-				HH0000010000000000000106 /* UserPreferencesTests.swift */,
+				HH0000010000000000000105 /* UserPreferencesTests.swift */,
 				GG000001000000000000010D /* UsageNotificationBuilderTests.swift */,
 				FF0000010000000000000109 /* UsageHistoryStoreTests.swift */,
 			);

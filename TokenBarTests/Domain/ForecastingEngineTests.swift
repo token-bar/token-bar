@@ -41,7 +41,7 @@ final class ForecastingEngineTests: XCTestCase {
 
         XCTAssertGreaterThan(forecast.burnRatePerDay ?? 0, 8)
         XCTAssertLessThan(forecast.daysRemaining ?? 100, 8)
-        XCTAssertEqual(forecast.riskLevel, .low)
+        XCTAssertEqual(forecast.riskLevel, .high)
     }
 
     func testZeroUsageProducesNoBurnRate() {
