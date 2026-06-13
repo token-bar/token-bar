@@ -56,7 +56,7 @@ final class MenuBarDisplayFormatterTests: XCTestCase {
             mode: .burnRate
         )
 
-        XCTAssertEqual(result, "Cursor 2,5%/d")
+        XCTAssertEqual(result, "Cursor 2.5%/d")
     }
 
     func testBurnRateWithoutForecastShowsProviderName() {

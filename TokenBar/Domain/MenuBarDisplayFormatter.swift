@@ -36,7 +36,9 @@ enum MenuBarDisplayFormatter {
             guard let burnRate = forecast?.burnRatePerDay else {
                 return snapshot.providerName
             }
-            let formatted = burnRate.formatted(.number.precision(.fractionLength(1)))
+            let formatted = burnRate.formatted(
+                .number.precision(.fractionLength(1)).locale(Self.fixedNumberLocale)
+            )
             return "\(snapshot.providerName) \(formatted)%/d"
         case .aggregate:
             let percent = snapshot.usagePercent.map { Int($0.rounded()) } ?? 0
@@ -61,6 +63,8 @@ enum MenuBarDisplayFormatter {
         let empty = progressSegments - clamped
         return String(repeating: "▰", count: clamped) + String(repeating: "▱", count: empty)
     }
+
+    private static let fixedNumberLocale = Locale(identifier: "en_US_POSIX")
 
     private static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
