@@ -5,21 +5,23 @@ struct MenuBarView: View {
     @Environment(\.openSettings) private var openSettings
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            providerSection
-            aggregateSection
-            Divider()
-            usageSection
-            allProvidersSection
-            forecastSection
-            refreshSection
-            Divider()
-            Button("Open Settings…") {
-                openSettings()
+        TokenBarGlassPanel(style: .menuBar) {
+            VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+                providerSection
+                aggregateSection
+                TokenBarPanelDivider()
+                usageSection
+                allProvidersSection
+                forecastSection
+                if !store.accounts.isEmpty {
+                    refreshSection
+                    TokenBarPanelDivider()
+                }
+                TokenBarPanelButton(title: "Open Settings…") {
+                    openSettings()
+                }
             }
         }
-        .padding()
-        .frame(width: 280)
     }
 
     @ViewBuilder
@@ -42,8 +44,7 @@ struct MenuBarView: View {
         let summary = store.aggregatedSummary
         if summary.providerCount > 1 {
             VStack(alignment: .leading, spacing: 4) {
-                Text("All providers")
-                    .font(.subheadline.weight(.semibold))
+                TokenBarSectionHeader(title: "All providers")
                 Text("\(summary.providerCount) connected")
                     .foregroundStyle(.secondary)
                 if let percent = summary.highestUsagePercent,
@@ -58,7 +59,7 @@ struct MenuBarView: View {
                 if let risk = summary.highestRiskLevel {
                     Text("Top risk: \(risk.rawValue.capitalized)")
                         .font(.caption)
-                        .foregroundStyle(riskColor(for: risk))
+                        .foregroundStyle(TokenBarRiskColor.color(for: risk))
                 }
             }
         }
@@ -68,8 +69,7 @@ struct MenuBarView: View {
     private var allProvidersSection: some View {
         if store.snapshots.count > 1 {
             VStack(alignment: .leading, spacing: 6) {
-                Text("By provider")
-                    .font(.subheadline.weight(.semibold))
+                TokenBarSectionHeader(title: "By provider")
                 ForEach(store.snapshots, id: \.accountID) { snapshot in
                     HStack {
                         Text(snapshot.providerName)
@@ -89,8 +89,7 @@ struct MenuBarView: View {
     private var usageSection: some View {
         if let snapshot = store.activeSnapshot {
             VStack(alignment: .leading, spacing: 4) {
-                Text(snapshot.providerName)
-                    .font(.headline)
+                TokenBarPanelTitle(title: snapshot.providerName)
                 if let percent = snapshot.usagePercent {
                     Text("\(Int(percent.rounded()))% used")
                 }
@@ -120,12 +119,11 @@ struct MenuBarView: View {
         if let forecast = store.activeForecast {
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
-                    Text("Forecast")
-                        .font(.subheadline.weight(.semibold))
+                    TokenBarSectionHeader(title: "Forecast")
                     Spacer()
                     Text(forecast.riskLevel.rawValue.capitalized)
                         .font(.caption.weight(.medium))
-                        .foregroundStyle(riskColor(for: forecast.riskLevel))
+                        .foregroundStyle(TokenBarRiskColor.color(for: forecast.riskLevel))
                 }
                 if let burnRate = forecast.burnRatePerDay {
                     Text("Burn rate: \(burnRate.formatted(.number.precision(.fractionLength(1))))%/day")
@@ -148,27 +146,19 @@ struct MenuBarView: View {
         }
     }
 
-    private func riskColor(for risk: ForecastRiskLevel) -> Color {
-        switch risk {
-        case .low: .green
-        case .medium: .yellow
-        case .high: .orange
-        case .critical: .red
-        }
-    }
-
     private var refreshSection: some View {
-        HStack {
+        VStack(alignment: .leading, spacing: 4) {
             if let lastRefresh = store.lastRefreshAt {
                 Text("Updated \(lastRefresh.formatted(date: .omitted, time: .shortened))")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            Spacer()
-            Button("Refresh") {
+            TokenBarPanelButton(
+                title: store.isRefreshing ? "Refreshing…" : "Refresh",
+                isDisabled: store.isRefreshing
+            ) {
                 Task { await store.refresh() }
             }
-            .disabled(store.isRefreshing)
         }
     }
 

@@ -8,6 +8,12 @@ Allow users to manage providers and customize display.
 
 ## Sections
 
+### General
+
+* App version and build
+* Launch at login
+* Export diagnostics (no credentials)
+
 ### Providers
 
 * Add provider

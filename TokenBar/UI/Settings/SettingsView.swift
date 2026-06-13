@@ -3,30 +3,63 @@ import SwiftUI
 struct SettingsView: View {
     let store: UsageStore
 
+    @State private var selectedSection: SettingsSection = .general
+    @State private var expandedConnectedProviderIDs: Set<String> = []
+    @State private var expandedAvailableProviderIDs: Set<String> = []
+    @State private var expandedAdvancedProviderIDs: Set<String> = []
+
     var body: some View {
-        NavigationSplitView {
-            List(SettingsSection.allCases, selection: $selectedSection) { section in
-                Label(section.title, systemImage: section.icon)
-                    .tag(section)
+        ZStack {
+            TokenBarWindowBackdrop()
+
+            TokenBarGlassPanel(style: .settings) {
+                VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+                    TokenBarPanelTitle(title: "Settings")
+
+                    HStack(alignment: .top, spacing: TokenBarMetrics.spacing) {
+                        sectionSidebar
+                        TokenBarPanelDivider()
+                            .frame(maxHeight: .infinity)
+                        TokenBarSettingsScrollView {
+                            detailView(for: selectedSection)
+                        }
+                    }
+                }
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-        } detail: {
-            detailView(for: selectedSection)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .padding()
+            .padding(TokenBarMetrics.windowPadding)
         }
-        .frame(minWidth: 560, minHeight: 400)
+        .frame(
+            minWidth: TokenBarMetrics.settingsPanelMinWidth + TokenBarMetrics.windowPadding * 2,
+            minHeight: TokenBarMetrics.settingsPanelMinHeight + TokenBarMetrics.windowPadding * 2
+        )
     }
 
-    @State private var selectedSection: SettingsSection = .display
+    private var sectionSidebar: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            ForEach(SettingsSection.allCases) { section in
+                TokenBarSettingsNavItem(
+                    section: section,
+                    isSelected: selectedSection == section
+                ) {
+                    selectedSection = section
+                }
+            }
+        }
+        .frame(width: TokenBarMetrics.settingsNavWidth, alignment: .leading)
+    }
 
     @ViewBuilder
     private func detailView(for section: SettingsSection) -> some View {
         switch section {
+        case .general:
+            GeneralSettingsView(store: store)
         case .providers:
             providersSection
         case .advanced:
-            AdvancedProvidersView(store: store)
+            AdvancedProvidersView(
+                store: store,
+                expandedProviderIDs: $expandedAdvancedProviderIDs
+            )
         case .display:
             displaySection
         case .refresh:
@@ -37,69 +70,52 @@ struct SettingsView: View {
     }
 
     private var providersSection: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Providers")
-                    .font(.title2.weight(.semibold))
+        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+            TokenBarPanelTitle(title: "Providers")
 
-                if store.accounts.count > 1 {
-                    Group {
-                        Text("Default provider")
-                            .font(.headline)
-                        Picker("Menu bar provider", selection: activeAccountBinding) {
-                            ForEach(store.accounts) { account in
-                                Text(account.displayName).tag(Optional(account.id))
-                            }
-                        }
-                        .labelsHidden()
-                        .pickerStyle(.menu)
-                    }
-                }
-
-                Group {
-                    Text("Connected")
-                        .font(.headline)
-                    if store.accounts.isEmpty {
-                        Text("No providers connected.")
-                            .foregroundStyle(.secondary)
-                    } else {
+            if store.accounts.count > 1 {
+                VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+                    TokenBarSectionHeader(title: "Default provider")
+                    Picker("Menu bar provider", selection: activeAccountBinding) {
                         ForEach(store.accounts) { account in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(account.displayName)
-                                Text(account.connectionStatus.label)
-                                    .font(.caption)
-                                    .foregroundStyle(account.connectionStatus == .connected ? .green : .orange)
-                                }
-                                Spacer()
-                                if account.isConnected {
-                                    Button("Disconnect") {
-                                        Task { await store.disconnectProvider(providerID: account.providerID) }
-                                    }
-                                } else {
-                                    Button("Reconnect") {
-                                        Task { await store.connectProvider(providerID: account.providerID) }
-                                    }
-                                }
-                                Button("Remove", role: .destructive) {
-                                    Task { await store.removeProvider(providerID: account.providerID) }
-                                }
-                            }
+                            Text(account.displayName).tag(Optional(account.id))
                         }
                     }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
                 }
+            }
 
-                Group {
-                    Text("Available")
-                        .font(.headline)
-                    if store.availableProviders.isEmpty {
-                        Text("No provider types registered.")
-                            .foregroundStyle(.secondary)
-                    } else {
-                        ForEach(store.availableProviders) { provider in
-                            ProviderConnectionForm(provider: provider, store: store)
-                            Divider()
-                        }
+            VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+                TokenBarSectionHeader(title: "Connected")
+                if store.accounts.isEmpty {
+                    Text("No providers connected.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(store.accounts) { account in
+                        TokenBarConnectedProviderAccordion(
+                            account: account,
+                            store: store,
+                            isExpanded: expandedConnectedProviderIDs.contains(account.providerID),
+                            onToggle: { toggleConnectedAccordion(account.providerID) }
+                        )
+                    }
+                }
+            }
+
+            VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+                TokenBarSectionHeader(title: "Available")
+                if store.availableProviders.isEmpty {
+                    Text("No provider types registered.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(store.availableProviders) { provider in
+                        TokenBarProviderAccordion(
+                            provider: provider,
+                            store: store,
+                            isExpanded: expandedAvailableProviderIDs.contains(provider.id),
+                            onToggle: { toggleAvailableAccordion(provider.id) }
+                        )
                     }
                 }
             }
@@ -107,9 +123,8 @@ struct SettingsView: View {
     }
 
     private var displaySection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Display")
-                .font(.title2.weight(.semibold))
+        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+            TokenBarPanelTitle(title: "Display")
             Picker("Menu bar style", selection: Binding(
                 get: { store.displayMode },
                 set: { store.displayMode = $0 }
@@ -124,16 +139,16 @@ struct SettingsView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            Text("Preview: \(store.menuBarLabel)")
-                .font(.body.monospaced())
-                .padding(.top, 8)
+            TokenBarGlassCard {
+                Text("Preview: \(store.menuBarLabel)")
+                    .font(.body.monospaced())
+            }
         }
     }
 
     private var refreshSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Refresh")
-                .font(.title2.weight(.semibold))
+        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+            TokenBarPanelTitle(title: "Refresh")
             Picker("Automatic refresh", selection: Binding(
                 get: { store.refreshInterval },
                 set: { store.refreshInterval = $0 }
@@ -154,6 +169,7 @@ struct SettingsView: View {
             Button("Refresh Now") {
                 Task { await store.refresh() }
             }
+            .buttonStyle(.glassProminent)
             .disabled(store.isRefreshing)
         }
     }
@@ -169,9 +185,8 @@ struct SettingsView: View {
     }
 
     private var notificationsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Notifications")
-                .font(.title2.weight(.semibold))
+        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+            TokenBarPanelTitle(title: "Notifications")
 
             Toggle("Enable usage alerts", isOn: Binding(
                 get: { store.notificationsEnabled },
@@ -186,52 +201,36 @@ struct SettingsView: View {
                 Text("No alerts yet.")
                     .foregroundStyle(.secondary)
             } else {
-                Text("Recent alerts")
-                    .font(.headline)
+                TokenBarSectionHeader(title: "Recent alerts")
                 ForEach(store.alerts.prefix(10)) { alert in
                     if let account = store.accounts.first(where: { $0.id == alert.accountID }) {
-                        HStack(alignment: .top) {
+                        TokenBarGlassCard {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("\(account.displayName): \(alert.summary)")
                                 Text(alert.triggeredAt.formatted(date: .abbreviated, time: .shortened))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
-                            Spacer()
                         }
                     }
                 }
             }
         }
     }
-}
 
-private enum SettingsSection: String, CaseIterable, Identifiable, Hashable {
-    case providers
-    case advanced
-    case display
-    case refresh
-    case notifications
-
-    var id: String { rawValue }
-
-    var title: String {
-        switch self {
-        case .providers: "Providers"
-        case .advanced: "Advanced"
-        case .display: "Display"
-        case .refresh: "Refresh"
-        case .notifications: "Notifications"
-        }
+    private func toggleConnectedAccordion(_ providerID: String) {
+        toggleProviderID(providerID, in: &expandedConnectedProviderIDs)
     }
 
-    var icon: String {
-        switch self {
-        case .providers: "server.rack"
-        case .advanced: "wrench.and.screwdriver"
-        case .display: "menubar.rectangle"
-        case .refresh: "arrow.clockwise"
-        case .notifications: "bell"
+    private func toggleAvailableAccordion(_ providerID: String) {
+        toggleProviderID(providerID, in: &expandedAvailableProviderIDs)
+    }
+
+    private func toggleProviderID(_ providerID: String, in set: inout Set<String>) {
+        if set.contains(providerID) {
+            set.remove(providerID)
+        } else {
+            set.insert(providerID)
         }
     }
 }

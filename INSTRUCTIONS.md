@@ -198,6 +198,15 @@ Threshold alerts:
 
 ---
 
+## Phase 11 — Release Readiness & General Settings
+
+* About panel (version/build)
+* Launch at login
+* Redacted diagnostics export
+* Release process documentation and version bump script
+
+---
+
 # Security Requirements
 
 * Store secrets in Keychain only

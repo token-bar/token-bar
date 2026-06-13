@@ -32,3 +32,4 @@ Enhance the built-in mock provider with configurable scenario settings:
 * Adjust demo values in Settings, refresh, see updated menu bar
 * Enable increment, refresh repeatedly, usage climbs and alerts can fire
 * Works alongside Cursor Personal for multi-provider testing
+* Listed under **Settings → Advanced** (not main Providers list)

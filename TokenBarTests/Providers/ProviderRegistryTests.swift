@@ -49,7 +49,7 @@ final class ProviderRegistryTests: XCTestCase {
         await registry.register(MockProviderFactory())
 
         let launchIDs = await registry.launchProviderIDs()
-        XCTAssertEqual(launchIDs, ["mock"])
+        XCTAssertEqual(launchIDs, [])
     }
 }
 

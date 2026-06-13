@@ -24,9 +24,9 @@ Follow `INSTRUCTIONS.md`: update specs first, implement incrementally, add tests
 
 ## Current Phase
 
-**Phase 10** — Configurable demo scenario provider for testing alerts, forecasts, and display modes without org/team API accounts.
+**Phase 11** — Release readiness: General settings (version, launch at login, diagnostics export), release documentation, and version bump script.
 
-Phases 1–9 are complete.
+Phases 1–10 are complete.
 
 ### Testing without org accounts
 

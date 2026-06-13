@@ -9,7 +9,8 @@ struct MockProviderFactory: ProviderFactory {
             displayName: "Demo Provider",
             authenticationMethod: .none,
             stability: .stable,
-            connectsOnLaunch: true,
+            connectsOnLaunch: false,
+            isAdvanced: true,
             experimentalNotice: "Simulated usage for testing alerts, forecasts, and display modes without real provider accounts."
         )
     }

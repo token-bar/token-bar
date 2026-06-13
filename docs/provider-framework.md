@@ -18,7 +18,7 @@ TokenBar integrates AI providers through a protocol-based plugin layer. UI and d
 
 | ID | Name | Stability | Auth |
 |----|------|-----------|------|
-| `mock` | Demo Provider | Stable | none (configurable scenario) |
+| `mock` | Demo Provider | Stable (Advanced) | none (configurable scenario) |
 | `cursor-personal` | Cursor Personal | Experimental | Session cookie |
 | `cursor-team` | Cursor Team | Stable | Admin API key |
 | `custom-proxy` | Custom Proxy | Experimental (Advanced) | Proxy URL |

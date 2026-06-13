@@ -80,7 +80,7 @@ No UI changes.
 * `ProviderFactoryContext` injects credentials, configuration, and `URLSession`
 * `CursorTeamProviderFactory` + connector (documented Admin API)
 * `ProxyProviderFactory` + connector (user-hosted canonical JSON endpoint)
-* Factories registered in `BuiltinProviderRegistration`; only mock auto-connects on launch
+* Factories registered in `BuiltinProviderRegistration`; no providers auto-connect on launch
 
 ---
 

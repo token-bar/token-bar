@@ -12,6 +12,9 @@ final class ProviderLifecycleServiceTests: XCTestCase {
         let context = ProviderFactoryContext(
             credentials: credentials,
             configuration: configuration,
+            demoScenarioState: DemoScenarioStateStore(
+                defaults: UserDefaults(suiteName: "ProviderLifecycleServiceTests.state")!
+            ),
             urlSession: MockURLSessionFactory.make()
         )
         return ProviderLifecycleService(registry: registry, factoryContext: context)

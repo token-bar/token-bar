@@ -3,6 +3,8 @@ import SwiftUI
 struct ProviderConnectionForm: View {
     let provider: ProviderDescriptor
     let store: UsageStore
+    var showsHeader: Bool = true
+    var showsOuterCard: Bool = true
 
     @State private var apiKey = ""
     @State private var memberEmail = ""
@@ -18,27 +20,44 @@ struct ProviderConnectionForm: View {
     @State private var statusMessage: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            header
+        Group {
+            if showsOuterCard {
+                TokenBarGlassCard { innerContent }
+            } else {
+                innerContent
+            }
+        }
+        .onAppear(perform: loadExistingValues)
+    }
+
+    private var innerContent: some View {
+        VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+            if showsHeader {
+                header
+            }
 
             if let notice = provider.experimentalNotice {
                 Text(notice)
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                    .padding(8)
-                    .background(.quaternary.opacity(0.4), in: RoundedRectangle(cornerRadius: 8))
+                    .padding(TokenBarMetrics.innerSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.quaternary.opacity(0.35), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
 
             connectionFields
 
-            HStack {
+            HStack(spacing: 8) {
                 Button("Save") {
                     saveConfiguration()
                 }
+                .buttonStyle(.glass)
+
                 Button("Connect") {
                     saveConfiguration()
                     Task { await store.connectProvider(providerID: provider.id) }
                 }
+                .buttonStyle(.glassProminent)
                 .disabled(isConnected)
             }
 
@@ -54,21 +73,23 @@ struct ProviderConnectionForm: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .padding(.vertical, 4)
-        .onAppear(perform: loadExistingValues)
     }
 
     private var header: some View {
         HStack {
             Text(provider.displayName)
-                .font(.headline)
+                .font(.subheadline.weight(.semibold))
             Spacer()
             Text(provider.stability.label)
                 .font(.caption.weight(.semibold))
                 .padding(.horizontal, 8)
-                .padding(.vertical, 2)
-                .background(provider.stability == .stable ? .green.opacity(0.15) : .orange.opacity(0.15))
-                .clipShape(Capsule())
+                .padding(.vertical, 3)
+                .glassEffect(
+                    provider.stability == .stable
+                        ? .regular.tint(.green.opacity(0.35))
+                        : .regular.tint(.orange.opacity(0.35)),
+                    in: .capsule
+                )
         }
     }
 
@@ -89,6 +110,7 @@ struct ProviderConnectionForm: View {
                     store.resetDemoSimulation(providerID: provider.id)
                     statusMessage = "Simulation reset."
                 }
+                .buttonStyle(.glass)
                 Text("Leave fields empty to use defaults. Increment simulates climbing usage for burn-rate and alert testing.")
                     .font(.caption)
                     .foregroundStyle(.secondary)

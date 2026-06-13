@@ -32,6 +32,7 @@ final class UsageStore {
     var lastRefreshAt: Date?
     var isRefreshing = false
     var lastError: String?
+    var launchAtLoginEnabled = false
 
     private let usageService: UsageService
     private let registry: ProviderRegistry
@@ -121,8 +122,33 @@ final class UsageStore {
         )
         mergeAccounts(connectedAccounts)
         _ = await notificationService.requestAuthorization()
+        launchAtLoginEnabled = LaunchAtLoginService.isEnabled
         await refresh()
         updateRefreshSchedule()
+    }
+
+    func setLaunchAtLogin(_ enabled: Bool) {
+        do {
+            try LaunchAtLoginService.setEnabled(enabled)
+            launchAtLoginEnabled = LaunchAtLoginService.isEnabled
+        } catch {
+            lastError = "Could not update launch at login."
+        }
+    }
+
+    enum DiagnosticsExportResult {
+        case success
+        case cancelled
+        case failed
+    }
+
+    func exportDiagnostics() -> DiagnosticsExportResult {
+        do {
+            let data = try DiagnosticsExporter.exportJSON(from: diagnosticsContext)
+            return DiagnosticsExportPresenter.save(data: data) ? .success : .cancelled
+        } catch {
+            return .failed
+        }
     }
 
     func refresh() async {
@@ -421,5 +447,20 @@ final class UsageStore {
         let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return nil }
         return Double(trimmed)
+    }
+
+    private var diagnosticsContext: DiagnosticsContext {
+        DiagnosticsContext(
+            accounts: accounts,
+            snapshots: snapshots,
+            displayMode: displayMode,
+            refreshInterval: refreshInterval,
+            notificationsEnabled: notificationsEnabled,
+            launchAtLoginEnabled: launchAtLoginEnabled,
+            showAdvancedProviders: showAdvancedProviders,
+            lastRefreshAt: lastRefreshAt,
+            lastError: lastError,
+            generatedAt: .now
+        )
     }
 }

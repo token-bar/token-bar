@@ -33,13 +33,23 @@ Claude $12.44
 
 ## Dropdown Panel
 
-Clicking the menu bar opens:
+Clicking the menu bar opens a Liquid Glass panel (`TokenBarGlassPanel`) with:
 
 * Provider selector
 * Current usage
 * Forecast
 * Last refresh time
 * Open Settings button
+
+Settings uses the same glass panel chrome, typography, spacing, and button styles for visual parity.
+
+---
+
+## Visual Design (macOS 26)
+
+* `GlassEffectContainer` + `.glassEffect(.regular)` for panels and cards
+* `.buttonStyle(.glass)` / `.glassProminent` for actions
+* Shared metrics in `TokenBarMetrics` (280pt menu width, 12pt spacing, 16pt corner radius)
 
 ---
 

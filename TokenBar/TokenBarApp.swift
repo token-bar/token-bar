@@ -16,5 +16,10 @@ struct TokenBarApp: App {
         Settings {
             SettingsView(store: store)
         }
+        .windowResizability(.contentMinSize)
+        .defaultSize(
+            width: TokenBarMetrics.settingsPanelMinWidth + TokenBarMetrics.windowPadding * 2,
+            height: TokenBarMetrics.settingsPanelMinHeight + TokenBarMetrics.windowPadding * 2
+        )
     }
 }

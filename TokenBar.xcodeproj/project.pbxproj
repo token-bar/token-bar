@@ -116,6 +116,15 @@
 		LL0000010000000000000102 /* DemoScenarioStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL0000010000000000000101 /* DemoScenarioStateStore.swift */; };
 		LL0000010000000000000104 /* DemoScenarioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL0000010000000000000103 /* DemoScenarioEngine.swift */; };
 		LL0000010000000000000106 /* DemoScenarioEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = LL0000010000000000000105 /* DemoScenarioEngineTests.swift */; };
+		MM0000010000000000000102 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM0000010000000000000101 /* AppVersion.swift */; };
+		MM0000010000000000000104 /* LaunchAtLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM0000010000000000000103 /* LaunchAtLoginService.swift */; };
+		MM0000010000000000000106 /* DiagnosticsExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM0000010000000000000105 /* DiagnosticsExporter.swift */; };
+		MM0000010000000000000108 /* DiagnosticsExportPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM0000010000000000000107 /* DiagnosticsExportPresenter.swift */; };
+		MM000001000000000000010A /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM0000010000000000000109 /* GeneralSettingsView.swift */; };
+		MM000001000000000000010C /* DiagnosticsExporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MM000001000000000000010B /* DiagnosticsExporterTests.swift */; };
+		NN0000010000000000000102 /* TokenBarPanelChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000101 /* TokenBarPanelChrome.swift */; };
+		NN0000010000000000000104 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000103 /* SettingsSection.swift */; };
+		NN0000010000000000000106 /* TokenBarAccordion.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000105 /* TokenBarAccordion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -256,6 +265,15 @@
 		LL0000010000000000000101 /* DemoScenarioStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenarioStateStore.swift; sourceTree = "<group>"; };
 		LL0000010000000000000103 /* DemoScenarioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenarioEngine.swift; sourceTree = "<group>"; };
 		LL0000010000000000000105 /* DemoScenarioEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenarioEngineTests.swift; sourceTree = "<group>"; };
+		MM0000010000000000000101 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
+		MM0000010000000000000103 /* LaunchAtLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginService.swift; sourceTree = "<group>"; };
+		MM0000010000000000000105 /* DiagnosticsExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsExporter.swift; sourceTree = "<group>"; };
+		MM0000010000000000000107 /* DiagnosticsExportPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsExportPresenter.swift; sourceTree = "<group>"; };
+		MM0000010000000000000109 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		MM000001000000000000010B /* DiagnosticsExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsExporterTests.swift; sourceTree = "<group>"; };
+		NN0000010000000000000101 /* TokenBarPanelChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarPanelChrome.swift; sourceTree = "<group>"; };
+		NN0000010000000000000103 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		NN0000010000000000000105 /* TokenBarAccordion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarAccordion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000105 /* DisplayMode.swift */,
+				MM0000010000000000000101 /* AppVersion.swift */,
 				HH0000010000000000000101 /* RefreshInterval.swift */,
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
 				GG0000010000000000000103 /* AlertEvaluator.swift */,
@@ -415,6 +434,8 @@
 				BB000001000000000000011B /* UserPreferences.swift */,
 				DD0000010000000000000107 /* ProviderConfigurationStore.swift */,
 				LL0000010000000000000101 /* DemoScenarioStateStore.swift */,
+				MM0000010000000000000103 /* LaunchAtLoginService.swift */,
+				MM0000010000000000000105 /* DiagnosticsExporter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -422,10 +443,20 @@
 		BB0000010000000000000134 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				NN0000010000000000000201 /* Design */,
 				BB0000010000000000000135 /* MenuBar */,
 				BB0000010000000000000136 /* Settings */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		NN0000010000000000000201 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				NN0000010000000000000101 /* TokenBarPanelChrome.swift */,
+				NN0000010000000000000105 /* TokenBarAccordion.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000135 /* MenuBar */ = {
@@ -441,8 +472,11 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000121 /* SettingsView.swift */,
+				NN0000010000000000000103 /* SettingsSection.swift */,
+				MM0000010000000000000109 /* GeneralSettingsView.swift */,
 				DD0000010000000000000117 /* ProviderConnectionForm.swift */,
 				EE0000010000000000000111 /* AdvancedProvidersView.swift */,
+				MM0000010000000000000107 /* DiagnosticsExportPresenter.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -501,6 +535,7 @@
 				II000001000000000000010F /* WidgetSnapshotStoreTests.swift */,
 				GG000001000000000000010D /* UsageNotificationBuilderTests.swift */,
 				FF0000010000000000000109 /* UsageHistoryStoreTests.swift */,
+				MM000001000000000000010B /* DiagnosticsExporterTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -718,6 +753,9 @@
 				BB000001000000000000011E /* MenuBarLabelView.swift in Sources */,
 				BB0000010000000000000120 /* MenuBarView.swift in Sources */,
 				BB0000010000000000000122 /* SettingsView.swift in Sources */,
+				NN0000010000000000000102 /* TokenBarPanelChrome.swift in Sources */,
+				NN0000010000000000000104 /* SettingsSection.swift in Sources */,
+				NN0000010000000000000106 /* TokenBarAccordion.swift in Sources */,
 				CC0000010000000000000102 /* ProviderDescriptor.swift in Sources */,
 				CC0000010000000000000104 /* ProviderFactory.swift in Sources */,
 				CC0000010000000000000106 /* ProviderLifecycleService.swift in Sources */,
@@ -770,6 +808,11 @@
 				KK0000010000000000000110 /* AnthropicProviderFactory.swift in Sources */,
 				LL0000010000000000000102 /* DemoScenarioStateStore.swift in Sources */,
 				LL0000010000000000000104 /* DemoScenarioEngine.swift in Sources */,
+				MM0000010000000000000102 /* AppVersion.swift in Sources */,
+				MM0000010000000000000104 /* LaunchAtLoginService.swift in Sources */,
+				MM0000010000000000000106 /* DiagnosticsExporter.swift in Sources */,
+				MM0000010000000000000108 /* DiagnosticsExportPresenter.swift in Sources */,
+				MM000001000000000000010A /* GeneralSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +864,7 @@
 				KK0000010000000000000116 /* AnthropicCostMapperTests.swift in Sources */,
 				KK0000010000000000000118 /* AnthropicProviderConnectorTests.swift in Sources */,
 				LL0000010000000000000106 /* DemoScenarioEngineTests.swift in Sources */,
+				MM000001000000000000010C /* DiagnosticsExporterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
