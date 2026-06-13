@@ -51,6 +51,6 @@ Detailed notarization steps depend on your Apple Developer team setup and are no
 
 ## CI
 
-GitHub Actions runs `xcodebuild build` and `test` on `macos-latest` with warnings treated as errors.
+GitHub Actions runs `xcodebuild build` and `test` on `macos-26` with warnings treated as errors.
 
-The project targets **macOS 26**. If CI runners lag behind your local SDK, align the workflow runner or deployment target before cutting a release.
+The project targets **macOS 26**; the workflow uses the `macos-26` runner so tests can execute on a host that matches the deployment target.

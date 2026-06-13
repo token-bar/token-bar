@@ -29,7 +29,7 @@ Prepare TokenBar for distribution and add general-purpose settings that do not d
 
 * Documented semver versioning in `docs/release-process.md`
 * `scripts/bump-version.sh` for version bumps
-* CI builds and tests on `macos-latest`
+* CI builds and tests on `macos-26` (required for macOS 26 deployment target)
 
 ---
 
