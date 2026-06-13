@@ -64,6 +64,7 @@ playground.xcworkspace
 
 # Archives
 *.xcarchive
+*.dmg
 
 # IDE
 .idea/
