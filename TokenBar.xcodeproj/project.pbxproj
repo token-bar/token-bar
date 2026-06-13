@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -92,11 +92,11 @@
 		II000001000000000000010E /* WidgetUsagePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = II0000010000000000000101 /* WidgetUsagePayload.swift */; };
 		II0000010000000000000112 /* WidgetSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = II0000010000000000000105 /* WidgetSnapshotStore.swift */; };
 		II0000010000000000000114 /* MenuBarDisplayFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */; };
+		II0000010000000000000116 /* WidgetPayloadBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II000001000000000000010D /* WidgetPayloadBuilderTests.swift */; };
+		II0000010000000000000118 /* WidgetSnapshotStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II000001000000000000010F /* WidgetSnapshotStoreTests.swift */; };
 		II000001000000000000011A /* DisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000010000000000000105 /* DisplayMode.swift */; };
 		II000001000000000000011C /* UsageSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000010F /* UsageSnapshot.swift */; };
 		II000001000000000000011E /* UsageForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001000000000000010D /* UsageForecast.swift */; };
-		II0000010000000000000116 /* WidgetPayloadBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II000001000000000000010D /* WidgetPayloadBuilderTests.swift */; };
-		II0000010000000000000118 /* WidgetSnapshotStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = II000001000000000000010F /* WidgetSnapshotStoreTests.swift */; };
 		JJ0000010000000000000102 /* AggregatedUsageSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000101 /* AggregatedUsageSummary.swift */; };
 		JJ0000010000000000000104 /* UsageAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000103 /* UsageAggregator.swift */; };
 		JJ0000010000000000000106 /* UsageAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = JJ0000010000000000000105 /* UsageAggregatorTests.swift */; };
@@ -147,14 +147,12 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		AA000001000000000000002C /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				AA0000010000000000000109 /* TokenBarWidget.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -279,24 +277,18 @@
 /* Begin PBXFrameworksBuildPhase section */
 		AA000001000000000000001B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000030 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000031 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -448,15 +440,6 @@
 				BB0000010000000000000136 /* Settings */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		NN0000010000000000000201 /* Design */ = {
-			isa = PBXGroup;
-			children = (
-				NN0000010000000000000101 /* TokenBarPanelChrome.swift */,
-				NN0000010000000000000105 /* TokenBarAccordion.swift */,
-			);
-			path = Design;
 			sourceTree = "<group>";
 		};
 		BB0000010000000000000135 /* MenuBar */ = {
@@ -614,6 +597,15 @@
 			path = Anthropic;
 			sourceTree = "<group>";
 		};
+		NN0000010000000000000201 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				NN0000010000000000000101 /* TokenBarPanelChrome.swift */,
+				NN0000010000000000000105 /* TokenBarAccordion.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -645,8 +637,6 @@
 				AA0000010000000000000018 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = TokenBarWidget;
 			productName = TokenBarWidget;
@@ -693,7 +683,6 @@
 				};
 			};
 			buildConfigurationList = AA0000010000000000000020 /* Build configuration list for PBXProject "TokenBar" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -701,6 +690,7 @@
 				Base,
 			);
 			mainGroup = AA0000010000000000000014;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = AA0000010000000000000013 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -715,26 +705,21 @@
 /* Begin PBXResourcesBuildPhase section */
 		AA0000010000000000000016 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				AA0000010000000000000104 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000018 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				AA0000010000000000000107 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA0000010000000000000015 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BB0000010000000000000102 /* TokenBarApp.swift in Sources */,
 				BB0000010000000000000104 /* AppEnvironment.swift in Sources */,
@@ -814,11 +799,9 @@
 				MM0000010000000000000108 /* DiagnosticsExportPresenter.swift in Sources */,
 				MM000001000000000000010A /* GeneralSettingsView.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000017 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				II000001000000000000010A /* TokenBarWidgetBundle.swift in Sources */,
 				II000001000000000000010C /* TokenBarWidget.swift in Sources */,
@@ -830,11 +813,9 @@
 				II000001000000000000011E /* UsageForecast.swift in Sources */,
 				JJ0000010000000000000108 /* AggregatedUsageSummary.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AA0000010000000000000019 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BB0000010000000000000124 /* TokenBarTests.swift in Sources */,
 				BB0000010000000000000126 /* MenuBarDisplayFormatterTests.swift in Sources */,
@@ -866,7 +847,6 @@
 				LL0000010000000000000106 /* DemoScenarioEngineTests.swift in Sources */,
 				MM000001000000000000010C /* DiagnosticsExporterTests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -884,7 +864,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		AA0000010000000000000024 /* Debug */ = {
+		AA0000010000000000000024 /* Debug configuration for PBXProject "TokenBar" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -951,7 +931,7 @@
 			};
 			name = Debug;
 		};
-		AA0000010000000000000025 /* Release */ = {
+		AA0000010000000000000025 /* Release configuration for PBXProject "TokenBar" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1010,7 +990,7 @@
 			};
 			name = Release;
 		};
-		AA0000010000000000000026 /* Debug */ = {
+		AA0000010000000000000026 /* Debug configuration for PBXNativeTarget "TokenBar" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1039,7 +1019,7 @@
 			};
 			name = Debug;
 		};
-		AA0000010000000000000027 /* Release */ = {
+		AA0000010000000000000027 /* Release configuration for PBXNativeTarget "TokenBar" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1068,7 +1048,7 @@
 			};
 			name = Release;
 		};
-		AA0000010000000000000028 /* Debug */ = {
+		AA0000010000000000000028 /* Debug configuration for PBXNativeTarget "TokenBarWidget" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1098,7 +1078,7 @@
 			};
 			name = Debug;
 		};
-		AA0000010000000000000029 /* Release */ = {
+		AA0000010000000000000029 /* Release configuration for PBXNativeTarget "TokenBarWidget" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1128,7 +1108,7 @@
 			};
 			name = Release;
 		};
-		AA000001000000000000002A /* Debug */ = {
+		AA000001000000000000002A /* Debug configuration for PBXNativeTarget "TokenBarTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1146,7 +1126,7 @@
 			};
 			name = Debug;
 		};
-		AA000001000000000000002B /* Release */ = {
+		AA000001000000000000002B /* Release configuration for PBXNativeTarget "TokenBarTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1170,37 +1150,33 @@
 		AA0000010000000000000020 /* Build configuration list for PBXProject "TokenBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA0000010000000000000024 /* Debug */,
-				AA0000010000000000000025 /* Release */,
+				AA0000010000000000000024 /* Debug configuration for PBXProject "TokenBar" */,
+				AA0000010000000000000025 /* Release configuration for PBXProject "TokenBar" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		AA0000010000000000000021 /* Build configuration list for PBXNativeTarget "TokenBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA0000010000000000000026 /* Debug */,
-				AA0000010000000000000027 /* Release */,
+				AA0000010000000000000026 /* Debug configuration for PBXNativeTarget "TokenBar" */,
+				AA0000010000000000000027 /* Release configuration for PBXNativeTarget "TokenBar" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		AA0000010000000000000022 /* Build configuration list for PBXNativeTarget "TokenBarWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA0000010000000000000028 /* Debug */,
-				AA0000010000000000000029 /* Release */,
+				AA0000010000000000000028 /* Debug configuration for PBXNativeTarget "TokenBarWidget" */,
+				AA0000010000000000000029 /* Release configuration for PBXNativeTarget "TokenBarWidget" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		AA0000010000000000000023 /* Build configuration list for PBXNativeTarget "TokenBarTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA000001000000000000002A /* Debug */,
-				AA000001000000000000002B /* Release */,
+				AA000001000000000000002A /* Debug configuration for PBXNativeTarget "TokenBarTests" */,
+				AA000001000000000000002B /* Release configuration for PBXNativeTarget "TokenBarTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
