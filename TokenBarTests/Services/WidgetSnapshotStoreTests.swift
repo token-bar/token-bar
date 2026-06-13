@@ -25,7 +25,7 @@ final class WidgetSnapshotStoreTests: XCTestCase {
     func testClearRemovesPayload() {
         let suiteName = "WidgetSnapshotStoreTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: suiteName)!
-        var store = WidgetSnapshotStore(defaults: defaults)
+        let store = WidgetSnapshotStore(defaults: defaults)
         store.save(.empty)
 
         store.clear()
