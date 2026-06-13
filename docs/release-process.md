@@ -36,6 +36,8 @@ git push origin v0.2.0
 
 Create a GitHub release from the tag with notes summarizing user-visible changes.
 
+Attach the notarized **`TokenBar-<version>.dmg`** (or any `*.dmg` name) to the release. The website resolves the latest `.dmg` automatically via the GitHub Releases API.
+
 ## Distribution Notes
 
 TokenBar is a menu bar app (`LSUIElement`) with a WidgetKit extension and App Group entitlements.

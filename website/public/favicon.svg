@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Email Signature Editor">
+  <defs>
+    <style>
+      .tile { fill: #18181b; }
+      .mail {
+        fill: none;
+        stroke: #fafafa;
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pen {
+        fill: none;
+        stroke: #a5b4fc;
+        stroke-width: 2.35;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      @media (prefers-color-scheme: light) {
+        .tile { fill: #f4f4f5; }
+        .mail {
+          stroke: #18181b;
+        }
+        .pen {
+          stroke: #4f46e5;
+        }
+      }
+    </style>
+  </defs>
+  <rect class="tile" width="32" height="32" rx="8" />
+  <!-- Envelope (slightly lower so the pen reads as on top) -->
+  <g transform="translate(4 6)">
+    <rect class="mail" x="2" y="4" width="20" height="16" rx="2" />
+    <path class="mail" d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </g>
+  <!-- Pen over the flap: rotate around center, scale, then place (Lucide pencil paths) -->
+  <g transform="translate(17 4)">
+    <g transform="scale(0.58)">
+      <g transform="translate(12 12) rotate(-30) translate(-12 -12)">
+        <!-- Lucide pencil (stroke paths, 24x24) -->
+        <path class="pen" d="M12 19h9" />
+        <path
+          class="pen"
+          d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
+        />
+      </g>
+    </g>
+  </g>
+</svg>

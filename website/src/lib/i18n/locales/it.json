@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "home": "Home",
+    "docs": "Docs"
+  },
+  "language": "Language",
+  "actions": {
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode"
+  },
+  "download": {
+    "label": "Download for macOS",
+    "hint": "Requires macOS 26 (Tahoe) or later",
+    "fallback": "View all releases"
+  },
+  "home": {
+    "badge": "macOS menu bar app",
+    "title": "Track AI usage from your menu bar",
+    "subtitle": "TokenBar aggregates tokens, credits, spend, quotas, and burn rate across Cursor, OpenAI, Anthropic, and more—without opening separate dashboards.",
+    "featuresTitle": "Everything in one glance",
+    "features": {
+      "menuBar": {
+        "title": "Menu bar indicator",
+        "description": "Percentage, progress bar, spend, credits, burn rate, or multi-provider aggregate."
+      },
+      "providers": {
+        "title": "Multiple providers",
+        "description": "Cursor Personal & Team, OpenAI, Anthropic, and a custom HTTP proxy."
+      },
+      "forecast": {
+        "title": "Usage forecasting",
+        "description": "Burn rate and exhaustion estimates from local history."
+      },
+      "alerts": {
+        "title": "Native alerts",
+        "description": "macOS notifications at usage thresholds and forecasted exhaustion."
+      },
+      "widget": {
+        "title": "Desktop widget",
+        "description": "Notification Center widget with cached usage snapshots."
+      },
+      "privacy": {
+        "title": "Privacy-first",
+        "description": "Credentials stay in Keychain. Diagnostics export never includes secrets."
+      }
+    },
+    "openSource": "Open source on GitHub"
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "Install TokenBar, connect providers, and customize how usage appears in your menu bar.",
+    "installTitle": "Install",
+    "installSteps": [
+      "Download the latest DMG from GitHub Releases.",
+      "Open the disk image and drag TokenBar to Applications.",
+      "Launch TokenBar—it lives in the menu bar with no Dock icon."
+    ],
+    "quickStartTitle": "Quick start",
+    "quickStartSteps": [
+      "Click the menu bar icon and open Settings.",
+      "Connect a provider under Providers (e.g. Cursor Personal or Demo Provider).",
+      "Pick a display mode under General.",
+      "Use Refresh Now or enable automatic refresh."
+    ],
+    "providersTitle": "Supported providers",
+    "providers": {
+      "cursorPersonal": "Cursor Personal — session cookie from the dashboard",
+      "cursorTeam": "Cursor Team — admin API key",
+      "openai": "OpenAI — organization Admin API key",
+      "anthropic": "Anthropic — Admin API key",
+      "proxy": "Custom Proxy — optional bearer token + canonical JSON endpoint",
+      "demo": "Demo Provider — no credentials (advanced / testing)"
+    },
+    "repoDocsTitle": "Repository documentation",
+    "repoDocsDescription": "Architecture, development setup, and contribution guides live in the main repository.",
+    "links": {
+      "development": "Development guide",
+      "architecture": "Architecture",
+      "contributing": "Contributing",
+      "changelog": "Changelog",
+      "security": "Security policy"
+    }
+  }
+}

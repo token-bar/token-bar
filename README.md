@@ -35,10 +35,9 @@ See [docs/development.md](docs/development.md) for connection steps.
 
 ## Install
 
-1. Open [Releases](https://github.com/token-bar/token-bar/releases)
-2. Download the latest `TokenBar-*.dmg`
-3. Open the DMG and drag **TokenBar** to Applications
-4. Launch TokenBar — it appears in the menu bar (no Dock icon)
+1. Download from **[token-bar.pages.dev](https://token-bar.pages.dev)** or [GitHub Releases](https://github.com/token-bar/token-bar/releases)
+2. Open the DMG and drag **TokenBar** to Applications
+3. Launch TokenBar — it appears in the menu bar (no Dock icon)
 
 On first launch, macOS may ask you to allow notifications if you enable usage alerts.
 
