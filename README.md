@@ -1,4 +1,4 @@
-<img src=".github/Icon-cropped.png" width="200" alt="App icon" align="left"/>
+<img src=".github/icon-cropped.png" width="200" alt="App icon" align="left"/>
 
 <div>
 <h3>Token Bar</h3>
