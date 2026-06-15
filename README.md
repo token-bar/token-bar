@@ -1,8 +1,30 @@
-# TokenBar
+<img src=".github/Icon-cropped.png" width="200" alt="App icon" align="left"/>
 
-TokenBar is a macOS menu bar app that tracks AI usage across multiple providers in one place. See tokens, credits, spend, quotas, and burn rate at a glance—without opening separate provider dashboards.
+<div>
+<h3>Token Bar</h3>
+<p>TokenBar is a macOS menu bar app that tracks AI usage across multiple providers in one place. See tokens, credits, spend, quotas, and burn rate at a glance—without opening separate provider dashboards.
+</p>
+<a href="https://github.com/token-bar/token-bar/releases"><img src=".github/macos_badge_noborder.png" width="175" alt="Download for macOS"/></a>
+</div>
 
+<br/><br/>
+
+<div align="center">
+
+[![Downloads](https://img.shields.io/badge/downloads-GitHub%20Releases-007ec6)](https://github.com/token-bar/token-bar/releases)
+[![Release](https://img.shields.io/github/v/release/token-bar/token-bar)](https://github.com/token-bar/token-bar/releases)
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/token-bar/token-bar/blob/main/LICENSE)
+[![macOS](https://img.shields.io/badge/macOS-26+-blue)](https://github.com/token-bar/token-bar)
 [![CI](https://github.com/token-bar/token-bar/actions/workflows/ci.yml/badge.svg)](https://github.com/token-bar/token-bar/actions/workflows/ci.yml)
+
+<br/>
+<br/>
+
+<img src=".github/screenshot.png" width="824" alt="Screenshot" style="border-radius: 5px;"/><br/>
+
+</div>
+
+<hr>
 
 ## Features
 
