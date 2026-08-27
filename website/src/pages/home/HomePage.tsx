@@ -1,94 +1,48 @@
 import { useTranslation } from 'react-i18next';
-import {
-  Activity,
-  Bell,
-  LayoutDashboard,
-  Lock,
-  Plug,
-  TrendingUp,
-} from 'lucide-react';
 import { DownloadButton } from '@/components/DownloadButton';
-import { LibraryCard } from '@/components/ui/LibraryCard';
-import { Card, CardContent } from '@/components/ui/card';
-import { RELEASES_PAGE_URL, REPO_URL } from '@/utils/releases';
-
-const featureIcons = {
-  menuBar: LayoutDashboard,
-  providers: Plug,
-  forecast: TrendingUp,
-  alerts: Bell,
-  widget: Activity,
-  privacy: Lock,
-} as const;
-
-const featureKeys = Object.keys(featureIcons) as (keyof typeof featureIcons)[];
+import { FeatureShowcase } from '@/components/FeatureShowcase';
 
 export default function HomePage() {
   const { t } = useTranslation();
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-col gap-12 pb-8">
-      <section className="flex flex-col items-center gap-6 pt-4 text-center sm:pt-8">
-        <span className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-          {t('home.badge')}
-        </span>
-        <div className="space-y-4">
-          <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-5xl">
-            {t('home.title')}
-          </h1>
-          <p className="mx-auto max-w-2xl text-base text-muted-foreground text-pretty sm:text-lg">
-            {t('home.subtitle')}
-          </p>
+    <main className="flex flex-col">
+      <section className="landing-hero">
+        <div className="landing-container flex flex-col items-center gap-8 pt-10 text-center sm:pt-14 md:pt-20">
+          <p className="landing-eyebrow">{t('home.badge')}</p>
+          <div className="space-y-5">
+            <h1 className="landing-hero-title text-balance">{t('home.title')}</h1>
+            <p className="landing-hero-subtitle mx-auto max-w-2xl text-pretty">
+              {t('home.subtitle')}
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <DownloadButton size="lg" className="rounded-full px-8" />
+            <p className="text-[11px] tracking-wide text-muted-foreground uppercase">
+              {t('download.hint')}
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col items-center gap-2">
-          <DownloadButton size="lg" />
-          <p className="text-xs text-muted-foreground">{t('download.hint')}</p>
-          <a
-            href={RELEASES_PAGE_URL}
-            className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-          >
-            {t('download.fallback')}
-          </a>
+
+        <div className="landing-container flex justify-center pb-4 pt-10 md:pb-8 md:pt-14">
+          <img
+            src="/screenshot.png"
+            alt={t('home.heroAlt')}
+            className="w-full max-w-4xl rounded-xl border border-border shadow-lg"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </section>
 
-      <section className="space-y-6">
-        <h2 className="text-center text-xl font-semibold tracking-tight">
-          {t('home.featuresTitle')}
-        </h2>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featureKeys.map((key) => {
-            const Icon = featureIcons[key];
-            return (
-              <LibraryCard
-                key={key}
-                title={t(`home.features.${key}.title`)}
-                subtitle={t(`home.features.${key}.description`)}
-                content={
-                  <div className="flex h-28 items-center justify-center border-b border-border bg-muted/40">
-                    <Icon className="size-10 text-primary/80" aria-hidden />
-                  </div>
-                }
-              />
-            );
-          })}
-        </ul>
-      </section>
+      <FeatureShowcase />
 
-      <section className="flex justify-center">
-        <Card className="w-full max-w-md border-dashed">
-          <CardContent className="flex flex-col items-center gap-3 py-6 text-center">
-            <p className="text-sm text-muted-foreground">{t('home.openSource')}</p>
-            <a
-              href={REPO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-primary underline-offset-4 hover:underline"
-            >
-              github.com/token-bar/token-bar
-            </a>
-          </CardContent>
-        </Card>
+      <section className="landing-cta border-t border-border/60">
+        <div className="landing-container flex flex-col items-center gap-5 py-20 text-center md:py-28">
+          <h2 className="landing-section-title max-w-2xl text-balance">{t('home.ctaTitle')}</h2>
+          <p className="max-w-lg text-base text-muted-foreground text-pretty">{t('home.ctaSubtitle')}</p>
+          <DownloadButton size="lg" className="rounded-full px-8" />
+        </div>
       </section>
     </main>
   );

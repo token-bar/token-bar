@@ -1,7 +1,8 @@
 {
   "nav": {
     "home": "Home",
-    "docs": "Docs"
+    "docs": "Docs",
+    "privacy": "Privacy"
   },
   "language": "Language",
   "actions": {
@@ -13,10 +14,17 @@
     "hint": "Requires macOS 26 (Tahoe) or later",
     "fallback": "View all releases"
   },
+  "app": {
+    "name": "TokenBar",
+    "nameShort": "TokenBar",
+    "tagline": "AI usage tracker for macOS"
+  },
   "home": {
     "badge": "macOS menu bar app",
     "title": "Track AI usage from your menu bar",
-    "subtitle": "TokenBar aggregates tokens, credits, spend, quotas, and burn rate across Cursor, OpenAI, Anthropic, and more—without opening separate dashboards.",
+    "subtitle": "$t(app.name) aggregates tokens, credits, spend, quotas, and burn rate across Cursor, OpenAI, Anthropic, and more—without opening separate dashboards.",
+    "heroAlt": "$t(app.name) menu bar app on macOS",
+    "featuresEyebrow": "Built for developers",
     "featuresTitle": "Everything in one glance",
     "features": {
       "menuBar": {
@@ -44,11 +52,61 @@
         "description": "Credentials stay in Keychain. Diagnostics export never includes secrets."
       }
     },
-    "openSource": "Open source on GitHub"
+    "ctaTitle": "Start tracking from your menu bar",
+    "ctaSubtitle": "Download $t(app.name) free for macOS."
+  },
+  "footer": {
+    "tagline": "AI usage tracking across providers — designed for macOS.",
+    "openSource": "Open source on GitHub",
+    "copyright": "Copyright © {{year}} TokenBar. All rights reserved.",
+    "columns": {
+      "product": "Product",
+      "legal": "Legal",
+      "openSource": "Open Source"
+    },
+    "links": {
+      "org": "GitHub organization",
+      "repo": "Repository",
+      "author": "@{{author}}"
+    }
+  },
+  "privacy": {
+    "eyebrow": "Legal",
+    "title": "Privacy Policy",
+    "updated": "Last updated: August 2026",
+    "intro": "$t(app.name) is built to keep your usage data on your Mac. We do not operate servers that collect your provider credentials or usage history.",
+    "contact": "Questions? Reach the author on GitHub:",
+    "sections": [
+      {
+        "title": "Summary",
+        "body": "$t(app.name) does not require an account with us. We do not sell your data. We do not use analytics, advertising networks, crash reporting SDKs, or third-party trackers in the app or on this website."
+      },
+      {
+        "title": "Data stored on your Mac",
+        "body": "Provider credentials are stored in the macOS Keychain. Usage history, preferences, and widget snapshots are stored locally on your Mac. This data never leaves your device except when the app calls provider APIs you configure."
+      },
+      {
+        "title": "This website",
+        "body": "This landing page does not use cookies, analytics, or embedded third-party widgets. We do not collect personal information when you browse token-bar.pages.dev."
+      },
+      {
+        "title": "Third parties",
+        "body": "GitHub release downloads and GitHub links on this site send you to GitHub. Provider connectors call the APIs you configure (Cursor, OpenAI, Anthropic, or your proxy). We do not integrate any other third-party services."
+      },
+      {
+        "title": "Open source",
+        "body": "$t(app.name) is open source. You can review the application code on GitHub to verify how data is handled."
+      },
+      {
+        "title": "Changes",
+        "body": "If this policy changes, we will update this page. Continued use of the app or website after changes constitutes acceptance of the updated policy."
+      }
+    ]
   },
   "docs": {
+    "eyebrow": "Guide",
     "title": "Documentation",
-    "subtitle": "Install TokenBar, connect providers, and customize how usage appears in your menu bar.",
+    "subtitle": "Install $t(app.name), connect providers, and customize how usage appears in your menu bar.",
     "installTitle": "Install",
     "installSteps": [
       "Download the latest DMG from GitHub Releases.",
@@ -71,14 +129,15 @@
       "proxy": "Custom Proxy — optional bearer token + canonical JSON endpoint",
       "demo": "Demo Provider — no credentials (advanced / testing)"
     },
-    "repoDocsTitle": "Repository documentation",
-    "repoDocsDescription": "Architecture, development setup, and contribution guides live in the main repository.",
+    "repoDocsTitle": "Repository",
+    "repoDocsDescription": "$t(app.name) is open source. Development setup and contribution guides live on GitHub.",
     "links": {
       "development": "Development guide",
       "architecture": "Architecture",
       "contributing": "Contributing",
       "changelog": "Changelog",
       "security": "Security policy"
-    }
+    },
+    "viewOnGitHub": "View repository on GitHub"
   }
 }

@@ -1,14 +1,16 @@
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ExternalLink } from 'lucide-react';
+import { ChevronRight, ExternalLink } from 'lucide-react';
 import { DownloadButton } from '@/components/DownloadButton';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { REPO_URL } from '@/utils/releases';
+import { cn } from '@/utils/cn';
 
 const repoDocLinks = [
-  { key: 'development', href: 'https://github.com/token-bar/token-bar/blob/main/docs/development.md' },
-  { key: 'architecture', href: 'https://github.com/token-bar/token-bar/blob/main/docs/architecture.md' },
-  { key: 'contributing', href: 'https://github.com/token-bar/token-bar/blob/main/CONTRIBUTING.md' },
-  { key: 'changelog', href: 'https://github.com/token-bar/token-bar/blob/main/CHANGELOG.md' },
-  { key: 'security', href: 'https://github.com/token-bar/token-bar/blob/main/SECURITY.md' },
+  { key: 'development', href: `${REPO_URL}/blob/main/docs/development.md` },
+  { key: 'architecture', href: `${REPO_URL}/blob/main/docs/architecture.md` },
+  { key: 'contributing', href: `${REPO_URL}/blob/main/CONTRIBUTING.md` },
+  { key: 'changelog', href: `${REPO_URL}/blob/main/CHANGELOG.md` },
+  { key: 'security', href: `${REPO_URL}/blob/main/SECURITY.md` },
 ] as const;
 
 const providerKeys = [
@@ -20,11 +22,33 @@ const providerKeys = [
   'demo',
 ] as const;
 
-function StepList({ steps }: { steps: string[] }) {
+function DocsSection({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <ol className="list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
-      {steps.map((step) => (
-        <li key={step}>{step}</li>
+    <section className={cn('docs-section', className)}>
+      <h2 className="docs-section-title">{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+function NumberedSteps({ steps }: { steps: string[] }) {
+  return (
+    <ol className="docs-steps">
+      {steps.map((step, index) => (
+        <li key={step} className="docs-step">
+          <span className="docs-step-number" aria-hidden>
+            {index + 1}
+          </span>
+          <p className="docs-step-text">{step}</p>
+        </li>
       ))}
     </ol>
   );
@@ -37,70 +61,82 @@ export default function DocsPage() {
   const quickStartSteps = t('docs.quickStartSteps', { returnObjects: true }) as string[];
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-8 pb-8">
-      <header className="space-y-3 text-center sm:text-left">
-        <h1 className="text-3xl font-semibold tracking-tight">{t('docs.title')}</h1>
-        <p className="text-muted-foreground text-pretty">{t('docs.subtitle')}</p>
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
-          <DownloadButton />
-          <p className="text-xs text-muted-foreground">{t('download.hint')}</p>
+    <main className="flex flex-col">
+      <section className="landing-hero">
+        <div className="landing-container max-w-3xl py-12 md:py-16">
+          <header className="space-y-4 border-b border-border/60 pb-8">
+            <p className="landing-eyebrow">{t('docs.eyebrow')}</p>
+            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">{t('docs.title')}</h1>
+            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground text-pretty">
+              {t('docs.subtitle')}
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <DownloadButton className="rounded-full" />
+              <p className="text-[11px] tracking-wide text-muted-foreground uppercase">
+                {t('download.hint')}
+              </p>
+            </div>
+          </header>
+
+          <div className="flex flex-col">
+            <DocsSection title={t('docs.installTitle')}>
+              <NumberedSteps steps={installSteps} />
+            </DocsSection>
+
+            <DocsSection title={t('docs.quickStartTitle')}>
+              <NumberedSteps steps={quickStartSteps} />
+            </DocsSection>
+
+            <DocsSection title={t('docs.providersTitle')}>
+              <ul className="docs-steps">
+                {providerKeys.map((key) => (
+                  <li key={key} className="docs-step-text list-none pl-0">
+                    {t(`docs.providers.${key}`)}
+                  </li>
+                ))}
+              </ul>
+            </DocsSection>
+
+            <DocsSection title={t('docs.repoDocsTitle')} className="border-b-0">
+              <p className="docs-section-lead">{t('docs.repoDocsDescription')}</p>
+              <ul className="docs-link-list">
+                {repoDocLinks.map(({ key, href }) => (
+                  <li key={key}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="docs-link-row"
+                    >
+                      <span>{t(`docs.links.${key}`)}</span>
+                      <ExternalLink className="size-4 shrink-0 opacity-50" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <a
+                    href={REPO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="docs-link-row docs-link-row-primary"
+                  >
+                    <span>{t('docs.viewOnGitHub')}</span>
+                    <ChevronRight className="size-4 shrink-0 opacity-60" aria-hidden />
+                  </a>
+                </li>
+              </ul>
+            </DocsSection>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">{t('docs.installTitle')}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <StepList steps={installSteps} />
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">{t('docs.quickStartTitle')}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <StepList steps={quickStartSteps} />
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">{t('docs.providersTitle')}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            {providerKeys.map((key) => (
-              <li key={key}>{t(`docs.providers.${key}`)}</li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">{t('docs.repoDocsTitle')}</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-sm text-muted-foreground">{t('docs.repoDocsDescription')}</p>
-          <ul className="space-y-2">
-            {repoDocLinks.map(({ key, href }) => (
-              <li key={key}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary underline-offset-4 hover:underline"
-                >
-                  {t(`docs.links.${key}`)}
-                  <ExternalLink className="size-3.5" aria-hidden />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      <section className="landing-cta border-t border-border/60">
+        <div className="landing-container flex max-w-3xl flex-col items-start gap-5 py-16 md:py-20">
+          <h2 className="landing-section-title max-w-xl text-balance">{t('home.ctaTitle')}</h2>
+          <p className="max-w-lg text-base text-muted-foreground text-pretty">{t('home.ctaSubtitle')}</p>
+          <DownloadButton size="lg" className="rounded-full px-8" />
+        </div>
+      </section>
     </main>
   );
 }

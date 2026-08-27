@@ -1,7 +1,7 @@
 {
-  "name": "token-bar",
-  "version": "0.1.0",
-  "description": "Token Bar App is a macOS menu bar app that tracks AI usage across multiple providers in one place. See tokens, credits, spend, quotas, and burn rate at a glance—without opening separate provider dashboards.",
+  "name": "token-bar-website",
+  "version": "1.0.0",
+  "description": "Landing page for TokenBar — AI usage tracker for macOS.",
   "type": "module",
   "scripts": {
     "dev": "vite",
