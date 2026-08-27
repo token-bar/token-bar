@@ -51,3 +51,7 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 **Phase 11 (complete):** `AppVersion`, `LaunchAtLoginService`, `DiagnosticsExporter`, and General settings section.
 
 See `specs/` for detailed requirements per feature.
+
+---
+
+[← Docs index](README.md)

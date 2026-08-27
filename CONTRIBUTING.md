@@ -6,7 +6,7 @@ Thank you for your interest in contributing. TokenBar is a spec-driven macOS pro
 
 1. Check [open issues](https://github.com/token-bar/token-bar/issues) and [pull requests](https://github.com/token-bar/token-bar/pulls) to avoid duplicate work
 2. For larger changes, open an issue first to discuss approach
-3. Read [docs/architecture.md](docs/architecture.md) and [INSTRUCTIONS.md](INSTRUCTIONS.md)
+3. Read [docs/README.md](docs/README.md), [.cursor/rules.md](.cursor/rules.md), and [INSTRUCTIONS.md](INSTRUCTIONS.md)
 
 ## Development setup
 

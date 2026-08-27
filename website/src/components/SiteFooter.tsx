@@ -5,7 +5,7 @@ import {
   GITHUB_ORG_URL,
   GITHUB_OWNER,
   GITHUB_PROFILE_URL,
-  RELEASES_PAGE_URL,
+  APP_STORE_URL,
   REPO_URL,
 } from '@/utils/releases';
 
@@ -69,7 +69,7 @@ export function SiteFooter() {
             links={[
               { type: 'internal', to: '/', label: t('nav.home') },
               { type: 'internal', to: '/docs', label: t('nav.docs') },
-              { type: 'external', href: RELEASES_PAGE_URL, label: t('download.label') },
+              { type: 'external', href: APP_STORE_URL, label: t('download.label') },
             ]}
           />
 

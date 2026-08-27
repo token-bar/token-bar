@@ -34,4 +34,4 @@ First public release.
 
 - macOS 26 (Tahoe) or later
 
-[0.1.0]: https://github.com/token-bar/token-bar/releases/tag/v0.1.0
+[0.1.0]: https://github.com/token-bar/token-bar/tree/v0.1.0

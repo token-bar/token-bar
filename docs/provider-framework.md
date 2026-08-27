@@ -37,3 +37,7 @@ TokenBar integrates AI providers through a protocol-based plugin layer. UI and d
 * Network timeout: 5 seconds
 
 See `specs/002-provider-framework.md`, `specs/007-provider-authentication.md`, and `specs/010-provider-connectors.md`.
+
+---
+
+[← Docs index](README.md)

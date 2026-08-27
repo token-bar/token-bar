@@ -16,27 +16,8 @@ export const APP_NAME_SHORT = 'TokenBar';
 
 export const SITE_URL = 'https://token-bar.pages.dev';
 
-export const GITHUB_RELEASES_API = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
+export const APP_STORE_URL = 'https://apps.apple.com/app/id6805913901';
 
-export const RELEASES_PAGE_URL = `https://github.com/${GITHUB_REPO}/releases/latest`;
-
-interface GitHubReleaseAsset {
-  name: string;
-  browser_download_url: string;
-}
-
-interface GitHubLatestRelease {
-  assets?: GitHubReleaseAsset[];
-}
-
-/** Resolves the newest release `.dmg` asset (e.g. TokenBar-0.1.0.dmg). */
-export async function fetchLatestDmgDownloadUrl(): Promise<string | null> {
-  const response = await fetch(GITHUB_RELEASES_API);
-  if (!response.ok) {
-    return null;
-  }
-
-  const release = (await response.json()) as GitHubLatestRelease;
-  const dmg = release.assets?.find((asset) => asset.name.toLowerCase().endsWith('.dmg'));
-  return dmg?.browser_download_url ?? null;
-}
+/** Mac App Store promotional text (170 char max) */
+export const APP_STORE_PROMOTIONAL_TEXT =
+  'TokenBar — track tokens, credits, spend, and burn rate across Cursor, OpenAI, Anthropic, and more from your menu bar. Alerts, widgets, Keychain.';

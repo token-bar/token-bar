@@ -10,9 +10,8 @@
     "lightMode": "Light mode"
   },
   "download": {
-    "label": "Download for macOS",
-    "hint": "Requires macOS 26 (Tahoe) or later",
-    "fallback": "View all releases"
+    "label": "Download on the Mac App Store",
+    "hint": "Requires macOS 26 (Tahoe) or later"
   },
   "app": {
     "name": "TokenBar",
@@ -91,7 +90,7 @@
       },
       {
         "title": "Third parties",
-        "body": "GitHub release downloads and GitHub links on this site send you to GitHub. Provider connectors call the APIs you configure (Cursor, OpenAI, Anthropic, or your proxy). We do not integrate any other third-party services."
+        "body": "The Mac App Store download link sends you to Apple. GitHub links on this site send you to GitHub. Provider connectors call the APIs you configure (Cursor, OpenAI, Anthropic, or your proxy). We do not integrate any other third-party services."
       },
       {
         "title": "Open source",
@@ -109,7 +108,7 @@
     "subtitle": "Install $t(app.name), connect providers, and customize how usage appears in your menu bar.",
     "installTitle": "Install",
     "installSteps": [
-      "Download the latest DMG from GitHub Releases.",
+      "Download $t(app.name) from the Mac App Store.",
       "Open the disk image and drag TokenBar to Applications.",
       "Launch TokenBar—it lives in the menu bar with no Dock icon."
     ],

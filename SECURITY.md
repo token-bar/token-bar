@@ -33,7 +33,7 @@ In scope:
 
 - TokenBar macOS app and WidgetKit extension in this repository
 - Credential handling (Keychain), diagnostics export, and provider connectors
-- Supply chain for official GitHub Releases artifacts
+- Supply chain for Mac App Store builds distributed by Apple
 
 Out of scope:
 

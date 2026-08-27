@@ -245,3 +245,12 @@ Must test:
 * Never implement monolithic services
 * Prefer dependency injection
 * Prefer protocols over classes
+
+---
+
+# Agent resources
+
+1. [.cursor/rules.md](.cursor/rules.md) — Cursor editing rules
+2. [docs/README.md](docs/README.md) — documentation index
+3. [.agents/skills/README.md](.agents/skills/README.md) — skill packs catalog
+4. [.agents/skills/xcode-tools/SKILL.md](.agents/skills/xcode-tools/SKILL.md) — Xcode MCP workflow

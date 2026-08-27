@@ -2,11 +2,13 @@
 
 ## Getting Started
 
-1. Open `TokenBar.xcodeproj` in Xcode 16+
-2. Select the **TokenBar** scheme
-3. Build and run (⌘R)
+End users install **TokenBar** from the Mac App Store. To run from source:
 
-The app launches to the menu bar only (no dock icon).
+1. Clone the repository and open `TokenBar.xcodeproj` in **Xcode 26+**
+2. Select the **TokenBar** scheme and **My Mac** as the run destination
+3. Build and run (**⌘R**)
+
+The app launches to the menu bar only (no Dock icon).
 
 ## Project Layout
 
@@ -57,3 +59,7 @@ Phases 1–10 are complete.
 
 1. Settings → **Advanced** → enable advanced providers
 2. Configure **Custom Proxy** with URL and optional bearer token
+
+---
+
+[← Docs index](README.md)
