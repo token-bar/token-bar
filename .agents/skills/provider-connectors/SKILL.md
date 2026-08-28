@@ -8,16 +8,16 @@ description: >-
 
 # Provider connectors — TokenBar
 
-UI and domain code must **never** import provider implementations. All provider logic stays in `TokenBar/Providers/`.
+UI and domain code must **never** import provider implementations. All provider logic stays in `src/TokenBar/Providers/`.
 
 ## Layer rules
 
 | Layer | Allowed |
 |-------|---------|
-| `TokenBar/UI/` | Observe `UsageStore` only — no provider imports |
-| `TokenBar/Domain/` | Canonical models — no networking |
-| `TokenBar/Providers/` | `ProviderConnector`, API clients, mapping to `UsageSnapshot` |
-| `TokenBar/Services/` | `UsageService`, `ProviderRegistry`, Keychain, lifecycle |
+| `src/TokenBar/UI/` | Observe `UsageStore` only — no provider imports |
+| `src/TokenBar/Domain/` | Canonical models — no networking |
+| `src/TokenBar/Providers/` | `ProviderConnector`, API clients, mapping to `UsageSnapshot` |
+| `src/TokenBar/Services/` | `UsageService`, `ProviderRegistry`, Keychain, lifecycle |
 
 ## Adding a provider
 
@@ -26,7 +26,7 @@ UI and domain code must **never** import provider implementations. All provider 
 3. Map all provider-specific responses into canonical models (`UsageSnapshot`, `ProviderAccount`).
 4. Register in `BuiltinProviderRegistration`.
 5. Add Settings UI for credentials (if required) — still no provider types in views; use descriptors.
-6. Add unit tests in `TokenBarTests/Providers/`.
+6. Add unit tests in `src/TokenBarTests/Providers/`.
 7. Never invent undocumented API endpoints.
 
 ## Security

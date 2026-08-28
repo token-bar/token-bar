@@ -13,8 +13,8 @@ The widget extension reads cached usage from App Group storage written by the ma
 
 | Target | Path |
 |--------|------|
-| Main app publisher | `TokenBar/Services/` (widget snapshot on refresh) |
-| Widget extension | `TokenBarWidget/` |
+| Main app publisher | `src/TokenBar/Services/` (widget snapshot on refresh) |
+| Widget extension | `src/TokenBarWidget/` |
 
 ## Workflow
 

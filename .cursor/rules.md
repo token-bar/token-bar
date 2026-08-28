@@ -5,10 +5,10 @@ Guidance for AI assistants working in this repository.
 ## Architecture
 
 - **Provider-agnostic** macOS menu bar app — UI and domain code never import provider implementations
-- `TokenBar/UI/` — SwiftUI only; observes `UsageStore`, no networking or provider imports
-- `TokenBar/Domain/` — pure logic and canonical models; no networking
-- `TokenBar/Providers/` — `ProviderConnector` implementations and registry only
-- `TokenBar/Services/` — orchestration, Keychain, persistence, notifications
+- `src/TokenBar/UI/` — SwiftUI only; observes `UsageStore`, no networking or provider imports
+- `src/TokenBar/Domain/` — pure logic and canonical models; no networking
+- `src/TokenBar/Providers/` — `ProviderConnector` implementations and registry only
+- `src/TokenBar/Services/` — orchestration, Keychain, persistence, notifications
 - Provider credentials in **Keychain** only; never log or embed secrets
 - Marketing site changes belong in `website/` (React + Vite)
 

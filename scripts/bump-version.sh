@@ -9,7 +9,7 @@ fi
 
 VERSION="$1"
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-PROJECT_FILE="$ROOT_DIR/TokenBar.xcodeproj/project.pbxproj"
+PROJECT_FILE="$ROOT_DIR/src/TokenBar.xcodeproj/project.pbxproj"
 
 if [[ ! -f "$PROJECT_FILE" ]]; then
   echo "Could not find project file at $PROJECT_FILE" >&2

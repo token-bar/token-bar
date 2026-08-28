@@ -46,7 +46,7 @@ Provider-specific data never leaks outside connectors.
 
 ## Phase 1 Implementation
 
-Canonical Swift types in `TokenBar/Domain/Models/`:
+Canonical Swift types in `src/TokenBar/Domain/Models/`:
 
 * `ProviderAccount` — identity and connection state
 * `UsageSnapshot` — usage percent, credits, spend, quota, timestamp

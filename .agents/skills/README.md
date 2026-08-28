@@ -23,11 +23,11 @@ Cursor skill packs and module guides for **TokenBar**.
 
 ## Xcode MCP
 
-Configured in Cursor as **xcode-tools** (`xcrun mcpbridge`). Requires Xcode running with `TokenBar.xcodeproj` open. Start with the [xcode-tools](xcode-tools/SKILL.md) skill.
+Configured in Cursor as **xcode-tools** (`xcrun mcpbridge`). Requires Xcode running with `src/TokenBar.xcodeproj` open. Start with the [xcode-tools](xcode-tools/SKILL.md) skill.
 
 ## Extension order
 
 1. Read **INSTRUCTIONS.md**, **docs/README.md**, and **`.cursor/rules.md`**
 2. Pick the relevant skill pack(s) from the table above
-3. Add application code under `TokenBar/`
+3. Add application code under `src/`
 4. Document features in `specs/` and keep `docs/architecture.md` phase status current

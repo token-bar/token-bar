@@ -19,7 +19,7 @@ Runs automated build and test on every push and pull request to `main`. Ensures 
 |---------|-------|
 | Runner | `macos-26` (matches deployment target) |
 | Xcode | `latest-stable` via `maxim-lobanov/setup-xcode@v1` |
-| Project | `TokenBar.xcodeproj` |
+| Project | `src/TokenBar.xcodeproj` |
 | Scheme | `TokenBar` |
 | Destination | `platform=macOS` |
 | Signing | Disabled (`CODE_SIGNING_ALLOWED=NO`) |

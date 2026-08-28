@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: |
           xcodebuild \
-            -project TokenBar.xcodeproj \
+            -project src/TokenBar.xcodeproj \
             -scheme TokenBar \
             -destination 'platform=macOS' \
             -configuration Debug \
@@ -36,7 +36,7 @@ jobs:
       - name: Test
         run: |
           xcodebuild \
-            -project TokenBar.xcodeproj \
+            -project src/TokenBar.xcodeproj \
             -scheme TokenBar \
             -destination 'platform=macOS' \
             -configuration Debug \

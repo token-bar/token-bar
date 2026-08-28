@@ -15,7 +15,7 @@ Use the **xcode-tools** MCP server (`user-xcode-tools` in Cursor) instead of raw
 
 | Setting | Value |
 |---------|-------|
-| Project | `TokenBar.xcodeproj` |
+| Project | `src/TokenBar.xcodeproj` |
 | Scheme | `TokenBar` |
 | Platform | macOS 26+ (`My Mac` destination) |
 | Widget | `TokenBarWidget` extension |
@@ -33,7 +33,7 @@ Use the **xcode-tools** MCP server (`user-xcode-tools` in Cursor) instead of raw
 
 ## Workflow
 
-1. Open `TokenBar.xcodeproj` in Xcode and select the **TokenBar** scheme with **My Mac**.
+1. Open `src/TokenBar.xcodeproj` in Xcode and select the **TokenBar** scheme with **My Mac**.
 2. Call `BuildProject` after Swift changes (warnings are errors in CI).
 3. On failure, call `GetBuildLog` and `XcodeListNavigatorIssues` before editing files.
 4. Call `RunAllTests` before finishing a feature.
@@ -52,7 +52,7 @@ Requires the Apple Developer Documentation asset downloaded in Xcode (**Settings
 ## Common pitfalls
 
 - Menu bar app — no Dock icon; verify via menu bar icon after run.
-- Provider code belongs in `TokenBar/Providers/` only — never import providers from UI (see `provider-connectors` skill).
+- Provider code belongs in `src/TokenBar/Providers/` only — never import providers from UI (see `provider-connectors` skill).
 - Network calls must respect the 5-second timeout.
 - **Multiple Xcode windows** — pass `tabIdentifier` if more than one workspace tab is open.
 

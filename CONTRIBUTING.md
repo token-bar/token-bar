@@ -11,7 +11,7 @@ Thank you for your interest in contributing. TokenBar is a spec-driven macOS pro
 ## Development setup
 
 1. Fork and clone the repository
-2. Open `TokenBar.xcodeproj` in **Xcode 26+** on **macOS 26+**
+2. Open `src/TokenBar.xcodeproj` in **Xcode 26+** on **macOS 26+**
 3. Build and run the **TokenBar** scheme (⌘R)
 4. Run unit tests (⌘U)
 
@@ -23,11 +23,11 @@ TokenBar uses a **spec-first** process:
 
 1. Update or add a spec under `specs/` describing the behavior change
 2. Implement in the appropriate layer:
-   - `TokenBar/Domain/` — pure logic, no networking
-   - `TokenBar/Providers/` — provider-specific connectors only
-   - `TokenBar/Services/` — orchestration and persistence
-   - `TokenBar/UI/` — SwiftUI, no provider-specific logic
-3. Add or update unit tests in `TokenBarTests/`
+   - `src/TokenBar/Domain/` — pure logic, no networking
+   - `src/TokenBar/Providers/` — provider-specific connectors only
+   - `src/TokenBar/Services/` — orchestration and persistence
+   - `src/TokenBar/UI/` — SwiftUI, no provider-specific logic
+3. Add or update unit tests in `src/TokenBarTests/`
 4. Update `docs/` when behavior or setup changes
 
 Significant architectural decisions may warrant an ADR in `docs/adr/`.
@@ -49,7 +49,7 @@ Significant architectural decisions may warrant an ADR in `docs/adr/`.
 
 ## Adding a provider
 
-See `specs/002-provider-framework.md` and existing connectors under `TokenBar/Providers/`. New providers need:
+See `specs/002-provider-framework.md` and existing connectors under `src/TokenBar/Providers/`. New providers need:
 
 - A factory registered in `BuiltinProviderRegistration`
 - Connector + API client + mapper (as needed)

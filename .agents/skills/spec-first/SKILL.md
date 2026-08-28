@@ -29,7 +29,7 @@ Follow existing numbered specs (`specs/000-product-vision.md` through `specs/014
 
 - [ ] Spec updated or added
 - [ ] Code in the correct layer (UI never imports providers)
-- [ ] Unit tests in `TokenBarTests/`
+- [ ] Unit tests in `src/TokenBarTests/`
 - [ ] `docs/` updated when setup or architecture changes
 - [ ] Phase status in `docs/architecture.md` updated if a phase completes
 - [ ] [CHANGELOG.md](../../CHANGELOG.md) entry for user-facing changes

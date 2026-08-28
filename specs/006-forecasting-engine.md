@@ -26,7 +26,7 @@ Estimate future quota exhaustion from historical usage samples.
 
 ## Requirements
 
-Forecasting logic must be provider-independent and live in `TokenBar/Domain/ForecastingEngine.swift`.
+Forecasting logic must be provider-independent and live in `src/TokenBar/Domain/ForecastingEngine.swift`.
 
 Historical samples are persisted by `UsageHistoryStore` (JSON file in Application Support).
 
