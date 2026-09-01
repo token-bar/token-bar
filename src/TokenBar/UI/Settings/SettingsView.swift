@@ -33,10 +33,6 @@ struct SettingsView: View {
 
     private var sectionSidebar: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("TokenBar")
-                .font(.headline)
-                .padding(.horizontal, 4)
-                .padding(.bottom, 4)
 
             ForEach(SettingsSection.allCases) { section in
                 TokenBarSettingsNavItem(
