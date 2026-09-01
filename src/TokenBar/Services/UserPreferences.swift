@@ -7,6 +7,8 @@ struct UserPreferences {
         static let showAdvancedProviders = "showAdvancedProviders"
         static let notificationsEnabled = "notificationsEnabled"
         static let refreshInterval = "refreshInterval"
+        static let aggregateProviderDisplay = "aggregateProviderDisplay"
+        static let menuBarProviderDisplay = "menuBarProviderDisplay"
     }
 
     private let defaults: UserDefaults
@@ -55,6 +57,23 @@ struct UserPreferences {
         }
         set {
             defaults.set(newValue.rawValue, forKey: Key.refreshInterval)
+        }
+    }
+
+    var menuBarProviderDisplay: MenuBarProviderDisplay {
+        get {
+            if let raw = defaults.string(forKey: Key.menuBarProviderDisplay),
+               let display = MenuBarProviderDisplay(rawValue: raw) {
+                return display
+            }
+            if let raw = defaults.string(forKey: Key.aggregateProviderDisplay),
+               let display = MenuBarProviderDisplay(rawValue: raw) {
+                return display
+            }
+            return .logos
+        }
+        set {
+            defaults.set(newValue.rawValue, forKey: Key.menuBarProviderDisplay)
         }
     }
 

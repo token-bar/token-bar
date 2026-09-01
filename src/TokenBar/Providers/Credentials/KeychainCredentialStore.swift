@@ -4,7 +4,7 @@ import Security
 struct KeychainCredentialStore: ProviderCredentialStore {
     private let service: String
 
-    init(service: String = "com.tokenbar.TokenBar.credentials") {
+    init(service: String = "icu.charlie.TokenBar.credentials") {
         self.service = service
     }
 

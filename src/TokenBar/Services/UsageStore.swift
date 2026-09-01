@@ -21,13 +21,21 @@ final class UsageStore {
         }
     }
     var notificationsEnabled: Bool {
-        didSet { preferences.notificationsEnabled = notificationsEnabled }
+        didSet {
+            preferences.notificationsEnabled = notificationsEnabled
+            if notificationsEnabled {
+                Task { await ensureNotificationAuthorization() }
+            }
+        }
     }
     var refreshInterval: RefreshInterval {
         didSet {
             preferences.refreshInterval = refreshInterval
             updateRefreshSchedule()
         }
+    }
+    var menuBarProviderDisplay: MenuBarProviderDisplay {
+        didSet { preferences.menuBarProviderDisplay = menuBarProviderDisplay }
     }
     var lastRefreshAt: Date?
     var isRefreshing = false
@@ -78,6 +86,7 @@ final class UsageStore {
         self.showAdvancedProviders = preferences.showAdvancedProviders
         self.notificationsEnabled = preferences.notificationsEnabled
         self.refreshInterval = preferences.refreshInterval
+        self.menuBarProviderDisplay = preferences.menuBarProviderDisplay
     }
 
     var activeSnapshot: UsageSnapshot? {
@@ -101,8 +110,13 @@ final class UsageStore {
             snapshot: activeSnapshot,
             forecast: activeForecast,
             aggregate: aggregatedSummary,
+            snapshots: snapshots,
             mode: displayMode
         )
+    }
+
+    var menuBarAggregateItems: [MenuBarProviderUsageItem] {
+        MenuBarAggregateItems.from(snapshots: snapshots)
     }
 
     var nextRefreshAt: Date? {
@@ -121,7 +135,6 @@ final class UsageStore {
             lifecycle: lifecycle
         )
         mergeAccounts(connectedAccounts)
-        _ = await notificationService.requestAuthorization()
         launchAtLoginEnabled = LaunchAtLoginService.isEnabled
         await refresh()
         updateRefreshSchedule()
@@ -383,6 +396,8 @@ final class UsageStore {
 
             guard !output.newAlerts.isEmpty else { continue }
 
+            await ensureNotificationAuthorization()
+
             for alert in output.newAlerts {
                 alerts.insert(alert, at: 0)
                 let notification = UsageNotificationBuilder.build(
@@ -441,6 +456,10 @@ final class UsageStore {
         )
         widgetSnapshotStore.save(payload)
         WidgetTimelineRefresher.reload()
+    }
+
+    private func ensureNotificationAuthorization() async {
+        _ = await notificationService.requestAuthorization()
     }
 
     private static func optionalDouble(from raw: String) -> Double? {

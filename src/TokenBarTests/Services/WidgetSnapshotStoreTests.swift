@@ -2,10 +2,20 @@ import XCTest
 @testable import TokenBar
 
 final class WidgetSnapshotStoreTests: XCTestCase {
-    func testSaveAndLoadPayload() {
-        let suiteName = "WidgetSnapshotStoreTests.\(UUID().uuidString)"
-        let defaults = UserDefaults(suiteName: suiteName)!
-        let store = WidgetSnapshotStore(defaults: defaults)
+    private func makeStore() -> (WidgetSnapshotStore, URL) {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("widget-\(UUID().uuidString).json")
+        return (WidgetSnapshotStore(fileURL: url), url)
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    func testSaveAndLoadPayload() throws {
+        let (store, url) = makeStore()
+        defer { try? FileManager.default.removeItem(at: url) }
+
         let payload = WidgetUsagePayload(
             status: .ready,
             providerName: "Cursor",
@@ -18,16 +28,15 @@ final class WidgetSnapshotStoreTests: XCTestCase {
 
         store.save(payload)
 
-        let reloaded = WidgetSnapshotStore(defaults: defaults)
+        let reloaded = WidgetSnapshotStore(fileURL: url)
         XCTAssertEqual(reloaded.load(), payload)
     }
 
-    func testClearRemovesPayload() {
-        let suiteName = "WidgetSnapshotStoreTests.\(UUID().uuidString)"
-        let defaults = UserDefaults(suiteName: suiteName)!
-        let store = WidgetSnapshotStore(defaults: defaults)
-        store.save(.empty)
+    func testClearRemovesPayload() throws {
+        let (store, url) = makeStore()
+        defer { try? FileManager.default.removeItem(at: url) }
 
+        store.save(.empty)
         store.clear()
 
         XCTAssertNil(store.load())

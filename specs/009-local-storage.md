@@ -14,7 +14,11 @@ Credentials.
 
 ### UserDefaults
 
-Preferences.
+Preferences (standard app container).
+
+### App Group file
+
+Widget usage snapshot (`group.icu.charlie.TokenBar/widget-usage-payload.json`) shared between the main app and WidgetKit extension. Registered on both bundle IDs in the Apple Developer portal.
 
 ### Local File (Phase 4)
 

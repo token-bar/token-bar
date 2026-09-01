@@ -125,6 +125,21 @@
 		NN0000010000000000000102 /* TokenBarPanelChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000101 /* TokenBarPanelChrome.swift */; };
 		NN0000010000000000000104 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000103 /* SettingsSection.swift */; };
 		NN0000010000000000000106 /* TokenBarAccordion.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000105 /* TokenBarAccordion.swift */; };
+		NN0000010000000000000108 /* TokenBarSettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000107 /* TokenBarSettingsWindow.swift */; };
+		XX0000010000000000000102 /* TokenBarSettingsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = XX0000010000000000000101 /* TokenBarSettingsTextField.swift */; };
+		OO0000010000000000000102 /* MenuBarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OO0000010000000000000101 /* MenuBarSettingsView.swift */; };
+		PP0000010000000000000102 /* TokenBarAppActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = PP0000010000000000000101 /* TokenBarAppActivation.swift */; };
+		QQ0000010000000000000103 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = QQ0000010000000000000102 /* PrivacyInfo.xcprivacy */; };
+		QQ0000010000000000000104 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = QQ0000010000000000000102 /* PrivacyInfo.xcprivacy */; };
+		RR0000010000000000000102 /* MenuBarDisplayPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = RR0000010000000000000101 /* MenuBarDisplayPreview.swift */; };
+		SS0000010000000000000102 /* MenuBarAggregateLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SS0000010000000000000101 /* MenuBarAggregateLabelView.swift */; };
+		SS0000010000000000000104 /* MenuBarProviderUsageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = SS0000010000000000000103 /* MenuBarProviderUsageItem.swift */; };
+		SS0000010000000000000106 /* ProviderBrandIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = SS0000010000000000000105 /* ProviderBrandIcon.swift */; };
+		TT0000010000000000000102 /* MenuBarProviderDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = TT0000010000000000000101 /* MenuBarProviderDisplay.swift */; };
+		UU0000010000000000000102 /* MenuBarStyledLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = UU0000010000000000000101 /* MenuBarStyledLabelView.swift */; };
+		VV0000010000000000000102 /* DashboardOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = VV0000010000000000000101 /* DashboardOverview.swift */; };
+		VV0000010000000000000104 /* DashboardOverviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = VV0000010000000000000103 /* DashboardOverviewTests.swift */; };
+		WW0000010000000000000102 /* TokenBarUsageVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = WW0000010000000000000101 /* TokenBarUsageVisuals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +287,21 @@
 		NN0000010000000000000101 /* TokenBarPanelChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarPanelChrome.swift; sourceTree = "<group>"; };
 		NN0000010000000000000103 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		NN0000010000000000000105 /* TokenBarAccordion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarAccordion.swift; sourceTree = "<group>"; };
+		NN0000010000000000000107 /* TokenBarSettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarSettingsWindow.swift; sourceTree = "<group>"; };
+		XX0000010000000000000101 /* TokenBarSettingsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarSettingsTextField.swift; sourceTree = "<group>"; };
+		OO0000010000000000000101 /* MenuBarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsView.swift; sourceTree = "<group>"; };
+		PP0000010000000000000101 /* TokenBarAppActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarAppActivation.swift; sourceTree = "<group>"; };
+		QQ0000010000000000000101 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
+		QQ0000010000000000000102 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		RR0000010000000000000101 /* MenuBarDisplayPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarDisplayPreview.swift; sourceTree = "<group>"; };
+		SS0000010000000000000101 /* MenuBarAggregateLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarAggregateLabelView.swift; sourceTree = "<group>"; };
+		SS0000010000000000000103 /* MenuBarProviderUsageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarProviderUsageItem.swift; sourceTree = "<group>"; };
+		SS0000010000000000000105 /* ProviderBrandIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderBrandIcon.swift; sourceTree = "<group>"; };
+		TT0000010000000000000101 /* MenuBarProviderDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarProviderDisplay.swift; sourceTree = "<group>"; };
+		UU0000010000000000000101 /* MenuBarStyledLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarStyledLabelView.swift; sourceTree = "<group>"; };
+		VV0000010000000000000101 /* DashboardOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardOverview.swift; sourceTree = "<group>"; };
+		VV0000010000000000000103 /* DashboardOverviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardOverviewTests.swift; sourceTree = "<group>"; };
+		WW0000010000000000000101 /* TokenBarUsageVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarUsageVisuals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +347,7 @@
 		AA0000010000000000000014 = {
 			isa = PBXGroup;
 			children = (
+				QQ0000010000000000000105 /* Config */,
 				BB000001000000000000012D /* TokenBar */,
 				AA0000010000000000000011 /* TokenBarWidget */,
 				BB0000010000000000000137 /* TokenBarTests */,
@@ -329,6 +360,7 @@
 			children = (
 				BB0000010000000000000101 /* TokenBarApp.swift */,
 				II0000010000000000000109 /* TokenBar.entitlements */,
+				QQ0000010000000000000102 /* PrivacyInfo.xcprivacy */,
 				BB000001000000000000012E /* App */,
 				BB000001000000000000012F /* Domain */,
 				BB0000010000000000000131 /* Providers */,
@@ -351,12 +383,16 @@
 			isa = PBXGroup;
 			children = (
 				BB0000010000000000000105 /* DisplayMode.swift */,
+				TT0000010000000000000101 /* MenuBarProviderDisplay.swift */,
 				MM0000010000000000000101 /* AppVersion.swift */,
 				HH0000010000000000000101 /* RefreshInterval.swift */,
 				BB0000010000000000000107 /* MenuBarDisplayFormatter.swift */,
+				RR0000010000000000000101 /* MenuBarDisplayPreview.swift */,
+				SS0000010000000000000103 /* MenuBarProviderUsageItem.swift */,
 				GG0000010000000000000103 /* AlertEvaluator.swift */,
 				II0000010000000000000103 /* WidgetPayloadBuilder.swift */,
 				JJ0000010000000000000103 /* UsageAggregator.swift */,
+				VV0000010000000000000101 /* DashboardOverview.swift */,
 				FF0000010000000000000103 /* ForecastingEngine.swift */,
 				EE0000010000000000000101 /* ProviderStability.swift */,
 				EE0000010000000000000103 /* ProviderConnectionStatus.swift */,
@@ -428,6 +464,7 @@
 				LL0000010000000000000101 /* DemoScenarioStateStore.swift */,
 				MM0000010000000000000103 /* LaunchAtLoginService.swift */,
 				MM0000010000000000000105 /* DiagnosticsExporter.swift */,
+				PP0000010000000000000101 /* TokenBarAppActivation.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -446,6 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				BB000001000000000000011D /* MenuBarLabelView.swift */,
+				UU0000010000000000000101 /* MenuBarStyledLabelView.swift */,
+				SS0000010000000000000101 /* MenuBarAggregateLabelView.swift */,
 				BB000001000000000000011F /* MenuBarView.swift */,
 			);
 			path = MenuBar;
@@ -457,6 +496,7 @@
 				BB0000010000000000000121 /* SettingsView.swift */,
 				NN0000010000000000000103 /* SettingsSection.swift */,
 				MM0000010000000000000109 /* GeneralSettingsView.swift */,
+				OO0000010000000000000101 /* MenuBarSettingsView.swift */,
 				DD0000010000000000000117 /* ProviderConnectionForm.swift */,
 				EE0000010000000000000111 /* AdvancedProvidersView.swift */,
 				MM0000010000000000000107 /* DiagnosticsExportPresenter.swift */,
@@ -482,6 +522,7 @@
 				GG0000010000000000000109 /* AlertEvaluatorTests.swift */,
 				II000001000000000000010D /* WidgetPayloadBuilderTests.swift */,
 				JJ0000010000000000000105 /* UsageAggregatorTests.swift */,
+				VV0000010000000000000103 /* DashboardOverviewTests.swift */,
 				FF0000010000000000000107 /* ForecastingEngineTests.swift */,
 				BB0000010000000000000125 /* MenuBarDisplayFormatterTests.swift */,
 				LL0000010000000000000105 /* DemoScenarioEngineTests.swift */,
@@ -601,9 +642,21 @@
 			isa = PBXGroup;
 			children = (
 				NN0000010000000000000101 /* TokenBarPanelChrome.swift */,
+				SS0000010000000000000105 /* ProviderBrandIcon.swift */,
 				NN0000010000000000000105 /* TokenBarAccordion.swift */,
+				NN0000010000000000000107 /* TokenBarSettingsWindow.swift */,
+				XX0000010000000000000101 /* TokenBarSettingsTextField.swift */,
+				WW0000010000000000000101 /* TokenBarUsageVisuals.swift */,
 			);
 			path = Design;
+			sourceTree = "<group>";
+		};
+		QQ0000010000000000000105 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				QQ0000010000000000000101 /* Signing.xcconfig */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,12 +760,14 @@
 			isa = PBXResourcesBuildPhase;
 			files = (
 				AA0000010000000000000104 /* Assets.xcassets in Resources */,
+				QQ0000010000000000000103 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 		};
 		AA0000010000000000000018 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 				AA0000010000000000000107 /* Assets.xcassets in Resources */,
+				QQ0000010000000000000104 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 		};
 /* End PBXResourcesBuildPhase section */
@@ -724,7 +779,10 @@
 				BB0000010000000000000102 /* TokenBarApp.swift in Sources */,
 				BB0000010000000000000104 /* AppEnvironment.swift in Sources */,
 				BB0000010000000000000106 /* DisplayMode.swift in Sources */,
+				TT0000010000000000000102 /* MenuBarProviderDisplay.swift in Sources */,
+				UU0000010000000000000102 /* MenuBarStyledLabelView.swift in Sources */,
 				BB0000010000000000000108 /* MenuBarDisplayFormatter.swift in Sources */,
+				RR0000010000000000000102 /* MenuBarDisplayPreview.swift in Sources */,
 				BB000001000000000000010A /* ProviderAccount.swift in Sources */,
 				BB000001000000000000010C /* UsageAlert.swift in Sources */,
 				BB000001000000000000010E /* UsageForecast.swift in Sources */,
@@ -736,11 +794,18 @@
 				BB000001000000000000011A /* UsageStore.swift in Sources */,
 				BB000001000000000000011C /* UserPreferences.swift in Sources */,
 				BB000001000000000000011E /* MenuBarLabelView.swift in Sources */,
+				SS0000010000000000000102 /* MenuBarAggregateLabelView.swift in Sources */,
+				SS0000010000000000000104 /* MenuBarProviderUsageItem.swift in Sources */,
+				SS0000010000000000000106 /* ProviderBrandIcon.swift in Sources */,
 				BB0000010000000000000120 /* MenuBarView.swift in Sources */,
 				BB0000010000000000000122 /* SettingsView.swift in Sources */,
 				NN0000010000000000000102 /* TokenBarPanelChrome.swift in Sources */,
 				NN0000010000000000000104 /* SettingsSection.swift in Sources */,
 				NN0000010000000000000106 /* TokenBarAccordion.swift in Sources */,
+				NN0000010000000000000108 /* TokenBarSettingsWindow.swift in Sources */,
+				XX0000010000000000000102 /* TokenBarSettingsTextField.swift in Sources */,
+				WW0000010000000000000102 /* TokenBarUsageVisuals.swift in Sources */,
+				OO0000010000000000000102 /* MenuBarSettingsView.swift in Sources */,
 				CC0000010000000000000102 /* ProviderDescriptor.swift in Sources */,
 				CC0000010000000000000104 /* ProviderFactory.swift in Sources */,
 				CC0000010000000000000106 /* ProviderLifecycleService.swift in Sources */,
@@ -783,6 +848,7 @@
 				II0000010000000000000108 /* WidgetTimelineRefresher.swift in Sources */,
 				JJ0000010000000000000102 /* AggregatedUsageSummary.swift in Sources */,
 				JJ0000010000000000000104 /* UsageAggregator.swift in Sources */,
+				VV0000010000000000000102 /* DashboardOverview.swift in Sources */,
 				KK0000010000000000000102 /* OpenAIAdminAPIClient.swift in Sources */,
 				KK0000010000000000000104 /* OpenAICostMapper.swift in Sources */,
 				KK0000010000000000000106 /* OpenAIProviderConnector.swift in Sources */,
@@ -796,6 +862,7 @@
 				MM0000010000000000000102 /* AppVersion.swift in Sources */,
 				MM0000010000000000000104 /* LaunchAtLoginService.swift in Sources */,
 				MM0000010000000000000106 /* DiagnosticsExporter.swift in Sources */,
+				PP0000010000000000000102 /* TokenBarAppActivation.swift in Sources */,
 				MM0000010000000000000108 /* DiagnosticsExportPresenter.swift in Sources */,
 				MM000001000000000000010A /* GeneralSettingsView.swift in Sources */,
 			);
@@ -840,6 +907,7 @@
 				II0000010000000000000116 /* WidgetPayloadBuilderTests.swift in Sources */,
 				II0000010000000000000118 /* WidgetSnapshotStoreTests.swift in Sources */,
 				JJ0000010000000000000106 /* UsageAggregatorTests.swift in Sources */,
+				VV0000010000000000000104 /* DashboardOverviewTests.swift in Sources */,
 				KK0000010000000000000112 /* OpenAICostMapperTests.swift in Sources */,
 				KK0000010000000000000114 /* OpenAIProviderConnectorTests.swift in Sources */,
 				KK0000010000000000000116 /* AnthropicCostMapperTests.swift in Sources */,
@@ -866,6 +934,7 @@
 /* Begin XCBuildConfiguration section */
 		AA0000010000000000000024 /* Debug configuration for PBXProject "TokenBar" */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = QQ0000010000000000000101 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -900,6 +969,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZZAMTYN83F;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -933,6 +1003,7 @@
 		};
 		AA0000010000000000000025 /* Release configuration for PBXProject "TokenBar" */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = QQ0000010000000000000101 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -967,6 +1038,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZZAMTYN83F;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -999,10 +1071,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZAMTYN83F;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Token Bar";
+				INFOPLIST_KEY_CFBundleDisplayName = TokenBar;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1012,7 +1085,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar;
+				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -1028,10 +1101,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZAMTYN83F;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Token Bar";
+				INFOPLIST_KEY_CFBundleDisplayName = TokenBar;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1041,7 +1115,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar;
+				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -1054,12 +1128,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TokenBarWidget/TokenBarWidget.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZAMTYN83F;
+				ENABLE_APP_SANDBOX = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TokenBarWidget;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1069,9 +1143,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar.TokenBarWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar.TokenBarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -1084,12 +1157,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TokenBarWidget/TokenBarWidget.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZAMTYN83F;
+				ENABLE_APP_SANDBOX = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TokenBarWidget;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1099,9 +1172,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBar.TokenBarWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar.TokenBarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -1114,11 +1186,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZAMTYN83F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBarTests;
+				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
@@ -1132,11 +1203,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZAMTYN83F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokenbar.TokenBarTests;
+				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;

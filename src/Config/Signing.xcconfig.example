@@ -1,0 +1,4 @@
+// Copy this file to Signing.xcconfig and set your Apple Developer Team ID.
+// Required for signed local builds and App Store archives.
+
+DEVELOPMENT_TEAM = YOUR_TEAM_ID

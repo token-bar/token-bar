@@ -6,7 +6,7 @@ TokenBar follows a layered, provider-agnostic architecture.
 
 ### UI (`src/TokenBar/UI/`)
 
-SwiftUI views for the menu bar, settings, and (later) widget. Views observe `UsageStore` only. No provider imports or networking.
+SwiftUI views for the menu bar, settings, and widget. Views observe `UsageStore` only. Shared Liquid Glass chrome lives in `UI/Design/`. See [specs/015-liquid-glass-ui-makeover.md](../specs/015-liquid-glass-ui-makeover.md).
 
 ### Domain (`src/TokenBar/Domain/`)
 
@@ -49,6 +49,8 @@ ProviderConnector → UsageService → UsageStore → SwiftUI Views
 **Phase 10 (complete):** Configurable demo scenario via `DemoScenarioEngine`, `DemoScenarioStateStore`, and enhanced `MockProviderConnector`.
 
 **Phase 11 (complete):** `AppVersion`, `LaunchAtLoginService`, `DiagnosticsExporter`, and General settings section.
+
+**Phase 12 (complete):** Liquid Glass UI makeover — Settings window positioning, merged Menu Bar section, refreshed copy. See spec 015.
 
 See `specs/` for detailed requirements per feature.
 

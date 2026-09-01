@@ -7,7 +7,17 @@ description: >-
 
 # macOS widget — TokenBar
 
-The widget extension reads cached usage from App Group storage written by the main app.
+The widget extension reads cached usage from **App Group** storage written by the main app. This is Apple's official Mac App Store pattern for app + extension data sharing — not a workaround.
+
+## App Group
+
+| Setting | Value |
+|---------|-------|
+| Identifier | `group.icu.charlie.TokenBar` |
+| Store | `src/TokenBar/Services/WidgetSnapshotStore.swift` (JSON file in group container) |
+| Entitlements | Both `TokenBar.entitlements` and `TokenBarWidget.entitlements` |
+
+Register the group on **both** `icu.charlie.TokenBar` and `icu.charlie.TokenBar.TokenBarWidget` in the Apple Developer portal. See [docs/app-store-setup.md](../../docs/app-store-setup.md).
 
 ## Targets
 
@@ -32,5 +42,6 @@ The widget extension reads cached usage from App Group storage written by the ma
 
 ## See also
 
+- [docs/app-store-setup.md](../../docs/app-store-setup.md) — portal capabilities and entitlements
 - [docs/development.md](../../docs/development.md) — widget setup steps
 - [docs/architecture.md](../../docs/architecture.md) — Phase 7

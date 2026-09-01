@@ -8,9 +8,11 @@ Prepare TokenBar for distribution and add general-purpose settings that do not d
 
 ## General Settings
 
+Moved to **Advanced** (Settings → Advanced):
+
 ### About
 
-* Display marketing version and build number from the app bundle
+* Display marketing version from the app bundle (build number omitted in UI; still included in diagnostics export)
 
 ### Launch at Login
 
@@ -22,6 +24,8 @@ Prepare TokenBar for distribution and add general-purpose settings that do not d
 * JSON export via save panel
 * Includes app version, preferences, account metadata, usage summaries, last error
 * Must never include credentials, cookies, API keys, or proxy tokens
+
+The **General** section is now a usage dashboard — see [016-general-dashboard.md](016-general-dashboard.md).
 
 ---
 
@@ -35,7 +39,7 @@ Prepare TokenBar for distribution and add general-purpose settings that do not d
 
 ## Acceptance Criteria
 
-* Version visible in Settings → General
+* Version visible in Settings → Advanced
 * Launch at login toggle registers/unregisters the app
 * Diagnostics export produces valid JSON with no secrets
 * Release process doc is actionable for maintainers

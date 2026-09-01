@@ -78,18 +78,15 @@ final class UsageAggregatorTests: XCTestCase {
     }
 
     func testAggregateDisplayModeFormatting() {
-        let summary = AggregatedUsageSummary(
-            providerCount: 2,
-            highestUsagePercent: 72.4,
-            highestUsageProviderName: "Cursor",
-            totalSpendUSD: 20,
-            lowestCreditsRemaining: nil,
-            lowestCreditsProviderName: nil,
-            highestRiskLevel: .high,
-            soonestExhaustionDate: nil
-        )
+        let snapshots = [
+            makeSnapshot(accountID: UUID(), name: "Anthropic", usagePercent: 55, spend: 10, credits: 0),
+            makeSnapshot(accountID: UUID(), name: "Cursor", usagePercent: 72.4, spend: 12, credits: 0),
+        ]
 
-        XCTAssertEqual(MenuBarDisplayFormatter.formatAggregate(summary), "TokenBar 72% max")
+        XCTAssertEqual(
+            MenuBarDisplayFormatter.formatAggregate(snapshots: snapshots),
+            "Anthropic 55% · Cursor 72%"
+        )
     }
 
     private func makeSnapshot(

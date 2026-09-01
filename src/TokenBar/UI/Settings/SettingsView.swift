@@ -9,33 +9,35 @@ struct SettingsView: View {
     @State private var expandedAdvancedProviderIDs: Set<String> = []
 
     var body: some View {
-        ZStack {
-            TokenBarWindowBackdrop()
-
-            TokenBarGlassPanel(style: .settings) {
-                VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
-                    TokenBarPanelTitle(title: "Settings")
-
-                    HStack(alignment: .top, spacing: TokenBarMetrics.spacing) {
-                        sectionSidebar
-                        TokenBarPanelDivider()
-                            .frame(maxHeight: .infinity)
-                        TokenBarSettingsScrollView {
-                            detailView(for: selectedSection)
-                        }
-                    }
+        TokenBarGlassPanel(style: .settings) {
+            HStack(alignment: .top, spacing: TokenBarMetrics.spacing) {
+                sectionSidebar
+                TokenBarPanelDivider()
+                    .frame(maxHeight: .infinity)
+                TokenBarSettingsScrollView {
+                    detailView(for: selectedSection)
                 }
             }
-            .padding(TokenBarMetrics.windowPadding)
         }
         .frame(
-            minWidth: TokenBarMetrics.settingsPanelMinWidth + TokenBarMetrics.windowPadding * 2,
-            minHeight: TokenBarMetrics.settingsPanelMinHeight + TokenBarMetrics.windowPadding * 2
+            width: TokenBarMetrics.settingsWindowWidth,
+            height: TokenBarMetrics.settingsWindowHeight
         )
+        .background {
+            TokenBarWindowBackdrop()
+        }
+        .background {
+            TokenBarSettingsWindowConfigurator()
+        }
     }
 
     private var sectionSidebar: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("TokenBar")
+                .font(.headline)
+                .padding(.horizontal, 4)
+                .padding(.bottom, 4)
+
             ForEach(SettingsSection.allCases) { section in
                 TokenBarSettingsNavItem(
                     section: section,
@@ -44,6 +46,8 @@ struct SettingsView: View {
                     selectedSection = section
                 }
             }
+
+            Spacer(minLength: 0)
         }
         .frame(width: TokenBarMetrics.settingsNavWidth, alignment: .leading)
     }
@@ -55,42 +59,49 @@ struct SettingsView: View {
             GeneralSettingsView(store: store)
         case .providers:
             providersSection
+        case .appearance:
+            MenuBarSettingsView(store: store)
+        case .alerts:
+            alertsSection
         case .advanced:
             AdvancedProvidersView(
                 store: store,
                 expandedProviderIDs: $expandedAdvancedProviderIDs
             )
-        case .display:
-            displaySection
-        case .refresh:
-            refreshSection
-        case .notifications:
-            notificationsSection
         }
     }
 
     private var providersSection: some View {
-        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
-            TokenBarPanelTitle(title: "Providers")
+        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing + 4) {
+            TokenBarPanelTitle(
+                title: "Providers",
+                subtitle: "Connect the services you want TokenBar to track."
+            )
 
             if store.accounts.count > 1 {
-                VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
-                    TokenBarSectionHeader(title: "Default provider")
-                    Picker("Menu bar provider", selection: activeAccountBinding) {
-                        ForEach(store.accounts) { account in
-                            Text(account.displayName).tag(Optional(account.id))
+                TokenBarGlassCard {
+                    VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+                        TokenBarSectionHeader(title: "Menu bar source")
+                        TokenBarSectionSubtitle(text: "Which connected provider drives the menu bar label.")
+                        Picker("Menu bar provider", selection: activeAccountBinding) {
+                            ForEach(store.accounts) { account in
+                                Text(account.displayName).tag(Optional(account.id))
+                            }
                         }
+                        .labelsHidden()
+                        .pickerStyle(.menu)
                     }
-                    .labelsHidden()
-                    .pickerStyle(.menu)
                 }
             }
 
             VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
-                TokenBarSectionHeader(title: "Connected")
+                TokenBarSectionHeader(title: "Active connections")
                 if store.accounts.isEmpty {
-                    Text("No providers connected.")
-                        .foregroundStyle(.secondary)
+                    TokenBarGlassCard {
+                        TokenBarSectionSubtitle(
+                            text: "No providers yet. Expand an option below to connect Cursor, OpenAI, Anthropic, or another source."
+                        )
+                    }
                 } else {
                     ForEach(store.accounts) { account in
                         TokenBarConnectedProviderAccordion(
@@ -104,7 +115,7 @@ struct SettingsView: View {
             }
 
             VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
-                TokenBarSectionHeader(title: "Available")
+                TokenBarSectionHeader(title: "Add a provider")
                 if store.availableProviders.isEmpty {
                     Text("No provider types registered.")
                         .foregroundStyle(.secondary)
@@ -122,86 +133,65 @@ struct SettingsView: View {
         }
     }
 
-    private var displaySection: some View {
-        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
-            TokenBarPanelTitle(title: "Display")
-            Picker("Menu bar style", selection: Binding(
-                get: { store.displayMode },
-                set: { store.displayMode = $0 }
-            )) {
-                ForEach(DisplayMode.allCases) { mode in
-                    Text(mode.label).tag(mode)
-                }
-            }
-            .pickerStyle(.radioGroup)
-            if store.displayMode == .burnRate {
-                Text("Burn rate requires usage history from automatic or manual refreshes.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+    private var alertsSection: some View {
+        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing + 4) {
+            TokenBarPanelTitle(
+                title: "Alerts",
+                subtitle: "Usage notifications and automatic refresh."
+            )
+
             TokenBarGlassCard {
-                Text("Preview: \(store.menuBarLabel)")
-                    .font(.body.monospaced())
-            }
-        }
-    }
+                VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+                    Toggle("Usage alerts", isOn: Binding(
+                        get: { store.notificationsEnabled },
+                        set: { store.notificationsEnabled = $0 }
+                    ))
 
-    private var refreshSection: some View {
-        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
-            TokenBarPanelTitle(title: "Refresh")
-            Picker("Automatic refresh", selection: Binding(
-                get: { store.refreshInterval },
-                set: { store.refreshInterval = $0 }
-            )) {
-                ForEach(RefreshInterval.allCases) { interval in
-                    Text(interval.label).tag(interval)
+                    TokenBarSectionSubtitle(
+                        text: "Alerts fire at 50%, 75%, 90%, and 100% usage, or when exhaustion is forecast within 7 days. Each threshold notifies once per billing cycle."
+                    )
                 }
             }
-            .pickerStyle(.radioGroup)
-            if let lastRefresh = store.lastRefreshAt {
-                Text("Last refresh: \(lastRefresh.formatted(date: .abbreviated, time: .shortened))")
-                    .foregroundStyle(.secondary)
-            }
-            if let nextRefresh = store.nextRefreshAt {
-                Text("Next refresh: \(nextRefresh.formatted(date: .abbreviated, time: .shortened))")
-                    .foregroundStyle(.secondary)
-            }
-            Button("Refresh Now") {
-                Task { await store.refresh() }
-            }
-            .buttonStyle(.glassProminent)
-            .disabled(store.isRefreshing)
-        }
-    }
 
-    private var activeAccountBinding: Binding<UUID?> {
-        Binding(
-            get: { store.activeAccountID },
-            set: { newValue in
-                guard let newValue else { return }
-                store.selectAccount(newValue)
+            TokenBarGlassCard {
+                VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
+                    TokenBarSectionHeader(title: "Automatic refresh")
+                    Picker("Refresh interval", selection: Binding(
+                        get: { store.refreshInterval },
+                        set: { store.refreshInterval = $0 }
+                    )) {
+                        ForEach(RefreshInterval.allCases) { interval in
+                            Text(interval.label).tag(interval)
+                        }
+                    }
+                    .pickerStyle(.radioGroup)
+
+                    if let lastRefresh = store.lastRefreshAt {
+                        TokenBarSectionSubtitle(
+                            text: "Last updated \(lastRefresh.formatted(date: .abbreviated, time: .shortened))."
+                        )
+                    }
+                    if let nextRefresh = store.nextRefreshAt {
+                        TokenBarSectionSubtitle(
+                            text: "Next refresh \(nextRefresh.formatted(date: .abbreviated, time: .shortened))."
+                        )
+                    }
+
+                    Button(store.isRefreshing ? "Refreshing…" : "Refresh now") {
+                        Task { await store.refresh() }
+                    }
+                    .buttonStyle(.glassProminent)
+                    .disabled(store.isRefreshing)
+                }
             }
-        )
-    }
-
-    private var notificationsSection: some View {
-        VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
-            TokenBarPanelTitle(title: "Notifications")
-
-            Toggle("Enable usage alerts", isOn: Binding(
-                get: { store.notificationsEnabled },
-                set: { store.notificationsEnabled = $0 }
-            ))
-
-            Text("Alerts fire when usage crosses 50%, 75%, 90%, or 100%, or when quota exhaustion is forecast within 7 days. Each alert is delivered once per billing cycle.")
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
 
             if store.alerts.isEmpty {
-                Text("No alerts yet.")
-                    .foregroundStyle(.secondary)
+                TokenBarGlassCard {
+                    Text("No alerts yet.")
+                        .foregroundStyle(.secondary)
+                }
             } else {
-                TokenBarSectionHeader(title: "Recent alerts")
+                TokenBarSectionHeader(title: "Recent")
                 ForEach(store.alerts.prefix(10)) { alert in
                     if let account = store.accounts.first(where: { $0.id == alert.accountID }) {
                         TokenBarGlassCard {
@@ -216,6 +206,16 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+
+    private var activeAccountBinding: Binding<UUID?> {
+        Binding(
+            get: { store.activeAccountID },
+            set: { newValue in
+                guard let newValue else { return }
+                store.selectAccount(newValue)
+            }
+        )
     }
 
     private func toggleConnectedAccordion(_ providerID: String) {

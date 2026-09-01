@@ -39,4 +39,24 @@ final class UserPreferencesTests: XCTestCase {
         let reloaded = UserPreferences(defaults: defaults)
         XCTAssertEqual(reloaded.activeAccountID, accountID)
     }
+
+    func testAggregateProviderDisplayPersists() {
+        var preferences = UserPreferences(defaults: defaults)
+        preferences.menuBarProviderDisplay = .labels
+
+        let reloaded = UserPreferences(defaults: defaults)
+        XCTAssertEqual(reloaded.menuBarProviderDisplay, .labels)
+    }
+
+    func testAggregateProviderDisplayDefaultsToLogos() {
+        let preferences = UserPreferences(defaults: defaults)
+        XCTAssertEqual(preferences.menuBarProviderDisplay, .logos)
+    }
+
+    func testMenuBarProviderDisplayMigratesLegacyKey() {
+        defaults.set(MenuBarProviderDisplay.labels.rawValue, forKey: "aggregateProviderDisplay")
+
+        let preferences = UserPreferences(defaults: defaults)
+        XCTAssertEqual(preferences.menuBarProviderDisplay, .labels)
+    }
 }

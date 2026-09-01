@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ProviderConnectionForm: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     let provider: ProviderDescriptor
     let store: UsageStore
     var showsHeader: Bool = true
@@ -90,6 +92,7 @@ struct ProviderConnectionForm: View {
                         : .regular.tint(.orange.opacity(0.35)),
                     in: .capsule
                 )
+                .id(colorScheme)
         }
     }
 
@@ -98,14 +101,13 @@ struct ProviderConnectionForm: View {
         switch provider.authenticationMethod {
         case .none:
             if showsDemoScenarioFields {
-                TextField("Usage %", text: $demoUsagePercent)
-                    .textFieldStyle(.roundedBorder)
-                TextField("Spend USD", text: $demoSpendUSD)
-                    .textFieldStyle(.roundedBorder)
-                TextField("Credits remaining", text: $demoCreditsRemaining)
-                    .textFieldStyle(.roundedBorder)
-                TextField("Usage increment per refresh (%)", text: $demoUsageIncrement)
-                    .textFieldStyle(.roundedBorder)
+                TokenBarSettingsTextField(placeholder: "Usage %", text: $demoUsagePercent)
+                TokenBarSettingsTextField(placeholder: "Spend USD", text: $demoSpendUSD)
+                TokenBarSettingsTextField(placeholder: "Credits remaining", text: $demoCreditsRemaining)
+                TokenBarSettingsTextField(
+                    placeholder: "Usage increment per refresh (%)",
+                    text: $demoUsageIncrement
+                )
                 Button("Reset simulation") {
                     store.resetDemoSimulation(providerID: provider.id)
                     statusMessage = "Simulation reset."
@@ -119,14 +121,12 @@ struct ProviderConnectionForm: View {
                     .foregroundStyle(.secondary)
             }
         case .apiKey:
-            SecureField(apiKeyPlaceholder, text: $apiKey)
+            TokenBarSettingsTextField(placeholder: apiKeyPlaceholder, text: $apiKey, isSecure: true)
             if showsMemberEmailField {
-                TextField("Member email (optional)", text: $memberEmail)
-                    .textFieldStyle(.roundedBorder)
+                TokenBarSettingsTextField(placeholder: "Member email (optional)", text: $memberEmail)
             }
             if showsMonthlyBudgetField {
-                TextField("Monthly budget USD (optional)", text: $monthlyBudget)
-                    .textFieldStyle(.roundedBorder)
+                TokenBarSettingsTextField(placeholder: "Monthly budget USD (optional)", text: $monthlyBudget)
             }
             Text(apiKeyHelpText)
                 .font(.caption)
@@ -140,22 +140,32 @@ struct ProviderConnectionForm: View {
             .pickerStyle(.radioGroup)
 
             if connectionMethod == .sessionCookie {
-                SecureField("WorkosCursorSessionToken", text: $sessionCookie)
+                TokenBarSettingsTextField(
+                    placeholder: "WorkosCursorSessionToken",
+                    text: $sessionCookie,
+                    isSecure: true
+                )
                 Text("Copy from cursor.com → DevTools → Application → Cookies.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             } else {
-                TextField("Custom Proxy URL", text: $proxyURL)
-                    .textFieldStyle(.roundedBorder)
-                SecureField("Bearer token (optional)", text: $proxyToken)
+                TokenBarSettingsTextField(placeholder: "Custom Proxy URL", text: $proxyURL)
+                TokenBarSettingsTextField(
+                    placeholder: "Bearer token (optional)",
+                    text: $proxyToken,
+                    isSecure: true
+                )
                 Text("Advanced mode for power users. Endpoint must return canonical usage JSON.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
         case .proxy:
-            TextField("Custom Proxy URL", text: $proxyURL)
-                .textFieldStyle(.roundedBorder)
-            SecureField("Bearer token (optional)", text: $proxyToken)
+            TokenBarSettingsTextField(placeholder: "Custom Proxy URL", text: $proxyURL)
+            TokenBarSettingsTextField(
+                placeholder: "Bearer token (optional)",
+                text: $proxyToken,
+                isSecure: true
+            )
             Text("Endpoint must return canonical usage JSON. See specs/010-provider-connectors.md.")
                 .font(.caption)
                 .foregroundStyle(.secondary)

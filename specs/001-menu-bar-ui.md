@@ -33,15 +33,16 @@ Claude $12.44
 
 ## Dropdown Panel
 
-Clicking the menu bar opens a Liquid Glass panel (`TokenBarGlassPanel`) with:
+Clicking the menu bar opens a Liquid Glass panel (`TokenBarGlassPanel`, 300 pt wide) with:
 
-* Provider selector
-* Current usage
-* Forecast
-* Last refresh time
-* Open Settings button
+* Provider selector or empty-state card
+* Current usage in glass cards
+* Multi-provider summary when connected
+* Forecast block when history exists
+* Refresh controls (when providers connected)
+* **Settings…** button
 
-Settings uses the same glass panel chrome, typography, spacing, and button styles for visual parity.
+Settings uses the same glass chrome for visual parity.
 
 ---
 
@@ -49,7 +50,8 @@ Settings uses the same glass panel chrome, typography, spacing, and button style
 
 * `GlassEffectContainer` + `.glassEffect(.regular)` for panels and cards
 * `.buttonStyle(.glass)` / `.glassProminent` for actions
-* Shared metrics in `TokenBarMetrics` (280pt menu width, 12pt spacing, 16pt corner radius)
+* Shared metrics in `TokenBarMetrics` (300 pt menu width, 20 pt corner radius)
+* See [015-liquid-glass-ui-makeover.md](015-liquid-glass-ui-makeover.md) for the full makeover spec
 
 ---
 

@@ -2,24 +2,28 @@ import SwiftUI
 
 @main
 struct TokenBarApp: App {
+    @NSApplicationDelegateAdaptor(TokenBarAppDelegate.self) private var appDelegate
+
     private let store = AppEnvironment.shared
 
     var body: some Scene {
         MenuBarExtra {
             MenuBarView(store: store)
+                .background { SettingsWindowOpener() }
                 .task { await store.bootstrap() }
         } label: {
             MenuBarLabelView(store: store)
         }
         .menuBarExtraStyle(.window)
 
-        Settings {
+        Window("TokenBar Settings", id: "settings") {
             SettingsView(store: store)
         }
-        .windowResizability(.contentMinSize)
+        .windowResizability(.contentSize)
         .defaultSize(
-            width: TokenBarMetrics.settingsPanelMinWidth + TokenBarMetrics.windowPadding * 2,
-            height: TokenBarMetrics.settingsPanelMinHeight + TokenBarMetrics.windowPadding * 2
+            width: TokenBarMetrics.settingsWindowWidth,
+            height: TokenBarMetrics.settingsWindowHeight
         )
+        .defaultLaunchBehavior(.suppressed)
     }
 }

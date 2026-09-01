@@ -10,8 +10,10 @@ Use this folder to understand setup, architecture, releases, and what each `.git
 |----------|---------|
 | [Development](development.md) | Local setup, providers, widget, and contributor quick start |
 | [Architecture](architecture.md) | Layers, data flow, and phase status |
+| [App Store setup](app-store-setup.md) | Capabilities, entitlements, signing, and privacy manifest |
 | [Release process](release-process.md) | Versioning and Mac App Store releases |
 | [Provider framework](provider-framework.md) | Plugin layer for AI provider connectors |
+| [Provider icons](provider-icons.md) | Menu bar provider logos (SVG template assets) |
 
 ## Workflows
 
@@ -64,6 +66,7 @@ See the [repository README](../README.md) and [INSTRUCTIONS.md](../INSTRUCTIONS.
 | [`.cursor/rules.md`](../.cursor/rules.md) | Cursor AI editing rules |
 | [`.agents/skills/README.md`](../.agents/skills/README.md) | Skill packs catalog |
 | [`.agents/skills/xcode-tools/SKILL.md`](../.agents/skills/xcode-tools/SKILL.md) | Xcode MCP build, test, and Apple docs |
+| [`.agents/skills/ui-design/SKILL.md`](../.agents/skills/ui-design/SKILL.md) | Liquid Glass menu bar and Settings UI |
 
 ---
 

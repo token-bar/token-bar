@@ -7,10 +7,11 @@ enum MenuBarDisplayFormatter {
         snapshot: UsageSnapshot?,
         forecast: UsageForecast? = nil,
         aggregate: AggregatedUsageSummary? = nil,
+        snapshots: [UsageSnapshot] = [],
         mode: DisplayMode
     ) -> String {
-        if mode == .aggregate, let aggregate, aggregate.providerCount > 1 {
-            return formatAggregate(aggregate)
+        if mode == .aggregate, snapshots.count > 1 {
+            return formatAggregate(snapshots: snapshots)
         }
 
         guard let snapshot else { return "TokenBar" }
@@ -46,15 +47,46 @@ enum MenuBarDisplayFormatter {
         }
     }
 
-    static func formatAggregate(_ aggregate: AggregatedUsageSummary) -> String {
-        if let percent = aggregate.highestUsagePercent {
-            return "TokenBar \(Int(percent.rounded()))% max"
+    static func formatMetric(
+        snapshot: UsageSnapshot,
+        forecast: UsageForecast? = nil,
+        mode: DisplayMode
+    ) -> String {
+        switch mode {
+        case .percentage, .aggregate:
+            let percent = snapshot.usagePercent.map { Int($0.rounded()) } ?? 0
+            return "\(percent)%"
+        case .spend:
+            guard let amount = snapshot.spendAmount else {
+                return snapshot.providerName
+            }
+            return Self.currencyFormatter.string(from: amount as NSDecimalNumber) ?? "\(amount)"
+        case .credits:
+            guard let credits = snapshot.creditsRemaining else {
+                return snapshot.providerName
+            }
+            return "\(Int(credits)) cr"
+        case .progressBar:
+            return progressBar(for: snapshot.usagePercent)
+        case .burnRate:
+            guard let burnRate = forecast?.burnRatePerDay else {
+                return snapshot.providerName
+            }
+            let formatted = burnRate.formatted(
+                .number.precision(.fractionLength(1)).locale(Self.fixedNumberLocale)
+            )
+            return "\(formatted)%/d"
         }
-        if let spend = aggregate.totalSpendUSD {
-            let formatted = Self.currencyFormatter.string(from: spend as NSDecimalNumber) ?? "\(spend)"
-            return "TokenBar \(formatted)"
-        }
-        return "TokenBar \(aggregate.providerCount) providers"
+    }
+
+    static func formatAggregate(snapshots: [UsageSnapshot]) -> String {
+        snapshots
+            .sorted { $0.providerName.localizedCaseInsensitiveCompare($1.providerName) == .orderedAscending }
+            .map { snapshot in
+                let percent = snapshot.usagePercent.map { Int($0.rounded()) } ?? 0
+                return "\(snapshot.providerName) \(percent)%"
+            }
+            .joined(separator: " · ")
     }
 
     static func progressBar(for usagePercent: Double?) -> String {

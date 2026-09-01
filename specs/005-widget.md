@@ -18,7 +18,8 @@ Provide optional Notification Center and Desktop widgets showing cached usage.
 ## Constraints
 
 * Must tolerate infrequent WidgetKit refreshes
-* Reads cached data from App Group storage (`WidgetSnapshotStore`)
+* Reads cached data from App Group storage (`WidgetSnapshotStore`, `group.icu.charlie.TokenBar`)
+* App Sandbox enabled; widget extension shares the same App Group (official Mac App Store pattern)
 * No provider networking inside the widget extension
 
 ---

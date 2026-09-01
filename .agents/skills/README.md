@@ -11,6 +11,7 @@ Cursor skill packs and module guides for **TokenBar**.
 | [provider-connectors](provider-connectors/SKILL.md) | AI provider plugin layer |
 | [macos-widget](macos-widget/SKILL.md) | WidgetKit extension and App Group sharing |
 | [marketing-website](marketing-website/SKILL.md) | React marketing site in `website/` |
+| [ui-design](ui-design/SKILL.md) | Liquid Glass menu bar and Settings UI |
 
 ## Layers
 

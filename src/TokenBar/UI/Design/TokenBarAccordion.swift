@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct TokenBarAccordion<Content: View>: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     let title: String
     let subtitle: String?
     let isExpanded: Bool
@@ -42,15 +44,16 @@ struct TokenBarAccordion<Content: View>: View {
                 }
                 .padding(.horizontal, TokenBarMetrics.innerSpacing + 2)
                 .padding(.vertical, 10)
-                .contentShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .contentShape(RoundedRectangle(cornerRadius: TokenBarMetrics.cardCornerRadius, style: .continuous))
             }
             .buttonStyle(.plain)
             .compositingGroup()
             .glassEffect(
                 .regular.interactive(),
-                in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+                in: RoundedRectangle(cornerRadius: TokenBarMetrics.cardCornerRadius, style: .continuous)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: TokenBarMetrics.cardCornerRadius, style: .continuous))
+            .id(colorScheme)
 
             if isExpanded {
                 content
@@ -64,18 +67,20 @@ struct TokenBarAccordion<Content: View>: View {
 }
 
 struct TokenBarSettingsScrollView<Content: View>: View {
+    @Environment(\.colorScheme) private var colorScheme
     @ViewBuilder let content: Content
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             GlassEffectContainer {
-                LazyVStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
+                VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
                     content
                 }
                 .frame(maxWidth: .infinity, alignment: .topLeading)
                 .padding(.trailing, TokenBarMetrics.scrollGutter)
                 .padding(.bottom, TokenBarMetrics.innerSpacing)
             }
+            .id(colorScheme)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .scrollClipDisabled(false)

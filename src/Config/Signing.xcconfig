@@ -1,0 +1,4 @@
+// Copy to Signing.xcconfig and set your Apple Developer Team ID for local archive builds.
+// CI builds disable code signing; maintainers use Automatic signing in Xcode for App Store uploads.
+
+DEVELOPMENT_TEAM = ZZAMTYN83F

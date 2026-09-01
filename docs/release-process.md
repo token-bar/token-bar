@@ -33,7 +33,8 @@ This updates `MARKETING_VERSION` and increments `CURRENT_PROJECT_VERSION` across
 
 ## Mac App Store Release
 
-1. Archive in Xcode (**Product → Archive**)
+1. Confirm [App Store setup](app-store-setup.md) — App Groups, sandbox, and signing capabilities match the portal
+2. Archive in Xcode (**Product → Archive**)
 2. Upload to **App Store Connect** and submit for review
 3. When approved, release on the Mac App Store
 4. Update [CHANGELOG.md](../CHANGELOG.md) if the App Store listing copy changed in `website/src/utils/releases.ts`

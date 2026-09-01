@@ -5,8 +5,9 @@
 End users install **TokenBar** from the Mac App Store. To run from source:
 
 1. Clone the repository and open `src/TokenBar.xcodeproj` in **Xcode 26+**
-2. Select the **TokenBar** scheme and **My Mac** as the run destination
-3. Build and run (**⌘R**)
+2. Set your Apple Developer Team in **Signing & Capabilities** (or edit `src/Config/Signing.xcconfig`)
+3. Select the **TokenBar** scheme and **My Mac** as the run destination
+4. Build and run (**⌘R**)
 
 The app launches to the menu bar only (no Dock icon).
 
