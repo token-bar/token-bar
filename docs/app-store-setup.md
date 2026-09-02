@@ -10,6 +10,16 @@ TokenBar is distributed **only** through the Mac App Store. This guide covers Ap
 | Widget extension | `icu.charlie.TokenBar.TokenBarWidget` |
 | Unit tests | `icu.charlie.TokenBarTests` (not shipped) |
 
+## App Store categories
+
+| Field | Value |
+|-------|-------|
+| Primary | Developer Tools |
+| Secondary | Utilities |
+| `LSApplicationCategoryType` | `public.app-category.developer-tools` (set in `project.pbxproj`) |
+
+Set the same primary/secondary categories in **App Store Connect → App Information**.
+
 ## Capabilities (Apple Developer portal)
 
 For **both** `icu.charlie.TokenBar` and `icu.charlie.TokenBar.TokenBarWidget`:
