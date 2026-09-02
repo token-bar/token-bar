@@ -38,9 +38,11 @@ struct TokenBarAccordion<Content: View>: View {
                         }
                     }
                     Spacer()
-                    Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+                    Image(systemName: "chevron.right")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
+                        .rotationEffect(.degrees(isExpanded ? 90 : 0))
+                        .animation(.easeInOut(duration: 0.2), value: isExpanded)
                 }
                 .padding(.horizontal, TokenBarMetrics.innerSpacing + 2)
                 .padding(.vertical, 10)
@@ -55,14 +57,17 @@ struct TokenBarAccordion<Content: View>: View {
             .clipShape(RoundedRectangle(cornerRadius: TokenBarMetrics.cardCornerRadius, style: .continuous))
             .id(colorScheme)
 
-            if isExpanded {
-                content
-                    .padding(.top, TokenBarMetrics.innerSpacing)
-                    .padding(.horizontal, 2)
-                    .transition(.opacity.combined(with: .move(edge: .top)))
+            Group {
+                if isExpanded {
+                    content
+                        .padding(.top, TokenBarMetrics.innerSpacing)
+                        .padding(.horizontal, 2)
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .transition(.opacity)
+            .animation(.easeInOut(duration: 0.2), value: isExpanded)
         }
-        .animation(.snappy(duration: 0.2), value: isExpanded)
     }
 }
 
