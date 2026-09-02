@@ -96,14 +96,37 @@ struct TokenBarGlassPanel<Content: View>: View {
     @ViewBuilder let content: Content
 
     var body: some View {
+        Group {
+            if style == .settings {
+                glassPanel(shape: settingsPanelShape)
+            } else {
+                glassPanel(
+                    shape: RoundedRectangle(
+                        cornerRadius: TokenBarMetrics.cornerRadius,
+                        style: .continuous
+                    )
+                )
+            }
+        }
+    }
+
+    private var settingsPanelShape: UnevenRoundedRectangle {
+        UnevenRoundedRectangle(
+            topLeadingRadius: 0,
+            bottomLeadingRadius: TokenBarMetrics.cornerRadius,
+            bottomTrailingRadius: TokenBarMetrics.cornerRadius,
+            topTrailingRadius: 0,
+            style: .continuous
+        )
+    }
+
+    private func glassPanel<S: Shape>(shape: S) -> some View {
         GlassEffectContainer {
             content
                 .padding(TokenBarMetrics.padding)
         }
-        .glassEffect(
-            .regular,
-            in: RoundedRectangle(cornerRadius: TokenBarMetrics.cornerRadius, style: .continuous)
-        )
+        .glassEffect(.regular, in: shape)
+        .clipShape(shape)
         .frame(
             maxWidth: style == .menuBar ? TokenBarMetrics.menuPanelWidth : .infinity,
             maxHeight: style == .settings ? .infinity : nil,
