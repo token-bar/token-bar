@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { DownloadButton } from '@/components/DownloadButton';
 import { FeatureShowcase } from '@/components/FeatureShowcase';
+import { ScreenshotCarousel } from '@/components/ScreenshotCarousel';
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -24,14 +25,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="landing-container flex justify-center pb-4 pt-10 md:pb-8 md:pt-14">
-          <img
-            src="/screenshot.png"
-            alt={t('home.heroAlt')}
-            className="w-full max-w-4xl rounded-xl border border-border shadow-lg"
-            loading="eager"
-            decoding="async"
-          />
+        <div className="screenshot-carousel-section">
+          <ScreenshotCarousel />
         </div>
       </section>
 

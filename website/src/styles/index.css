@@ -453,3 +453,143 @@ html.dark {
 .site-footer-link:hover {
   color: var(--foreground);
 }
+
+/* ==========================================================================
+   Home — screenshot carousel (MacBook screenshots)
+   ========================================================================== */
+.screenshot-carousel-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2.5rem 1.25rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .screenshot-carousel-section {
+    padding: 3.5rem 2rem 2rem;
+  }
+}
+
+.screenshot-carousel {
+  --carousel-gap: 1rem;
+  --carousel-visible: 1;
+  --carousel-duration: 32s;
+
+  position: relative;
+  width: 100%;
+  max-width: 64rem;
+}
+
+.screenshot-carousel--mac {
+  --carousel-gap: 1.5rem;
+  width: min(100%, calc(100vw - 2.5rem));
+  max-width: 112rem;
+}
+
+@media (min-width: 768px) {
+  .screenshot-carousel--mac {
+    --carousel-visible: 2;
+    --carousel-duration: 38s;
+    width: min(100%, calc(100vw - 4rem));
+  }
+}
+
+.screenshot-carousel__viewport {
+  container-type: inline-size;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+.screenshot-carousel__track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  gap: var(--carousel-gap);
+  animation: screenshot-carousel-scroll var(--carousel-duration) linear infinite;
+  will-change: transform;
+}
+
+.screenshot-carousel__slide {
+  flex: 0 0 auto;
+  width: calc(
+    (100cqi - (var(--carousel-visible) - 1) * var(--carousel-gap)) /
+      var(--carousel-visible)
+  );
+  border-radius: 0.875rem;
+  box-shadow:
+    0 16px 32px -12px rgb(0 0 0 / 0.22),
+    0 6px 16px -8px rgb(0 0 0 / 0.12);
+  border: 1px solid var(--border);
+  user-select: none;
+}
+
+.screenshot-carousel--mac .screenshot-carousel__slide {
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.screenshot-carousel__edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(18%, 5rem);
+  pointer-events: none;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.screenshot-carousel__edge--left {
+  left: 0;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+  background: linear-gradient(90deg, var(--background) 15%, transparent 100%);
+}
+
+.screenshot-carousel__edge--right {
+  right: 0;
+  mask-image: linear-gradient(270deg, #000 0%, transparent 100%);
+  background: linear-gradient(270deg, var(--background) 15%, transparent 100%);
+}
+
+@keyframes screenshot-carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screenshot-carousel__track {
+    animation: none;
+    transform: translateX(0);
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .screenshot-carousel__slide {
+    width: min(100%, 28rem);
+  }
+
+  .screenshot-carousel--mac .screenshot-carousel__slide {
+    width: min(100%, 42rem);
+  }
+
+  .screenshot-carousel__viewport {
+    mask-image: none;
+  }
+
+  .screenshot-carousel__edge {
+    display: none;
+  }
+}
