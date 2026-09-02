@@ -26,40 +26,49 @@ struct TokenBarSettingsWindowConfigurator: NSViewRepresentable {
     }
 
     func makeNSView(context: Context) -> NSView {
-        let view = NSView(frame: .zero)
-        DispatchQueue.main.async {
-            configure(window: view.window, coordinator: context.coordinator)
-        }
+        let view = SettingsWindowAnchorView()
+        view.coordinator = context.coordinator
         return view
     }
 
     func updateNSView(_ nsView: NSView, context: Context) {
-        DispatchQueue.main.async {
-            configure(window: nsView.window, coordinator: context.coordinator)
-        }
-    }
-
-    private func configure(window: NSWindow?, coordinator: Coordinator) {
-        guard let window else { return }
-
-        window.title = "TokenBar Settings"
-        window.titlebarAppearsTransparent = true
-        window.backgroundColor = .clear
-        window.isOpaque = false
-        window.isMovableByWindowBackground = true
-        window.styleMask.insert(.fullSizeContentView)
-        window.appearance = nil
-
-        guard !coordinator.didConfigure else {
-            TokenBarAppActivation.settingsWindowDidAppear(window)
-            return
-        }
-        coordinator.didConfigure = true
-        window.center()
-        TokenBarAppActivation.settingsWindowDidAppear(window)
+        (nsView as? SettingsWindowAnchorView)?.coordinator = context.coordinator
     }
 
     final class Coordinator {
-        var didConfigure = false
+        private var configuredWindowIDs = Set<ObjectIdentifier>()
+
+        @MainActor
+        func configureWindowIfNeeded(_ window: NSWindow) {
+            let windowID = ObjectIdentifier(window)
+            guard !configuredWindowIDs.contains(windowID) else { return }
+            configuredWindowIDs.insert(windowID)
+
+            window.title = "TokenBar Settings"
+            window.titlebarAppearsTransparent = true
+            window.backgroundColor = .clear
+            window.isOpaque = false
+            window.isMovableByWindowBackground = true
+            window.styleMask.insert(.fullSizeContentView)
+            window.appearance = nil
+            window.center()
+        }
+    }
+}
+
+/// Applies window chrome when attached to the settings window, outside SwiftUI's layout pass.
+private final class SettingsWindowAnchorView: NSView {
+    weak var coordinator: TokenBarSettingsWindowConfigurator.Coordinator?
+
+    override var isFlipped: Bool { true }
+
+    override var intrinsicContentSize: NSSize { .zero }
+
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        guard let window, let coordinator else { return }
+        Task { @MainActor in
+            coordinator.configureWindowIfNeeded(window)
+        }
     }
 }

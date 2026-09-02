@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 struct SettingsView: View {
@@ -29,6 +30,16 @@ struct SettingsView: View {
         .background {
             TokenBarSettingsWindowConfigurator()
         }
+        .onAppear(perform: presentSettingsWindow)
+    }
+
+    private func presentSettingsWindow() {
+        guard let window = settingsWindow else { return }
+        TokenBarAppActivation.settingsWindowDidAppear(window)
+    }
+
+    private var settingsWindow: NSWindow? {
+        NSApp.windows.first { $0.title == "TokenBar Settings" }
     }
 
     private var sectionSidebar: some View {

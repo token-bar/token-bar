@@ -6,6 +6,7 @@ import AppKit
 @MainActor
 enum TokenBarAppActivation {
     private static var settingsCloseObserver: NSObjectProtocol?
+    private static var settingsObservedWindowID: ObjectIdentifier?
 
     static func bootstrap() {
         NSApp.setActivationPolicy(.accessory)
@@ -20,10 +21,16 @@ enum TokenBarAppActivation {
 
     static func settingsWindowDidAppear(_ window: NSWindow) {
         prepareForSettingsPresentation()
-        window.makeKeyAndOrderFront(nil)
+        window.makeKeyAndOrderFront(nil)    
         window.orderFrontRegardless()
 
+        let windowID = ObjectIdentifier(window)
+        if settingsCloseObserver != nil, settingsObservedWindowID == windowID {
+            return
+        }
+
         settingsCloseObserver.map { NotificationCenter.default.removeObserver($0) }
+        settingsObservedWindowID = windowID
         settingsCloseObserver = NotificationCenter.default.addObserver(
             forName: NSWindow.willCloseNotification,
             object: window,
@@ -32,6 +39,7 @@ enum TokenBarAppActivation {
             Task { @MainActor in
                 settingsCloseObserver.map { NotificationCenter.default.removeObserver($0) }
                 settingsCloseObserver = nil
+                settingsObservedWindowID = nil
                 NSApp.setActivationPolicy(.accessory)
             }
         }
