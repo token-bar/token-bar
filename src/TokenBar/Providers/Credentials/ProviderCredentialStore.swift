@@ -1,6 +1,7 @@
 import Foundation
 
 protocol ProviderCredentialStore: Sendable {
+    func prepareAccessIfNeeded()
     func save(_ value: String, for key: CredentialKey) throws
     func load(for key: CredentialKey) throws -> String?
     func delete(for key: CredentialKey) throws

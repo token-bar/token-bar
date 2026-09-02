@@ -5,6 +5,8 @@ final class InMemoryCredentialStore: ProviderCredentialStore, @unchecked Sendabl
     private var storage: [CredentialKey: String] = [:]
     private let lock = NSLock()
 
+    func prepareAccessIfNeeded() {}
+
     func save(_ value: String, for key: CredentialKey) throws {
         lock.lock()
         defer { lock.unlock() }

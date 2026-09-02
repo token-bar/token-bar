@@ -265,6 +265,8 @@ struct ProviderConnectionForm: View {
                 break
             }
             statusMessage = "Saved."
+        } catch CredentialStoreError.keychainError(_) {
+            statusMessage = "macOS blocked Keychain access. Open Keychain Access, search for TokenBar, remove old entries, then try again."
         } catch {
             statusMessage = "Could not save credentials."
         }

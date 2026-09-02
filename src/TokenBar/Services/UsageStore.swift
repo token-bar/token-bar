@@ -127,6 +127,7 @@ final class UsageStore {
     }
 
     func bootstrap() async {
+        credentialStore.prepareAccessIfNeeded()
         await BuiltinProviderRegistration.registerFactories(with: registry)
         await refreshProviderLists()
 

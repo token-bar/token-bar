@@ -61,7 +61,10 @@ No custom Keychain access groups are needed. Credentials use the app’s default
 
 | Prompt | Cause | User action |
 |--------|-------|-------------|
+| Keychain | First launch — TokenBar stores provider API keys securely | Click **Allow** or **Always Allow** |
 | Notifications | Usage alerts (only when alerts are enabled or a threshold fires) | Optional — enable in Settings → Alerts |
+
+If macOS asks for your **login password** when saving a provider, an older development build may have left stale Keychain entries. Open **Keychain Access**, search for `icu.charlie.TokenBar.credentials`, delete those items, then try again.
 
 MAS-signed builds with sandbox and App Group registered should not show legacy “access data from other apps” prompts.
 
