@@ -126,7 +126,6 @@
 		NN0000010000000000000104 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000103 /* SettingsSection.swift */; };
 		NN0000010000000000000106 /* TokenBarAccordion.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000105 /* TokenBarAccordion.swift */; };
 		NN0000010000000000000108 /* TokenBarSettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = NN0000010000000000000107 /* TokenBarSettingsWindow.swift */; };
-		XX0000010000000000000102 /* TokenBarSettingsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = XX0000010000000000000101 /* TokenBarSettingsTextField.swift */; };
 		OO0000010000000000000102 /* MenuBarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OO0000010000000000000101 /* MenuBarSettingsView.swift */; };
 		PP0000010000000000000102 /* TokenBarAppActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = PP0000010000000000000101 /* TokenBarAppActivation.swift */; };
 		QQ0000010000000000000103 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = QQ0000010000000000000102 /* PrivacyInfo.xcprivacy */; };
@@ -140,6 +139,7 @@
 		VV0000010000000000000102 /* DashboardOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = VV0000010000000000000101 /* DashboardOverview.swift */; };
 		VV0000010000000000000104 /* DashboardOverviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = VV0000010000000000000103 /* DashboardOverviewTests.swift */; };
 		WW0000010000000000000102 /* TokenBarUsageVisuals.swift in Sources */ = {isa = PBXBuildFile; fileRef = WW0000010000000000000101 /* TokenBarUsageVisuals.swift */; };
+		XX0000010000000000000102 /* TokenBarSettingsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = XX0000010000000000000101 /* TokenBarSettingsTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,7 +288,6 @@
 		NN0000010000000000000103 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		NN0000010000000000000105 /* TokenBarAccordion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarAccordion.swift; sourceTree = "<group>"; };
 		NN0000010000000000000107 /* TokenBarSettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarSettingsWindow.swift; sourceTree = "<group>"; };
-		XX0000010000000000000101 /* TokenBarSettingsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarSettingsTextField.swift; sourceTree = "<group>"; };
 		OO0000010000000000000101 /* MenuBarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsView.swift; sourceTree = "<group>"; };
 		PP0000010000000000000101 /* TokenBarAppActivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarAppActivation.swift; sourceTree = "<group>"; };
 		QQ0000010000000000000101 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
@@ -302,6 +301,7 @@
 		VV0000010000000000000101 /* DashboardOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardOverview.swift; sourceTree = "<group>"; };
 		VV0000010000000000000103 /* DashboardOverviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardOverviewTests.swift; sourceTree = "<group>"; };
 		WW0000010000000000000101 /* TokenBarUsageVisuals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarUsageVisuals.swift; sourceTree = "<group>"; };
+		XX0000010000000000000101 /* TokenBarSettingsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBarSettingsTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,7 +721,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2660;
 				TargetAttributes = {
 					AA0000010000000000000002 = {
 						CreatedOnToolsVersion = 16.0;
@@ -994,6 +994,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -1056,6 +1057,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 6.0;
@@ -1087,6 +1089,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 			};
@@ -1117,6 +1120,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 			};
@@ -1145,6 +1149,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar.TokenBarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -1174,6 +1179,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = icu.charlie.TokenBar.TokenBarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
