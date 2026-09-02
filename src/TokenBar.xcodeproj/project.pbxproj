@@ -258,6 +258,7 @@
 		II0000010000000000000107 /* WidgetTimelineRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTimelineRefresher.swift; sourceTree = "<group>"; };
 		II0000010000000000000109 /* TokenBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TokenBar.entitlements; sourceTree = "<group>"; };
 		II000001000000000000010B /* TokenBarWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TokenBarWidget.entitlements; sourceTree = "<group>"; };
+		WW0000010000000000000103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		II000001000000000000010D /* WidgetPayloadBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPayloadBuilderTests.swift; sourceTree = "<group>"; };
 		II000001000000000000010F /* WidgetSnapshotStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotStoreTests.swift; sourceTree = "<group>"; };
 		JJ0000010000000000000101 /* AggregatedUsageSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatedUsageSummary.swift; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 			children = (
 				AA000001000000000000000C /* TokenBarWidgetBundle.swift */,
 				AA000001000000000000000D /* TokenBarWidget.swift */,
+				WW0000010000000000000103 /* Info.plist */,
 				II000001000000000000010B /* TokenBarWidget.entitlements */,
 				AA000001000000000000000E /* Assets.xcassets */,
 			);
@@ -1136,9 +1138,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TokenBarWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TokenBarWidget;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1166,9 +1168,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TokenBarWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TokenBarWidget;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
