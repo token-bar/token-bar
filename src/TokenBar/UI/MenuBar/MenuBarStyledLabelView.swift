@@ -13,7 +13,7 @@ struct MenuBarStyledLabelView: View {
     var valueFont: Font = .body
 
     var body: some View {
-        if displayMode == .aggregate, aggregateItems.count > 1 {
+        if displayMode == .aggregate, !aggregateItems.isEmpty {
             MenuBarAggregateLabelView(
                 items: aggregateItems,
                 display: providerDisplay,

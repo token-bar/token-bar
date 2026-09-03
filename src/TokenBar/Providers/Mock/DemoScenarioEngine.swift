@@ -52,4 +52,29 @@ enum DemoScenarioEngine {
             capturedAt: capturedAt
         )
     }
+
+    static func makeRandomSnapshot(
+        accountID: UUID,
+        providerID: String,
+        displayName: String,
+        capturedAt: Date = .now
+    ) -> UsageSnapshot {
+        let usagePercent = Double.random(in: 8 ... 92)
+        let spend = Double.random(in: 4 ... 240)
+        let credits = Double.random(in: 100 ... 5_000)
+        let quotaUsed = usagePercent / 100 * defaultQuotaLimit
+
+        return UsageSnapshot(
+            accountID: accountID,
+            providerID: providerID,
+            providerName: displayName,
+            usagePercent: usagePercent,
+            creditsRemaining: credits,
+            spendAmount: Decimal(spend),
+            spendCurrency: "USD",
+            quotaUsed: quotaUsed,
+            quotaLimit: defaultQuotaLimit,
+            capturedAt: capturedAt
+        )
+    }
 }

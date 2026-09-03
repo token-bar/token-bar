@@ -118,5 +118,42 @@ final class ProviderLifecycleServiceTests: XCTestCase {
             XCTFail("Unexpected error: \(error)")
         }
     }
+
+    func testConnectOpenAIWithDemoCredentialSimulatesUsage() async throws {
+        let registry = ProviderRegistry()
+        await registry.register(OpenAIProviderFactory())
+        let credentials = InMemoryCredentialStore()
+        try credentials.save("demo", for: CredentialKey(providerID: "openai", kind: .apiKey))
+        let lifecycle = makeLifecycle(registry: registry, credentials: credentials)
+
+        let account = try await lifecycle.connect(providerID: "openai")
+
+        XCTAssertEqual(account.providerID, "openai")
+        XCTAssertTrue(account.isConnected)
+        let connector = await registry.connector(for: "openai")
+        XCTAssertNotNil(connector)
+        let snapshot = try await connector?.fetchUsage()
+        XCTAssertEqual(snapshot?.providerID, "openai")
+        XCTAssertNotNil(snapshot?.usagePercent)
+        XCTAssertGreaterThan(snapshot?.usagePercent ?? 0, 0)
+    }
+
+    func testConnectCustomProxyWithDemoURLSimulatesUsage() async throws {
+        let registry = ProviderRegistry()
+        await registry.register(ProxyProviderFactory())
+        let configuration = ProviderConfigurationStore(
+            defaults: UserDefaults(suiteName: "ProviderLifecycleServiceTests.proxyDemo")!
+        )
+        configuration.save(
+            ProviderConfiguration(proxyURL: "demo"),
+            providerID: "custom-proxy"
+        )
+        let lifecycle = makeLifecycle(registry: registry, configuration: configuration)
+
+        let account = try await lifecycle.connect(providerID: "custom-proxy")
+
+        XCTAssertEqual(account.providerID, "custom-proxy")
+        XCTAssertTrue(account.isConnected)
+    }
 }
 

@@ -25,4 +25,25 @@ final class DemoScenarioEngineTests: XCTestCase {
         XCTAssertEqual(usagePercent, 42.5)
         XCTAssertEqual(state.currentUsagePercent, 42.5)
     }
+
+    func testMakeRandomSnapshotProducesBoundedValues() throws {
+        let accountID = UUID()
+        let snapshot = DemoScenarioEngine.makeRandomSnapshot(
+            accountID: accountID,
+            providerID: "openai",
+            displayName: "OpenAI"
+        )
+
+        XCTAssertEqual(snapshot.accountID, accountID)
+        XCTAssertEqual(snapshot.providerID, "openai")
+        let usagePercent = try XCTUnwrap(snapshot.usagePercent)
+        XCTAssertGreaterThanOrEqual(usagePercent, 8)
+        XCTAssertLessThanOrEqual(usagePercent, 92)
+        let spend = try XCTUnwrap(snapshot.spendAmount)
+        XCTAssertGreaterThanOrEqual(spend, 4)
+        XCTAssertLessThanOrEqual(spend, 240)
+        let credits = try XCTUnwrap(snapshot.creditsRemaining)
+        XCTAssertGreaterThanOrEqual(credits, 100)
+        XCTAssertLessThanOrEqual(credits, 5_000)
+    }
 }

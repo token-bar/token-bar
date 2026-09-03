@@ -5,6 +5,7 @@ struct TokenBarAccordion<Content: View>: View {
 
     let title: String
     let subtitle: String?
+    let providerID: String?
     let isExpanded: Bool
     let onToggle: () -> Void
     @ViewBuilder let content: Content
@@ -12,12 +13,14 @@ struct TokenBarAccordion<Content: View>: View {
     init(
         title: String,
         subtitle: String? = nil,
+        providerID: String? = nil,
         isExpanded: Bool,
         onToggle: @escaping () -> Void,
         @ViewBuilder content: () -> Content
     ) {
         self.title = title
         self.subtitle = subtitle
+        self.providerID = providerID
         self.isExpanded = isExpanded
         self.onToggle = onToggle
         self.content = content()
@@ -27,6 +30,9 @@ struct TokenBarAccordion<Content: View>: View {
         VStack(alignment: .leading, spacing: 0) {
             Button(action: onToggle) {
                 HStack(spacing: TokenBarMetrics.innerSpacing) {
+                    if let providerID {
+                        ProviderBrandIcon(providerID: providerID, size: 16)
+                    }
                     VStack(alignment: .leading, spacing: 2) {
                         Text(title)
                             .font(.subheadline.weight(.semibold))
@@ -109,6 +115,7 @@ struct TokenBarProviderAccordion: View {
         TokenBarAccordion(
             title: provider.displayName,
             subtitle: subtitle,
+            providerID: provider.id,
             isExpanded: isExpanded,
             onToggle: onToggle
         ) {
@@ -132,6 +139,7 @@ struct TokenBarConnectedProviderAccordion: View {
         TokenBarAccordion(
             title: account.displayName,
             subtitle: account.connectionStatus.label,
+            providerID: account.providerID,
             isExpanded: isExpanded,
             onToggle: onToggle
         ) {

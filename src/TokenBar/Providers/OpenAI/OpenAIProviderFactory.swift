@@ -21,14 +21,20 @@ struct OpenAIProviderFactory: ProviderFactory {
             providerID: OpenAIProviderConnector.providerID
         )
 
-        let client = OpenAIAdminAPIClient(
-            adminAPIKey: apiKey,
-            urlSession: context.urlSession
-        )
+        return DemoModeConnectorFactory.make(
+            providerID: OpenAIProviderConnector.providerID,
+            displayName: descriptor.displayName,
+            demoTrigger: apiKey
+        ) {
+            let client = OpenAIAdminAPIClient(
+                adminAPIKey: apiKey,
+                urlSession: context.urlSession
+            )
 
-        return OpenAIProviderConnector(
-            apiClient: client,
-            monthlyBudgetUSD: configuration.monthlyBudgetUSD
-        )
+            return OpenAIProviderConnector(
+                apiClient: client,
+                monthlyBudgetUSD: configuration.monthlyBudgetUSD
+            )
+        }
     }
 }

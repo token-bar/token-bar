@@ -3,18 +3,15 @@ import SwiftUI
 @main
 struct TokenBarApp: App {
     @NSApplicationDelegateAdaptor(TokenBarAppDelegate.self) private var appDelegate
-
-    private let store = AppEnvironment.shared
+    @Bindable private var store = AppEnvironment.shared
 
     var body: some Scene {
-        MenuBarExtra {
-            MenuBarView(store: store)
-                .background { SettingsWindowOpener() }
-                .task { await store.bootstrap() }
-        } label: {
-            MenuBarLabelView(store: store)
+        WindowGroup(id: "coordinator") {
+            AppCoordinatorView(store: store)
         }
-        .menuBarExtraStyle(.window)
+        .windowResizability(.contentSize)
+        .defaultSize(width: 1, height: 1)
+        .windowStyle(.hiddenTitleBar)
 
         Window("TokenBar Settings", id: "settings") {
             SettingsView(store: store)

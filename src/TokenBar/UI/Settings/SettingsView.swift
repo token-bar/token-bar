@@ -88,9 +88,9 @@ struct SettingsView: View {
             if store.accounts.count > 1 {
                 TokenBarGlassCard {
                     VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
-                        TokenBarSectionHeader(title: "Menu bar source")
+                        TokenBarSectionHeader(title: "Primary provider")
                         TokenBarSectionSubtitle(text: "Which connected provider drives the menu bar label.")
-                        Picker("Menu bar provider", selection: activeAccountBinding) {
+                        Picker("Primary provider", selection: activeAccountBinding) {
                             ForEach(store.accounts) { account in
                                 Text(account.displayName).tag(Optional(account.id))
                             }
@@ -123,11 +123,16 @@ struct SettingsView: View {
 
             VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing) {
                 TokenBarSectionHeader(title: "Add a provider")
-                if store.availableProviders.isEmpty {
-                    Text("No provider types registered.")
-                        .foregroundStyle(.secondary)
+                if addableProviders.isEmpty {
+                    TokenBarGlassCard {
+                        TokenBarSectionSubtitle(
+                            text: store.accounts.isEmpty
+                                ? "No provider types registered."
+                                : "All available providers are connected."
+                        )
+                    }
                 } else {
-                    ForEach(store.availableProviders) { provider in
+                    ForEach(addableProviders) { provider in
                         TokenBarProviderAccordion(
                             provider: provider,
                             store: store,
@@ -138,6 +143,11 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+
+    private var addableProviders: [ProviderDescriptor] {
+        let connectedProviderIDs = Set(store.accounts.map(\.providerID))
+        return store.availableProviders.filter { !connectedProviderIDs.contains($0.id) }
     }
 
     private var alertsSection: some View {

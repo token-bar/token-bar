@@ -27,26 +27,39 @@ struct CursorPersonalProviderFactory: ProviderFactory {
                 kind: .sessionCookie
             )
             let token = (try? context.credentials.load(for: tokenKey)) ?? ""
-            let dashboard = ExperimentalCursorPersonalDashboardClient(urlSession: context.urlSession)
-            return CursorPersonalProviderConnector(
-                dashboard: dashboard,
-                sessionToken: token
-            )
+            return DemoModeConnectorFactory.make(
+                providerID: CursorPersonalProviderConnector.providerID,
+                displayName: descriptor.displayName,
+                demoTrigger: token
+            ) {
+                let dashboard = ExperimentalCursorPersonalDashboardClient(urlSession: context.urlSession)
+                return CursorPersonalProviderConnector(
+                    dashboard: dashboard,
+                    sessionToken: token
+                )
+            }
         case .customProxy:
-            let endpoint = configuration.proxyURL.flatMap(URL.init(string:))
-                ?? URL(string: "https://invalid.local")!
-            let tokenKey = CredentialKey(
+            let proxyURL = configuration.proxyURL ?? ""
+            return DemoModeConnectorFactory.make(
                 providerID: CursorPersonalProviderConnector.providerID,
-                kind: .proxyToken
-            )
-            let token = try? context.credentials.load(for: tokenKey)
-            return ProxyProviderConnector(
-                endpoint: endpoint,
-                proxyToken: token,
-                urlSession: context.urlSession,
-                providerID: CursorPersonalProviderConnector.providerID,
-                displayName: "Cursor Personal"
-            )
+                displayName: descriptor.displayName,
+                demoTrigger: proxyURL
+            ) {
+                let endpoint = configuration.proxyURL.flatMap(URL.init(string:))
+                    ?? URL(string: "https://invalid.local")!
+                let tokenKey = CredentialKey(
+                    providerID: CursorPersonalProviderConnector.providerID,
+                    kind: .proxyToken
+                )
+                let token = try? context.credentials.load(for: tokenKey)
+                return ProxyProviderConnector(
+                    endpoint: endpoint,
+                    proxyToken: token,
+                    urlSession: context.urlSession,
+                    providerID: CursorPersonalProviderConnector.providerID,
+                    displayName: descriptor.displayName
+                )
+            }
         }
     }
 }

@@ -40,30 +40,10 @@ struct GeneralSettingsView: View {
     private var heroCard: some View {
         TokenBarGlassCard {
             VStack(alignment: .leading, spacing: TokenBarMetrics.spacing) {
-                HStack(alignment: .top, spacing: TokenBarMetrics.spacing + 4) {
-                    if let percent = overview.activeUsagePercent ?? overview.summary.highestUsagePercent {
-                        TokenBarUsageRing(percent: percent)
-                    } else {
-                        placeholderRing
-                    }
-
-                    VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing + 2) {
-                        if let name = overview.activeProviderName ?? overview.summary.highestUsageProviderName {
-                            Text(name)
-                                .font(.title3.weight(.semibold))
-                        }
-                        Text(heroSubtitle)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-
-                        if let risk = overview.summary.highestRiskLevel {
-                            Label(risk.rawValue.capitalized, systemImage: "exclamationmark.triangle.fill")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(TokenBarRiskColor.color(for: risk))
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if overview.providers.count > 1 {
+                    multiProviderHero
+                } else {
+                    singleProviderHero
                 }
 
                 LazyVGrid(
@@ -100,6 +80,82 @@ struct GeneralSettingsView: View {
         }
     }
 
+    private var singleProviderHero: some View {
+        HStack(alignment: .top, spacing: TokenBarMetrics.spacing + 4) {
+            if let percent = overview.activeUsagePercent ?? overview.summary.highestUsagePercent {
+                TokenBarUsageRing(percent: percent)
+            } else {
+                placeholderRing()
+            }
+
+            VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing + 2) {
+                if let name = overview.activeProviderName ?? overview.summary.highestUsageProviderName {
+                    Text(name)
+                        .font(.title3.weight(.semibold))
+                }
+                Text(heroSubtitle)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                if let risk = overview.summary.highestRiskLevel {
+                    Label(risk.rawValue.capitalized, systemImage: "exclamationmark.triangle.fill")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(TokenBarRiskColor.color(for: risk))
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    private var multiProviderHero: some View {
+        HStack(alignment: .top, spacing: TokenBarMetrics.innerSpacing) {
+            ForEach(overview.providers) { provider in
+                providerHeroColumn(provider)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private func providerHeroColumn(_ provider: DashboardProviderInsight) -> some View {
+        VStack(spacing: TokenBarMetrics.innerSpacing) {
+            if let percent = provider.usagePercent {
+                TokenBarUsageRing(percent: percent, diameter: 68, lineWidth: 7)
+            } else {
+                placeholderRing(diameter: 68, lineWidth: 7)
+            }
+
+            VStack(spacing: 4) {
+                HStack(spacing: 4) {
+                    ProviderBrandIcon(providerID: provider.providerID, size: 12)
+                    Text(provider.providerName)
+                        .font(.caption.weight(.semibold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+
+                if provider.isActive {
+                    Text("Primary")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text(provider.connectionStatus.label)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+
+                if let risk = provider.forecast?.riskLevel {
+                    Label(risk.rawValue.capitalized, systemImage: "exclamationmark.triangle.fill")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(TokenBarRiskColor.color(for: risk))
+                }
+            }
+            .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
     private var comparisonCard: some View {
         TokenBarGlassCard {
             VStack(alignment: .leading, spacing: TokenBarMetrics.innerSpacing + 2) {
@@ -129,16 +185,18 @@ struct GeneralSettingsView: View {
                             Text(provider.providerName)
                                 .font(.subheadline.weight(.semibold))
                             if provider.isActive {
-                                Text("Menu bar")
+                                Text("Primary")
                                     .font(.caption2.weight(.semibold))
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 2)
                                     .background(.quaternary.opacity(0.55), in: Capsule())
                             }
                         }
-                        Text(provider.connectionStatus.label)
-                            .font(.caption)
-                            .foregroundStyle(connectionColor(for: provider.connectionStatus))
+                        if !provider.isActive {
+                            Text(provider.connectionStatus.label)
+                                .font(.caption)
+                                .foregroundStyle(connectionColor(for: provider.connectionStatus))
+                        }
                     }
                     Spacer(minLength: 0)
                     if let percent = provider.usagePercent {
@@ -257,20 +315,20 @@ struct GeneralSettingsView: View {
         }
     }
 
-    private var placeholderRing: some View {
+    private func placeholderRing(diameter: CGFloat = 88, lineWidth: CGFloat = 9) -> some View {
         ZStack {
             Circle()
-                .stroke(.quaternary.opacity(0.8), lineWidth: 9)
+                .stroke(.quaternary.opacity(0.8), lineWidth: lineWidth)
             Image(systemName: "chart.pie")
-                .font(.title2)
+                .font(diameter > 72 ? .title2 : .body)
                 .foregroundStyle(.secondary)
         }
-        .frame(width: 88, height: 88)
+        .frame(width: diameter, height: diameter)
     }
 
     private var heroSubtitle: String {
         if overview.activeProviderName != nil {
-            return "Active menu bar provider · \(overview.summary.providerCount) connected"
+            return "Primary provider · \(overview.summary.providerCount) connected"
         }
         return "\(overview.summary.providerCount) providers connected"
     }

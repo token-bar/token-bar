@@ -21,14 +21,20 @@ struct AnthropicProviderFactory: ProviderFactory {
             providerID: AnthropicProviderConnector.providerID
         )
 
-        let client = AnthropicAdminAPIClient(
-            adminAPIKey: apiKey,
-            urlSession: context.urlSession
-        )
+        return DemoModeConnectorFactory.make(
+            providerID: AnthropicProviderConnector.providerID,
+            displayName: descriptor.displayName,
+            demoTrigger: apiKey
+        ) {
+            let client = AnthropicAdminAPIClient(
+                adminAPIKey: apiKey,
+                urlSession: context.urlSession
+            )
 
-        return AnthropicProviderConnector(
-            apiClient: client,
-            monthlyBudgetUSD: configuration.monthlyBudgetUSD
-        )
+            return AnthropicProviderConnector(
+                apiClient: client,
+                monthlyBudgetUSD: configuration.monthlyBudgetUSD
+            )
+        }
     }
 }

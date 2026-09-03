@@ -21,14 +21,20 @@ struct CursorTeamProviderFactory: ProviderFactory {
             providerID: CursorTeamProviderConnector.providerID
         )
 
-        let client = CursorTeamAPIClient(
-            apiKey: apiKey,
-            urlSession: context.urlSession
-        )
+        return DemoModeConnectorFactory.make(
+            providerID: CursorTeamProviderConnector.providerID,
+            displayName: descriptor.displayName,
+            demoTrigger: apiKey
+        ) {
+            let client = CursorTeamAPIClient(
+                apiKey: apiKey,
+                urlSession: context.urlSession
+            )
 
-        return CursorTeamProviderConnector(
-            apiClient: client,
-            memberEmail: configuration.memberEmail
-        )
+            return CursorTeamProviderConnector(
+                apiClient: client,
+                memberEmail: configuration.memberEmail
+            )
+        }
     }
 }

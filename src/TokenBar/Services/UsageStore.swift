@@ -12,7 +12,10 @@ final class UsageStore {
     var advancedProviders: [ProviderDescriptor] = []
     var activeAccountID: UUID?
     var displayMode: DisplayMode {
-        didSet { preferences.displayMode = displayMode }
+        didSet {
+            preferences.displayMode = displayMode
+            publishWidgetSnapshot()
+        }
     }
     var showAdvancedProviders: Bool {
         didSet {
@@ -119,6 +122,15 @@ final class UsageStore {
         MenuBarAggregateItems.from(snapshots: snapshots)
     }
 
+    /// Drives MenuBarExtra label refresh when provider, display mode, or usage changes.
+    var menuBarPresentationToken: String {
+        let snapshotToken = snapshots
+            .sorted { $0.providerID < $1.providerID }
+            .map { "\($0.providerID):\($0.accountID.uuidString):\(Int($0.usagePercent ?? -1))" }
+            .joined(separator: "|")
+        return "\(displayMode.rawValue)|\(menuBarProviderDisplay.rawValue)|\(activeAccountID?.uuidString ?? "")|\(snapshotToken)"
+    }
+
     var nextRefreshAt: Date? {
         guard let lastRefreshAt, let seconds = refreshInterval.seconds else {
             return nil
@@ -189,6 +201,27 @@ final class UsageStore {
         activeAccountID = accountID
         preferences.activeAccountID = accountID
         publishWidgetSnapshot()
+    }
+
+    func reconcileActiveAccountID() {
+        guard !snapshots.isEmpty else {
+            activeAccountID = nil
+            return
+        }
+
+        if let activeAccountID,
+           snapshots.contains(where: { $0.accountID == activeAccountID }) {
+            return
+        }
+
+        if let previousID = activeAccountID,
+           let account = accounts.first(where: { $0.id == previousID }),
+           let snapshot = snapshots.first(where: { $0.providerID == account.providerID }) {
+            activeAccountID = snapshot.accountID
+            return
+        }
+
+        activeAccountID = snapshots.first?.accountID
     }
 
     func configuration(for providerID: String) -> ProviderConfiguration {
@@ -347,6 +380,7 @@ final class UsageStore {
         }
 
         snapshots = nextSnapshots
+        syncAccountsWithSnapshots(nextSnapshots)
         updateForecasts(for: nextSnapshots)
 
         if !errors.isEmpty {
@@ -436,10 +470,38 @@ final class UsageStore {
     }
 
     private func persistActiveAccount() {
+        reconcileActiveAccountID()
         if activeAccountID == nil {
             activeAccountID = snapshots.first?.accountID
         }
         preferences.activeAccountID = activeAccountID
+    }
+
+    private func syncAccountsWithSnapshots(_ snapshots: [UsageSnapshot]) {
+        var nextActiveID = activeAccountID
+
+        accounts = accounts.map { account in
+            guard let snapshot = snapshots.first(where: { $0.providerID == account.providerID }) else {
+                return account
+            }
+            guard account.id != snapshot.accountID else {
+                return account
+            }
+
+            if nextActiveID == account.id {
+                nextActiveID = snapshot.accountID
+            }
+
+            return ProviderAccount(
+                id: snapshot.accountID,
+                providerID: account.providerID,
+                displayName: snapshot.providerName,
+                isConnected: account.isConnected,
+                connectionStatus: account.connectionStatus
+            )
+        }
+
+        activeAccountID = nextActiveID
     }
 
     private func updateRefreshSchedule() {

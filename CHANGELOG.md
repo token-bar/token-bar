@@ -11,6 +11,11 @@ First Mac App Store release. Production cleanup and UI polish on top of 0.1.0.
 
 ### Added
 
+- Demo credential mode: enter `demo` in any provider API key, session cookie, or proxy URL field to simulate random usage (App Review / testing)
+- Menu bar right-click menu with Open Settings and Quit TokenBar
+- Provider icons in Settings accordions; connected providers hidden from Add a provider list
+- Overview dashboard shows a row of usage rings when multiple providers are connected
+- Fix menu bar not updating when switching provider source or All Providers display mode (replaced SwiftUI `MenuBarExtra` label with `NSStatusItem` + live rendering)
 - Provider display toggle: logos or text labels for every menu bar style
 - Official provider marks (OpenAI, Anthropic, Cursor) with light/dark asset variants
 - Settings overview dashboard: usage rings, progress bars, provider comparison, forecasts

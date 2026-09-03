@@ -48,10 +48,14 @@ enum TokenBarAppActivation {
 
 @MainActor
 final class TokenBarAppDelegate: NSObject, NSApplicationDelegate {
+    private var menuBarController: MenuBarStatusItemController?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         TokenBarAppActivation.bootstrap()
         #if os(macOS)
         ProviderBrandIconImage.installAppearanceObserverIfNeeded()
+        menuBarController = MenuBarStatusItemController(store: AppEnvironment.shared)
+        menuBarController?.install()
         #endif
     }
 

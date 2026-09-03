@@ -80,7 +80,13 @@ struct ProviderLifecycleService: Sendable {
     private func validateProxyConfiguration(providerID: String) throws {
         let configuration = factoryContext.configuration.load(providerID: providerID)
         guard let proxyURL = configuration.proxyURL,
-              URL(string: proxyURL) != nil else {
+              !proxyURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            throw ProviderError.invalidConfiguration
+        }
+        if DemoCredentialMode.isDemo(proxyURL) {
+            return
+        }
+        guard URL(string: proxyURL) != nil else {
             throw ProviderError.invalidConfiguration
         }
     }

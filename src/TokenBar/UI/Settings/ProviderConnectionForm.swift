@@ -131,6 +131,9 @@ struct ProviderConnectionForm: View {
             Text(apiKeyHelpText)
                 .font(.caption)
                 .foregroundStyle(.secondary)
+            Text(demoCredentialHint)
+                .font(.caption)
+                .foregroundStyle(.secondary)
         case .sessionToken:
             Picker("Connection Method", selection: $connectionMethod) {
                 ForEach(CursorPersonalConnectionMethod.allCases) { method in
@@ -148,6 +151,9 @@ struct ProviderConnectionForm: View {
                 Text("Copy from cursor.com → DevTools → Application → Cookies.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                Text(demoCredentialHint)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             } else {
                 TokenBarSettingsTextField(placeholder: "Custom Proxy URL", text: $proxyURL)
                 TokenBarSettingsTextField(
@@ -156,6 +162,9 @@ struct ProviderConnectionForm: View {
                     isSecure: true
                 )
                 Text("Advanced mode for power users. Endpoint must return canonical usage JSON.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Text(demoCredentialHint)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -169,11 +178,17 @@ struct ProviderConnectionForm: View {
             Text("Endpoint must return canonical usage JSON. See specs/010-provider-connectors.md.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
+            Text(demoCredentialHint)
+                .font(.caption)
+                .foregroundStyle(.secondary)
         case .oauth:
             Text("Not yet supported.")
                 .foregroundStyle(.secondary)
         }
     }
+
+    private let demoCredentialHint =
+        "Enter demo (any case) to simulate random usage without real credentials."
 
     private var showsDemoScenarioFields: Bool {
         provider.id == "mock"

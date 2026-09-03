@@ -16,20 +16,28 @@ struct ProxyProviderFactory: ProviderFactory {
         let configuration = context.configuration.load(
             providerID: ProxyProviderConnector.advancedProviderID
         )
-        let endpoint = configuration.proxyURL.flatMap(URL.init(string:))
-            ?? URL(string: "https://invalid.local")!
-        let tokenKey = CredentialKey(
-            providerID: ProxyProviderConnector.advancedProviderID,
-            kind: .proxyToken
-        )
-        let token = try? context.credentials.load(for: tokenKey)
+        let proxyURL = configuration.proxyURL ?? ""
 
-        return ProxyProviderConnector(
-            endpoint: endpoint,
-            proxyToken: token,
-            urlSession: context.urlSession,
+        return DemoModeConnectorFactory.make(
             providerID: ProxyProviderConnector.advancedProviderID,
-            displayName: "Custom Proxy"
-        )
+            displayName: descriptor.displayName,
+            demoTrigger: proxyURL
+        ) {
+            let endpoint = configuration.proxyURL.flatMap(URL.init(string:))
+                ?? URL(string: "https://invalid.local")!
+            let tokenKey = CredentialKey(
+                providerID: ProxyProviderConnector.advancedProviderID,
+                kind: .proxyToken
+            )
+            let token = try? context.credentials.load(for: tokenKey)
+
+            return ProxyProviderConnector(
+                endpoint: endpoint,
+                proxyToken: token,
+                urlSession: context.urlSession,
+                providerID: ProxyProviderConnector.advancedProviderID,
+                displayName: descriptor.displayName
+            )
+        }
     }
 }

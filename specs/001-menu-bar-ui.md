@@ -42,6 +42,10 @@ Clicking the menu bar opens a Liquid Glass panel (`TokenBarGlassPanel`, 300 pt w
 * Refresh controls (when providers connected)
 * **Settings…** button
 
+Right-clicking (or Control-clicking) the menu bar icon shows a context menu with **Open Settings…** and **Quit TokenBar**.
+
+The menu bar status item is implemented with `NSStatusItem` so the label updates reliably (including All Providers aggregate mode) and right-click menus work.
+
 Settings uses the same glass chrome for visual parity.
 
 ---
@@ -59,6 +63,7 @@ Settings uses the same glass chrome for visual parity.
 
 * App launches into menu bar only
 * Menu bar item updates dynamically
+* Right-click menu bar icon shows Open Settings and Quit
 * UI remains responsive during refresh
 
 ---
