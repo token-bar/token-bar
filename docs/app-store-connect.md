@@ -90,6 +90,7 @@ To test without real provider accounts: open Settings → Providers → add “D
 - **App Store name:** TokenBar
 - **App Store subtitle:** AI usage tracker for macOS
 - **Menu bar name:** TokenBar
+- **Support URL:** https://token-bar.pages.dev/contact
 - **Primary category:** Developer Tools
 - **Secondary category:** Utilities
 - **Bundle category (`LSApplicationCategoryType`):** `public.app-category.developer-tools`

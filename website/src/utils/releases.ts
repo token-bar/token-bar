@@ -16,6 +16,8 @@ export const APP_NAME_SHORT = 'TokenBar';
 
 export const SITE_URL = 'https://token-bar.pages.dev';
 
+export const SUPPORT_URL = `${SITE_URL}/contact`;
+
 export const APP_STORE_URL = 'https://apps.apple.com/app/id6805913901';
 
 /** Mac App Store promotional text (170 char max) */
