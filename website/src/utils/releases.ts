@@ -2,7 +2,7 @@ export const GITHUB_ORG = 'token-bar';
 
 export const GITHUB_REPO = 'token-bar/token-bar';
 
-export const GITHUB_OWNER = 'xarlizard';
+export const GITHUB_OWNER = 'charlite';
 
 export const GITHUB_ORG_URL = `https://github.com/${GITHUB_ORG}`;
 
