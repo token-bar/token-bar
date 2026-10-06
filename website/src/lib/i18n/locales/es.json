@@ -57,18 +57,18 @@
   },
   "footer": {
     "tagline": "AI usage tracking across providers — designed for macOS.",
-    "openSource": "Open source on GitHub",
     "copyright": "Copyright © {{year}} TokenBar. All rights reserved.",
     "columns": {
       "product": "Product",
       "legal": "Legal",
-      "openSource": "Open Source"
+      "github": "Open Source"
     },
     "links": {
       "org": "GitHub organization",
       "repo": "Repository",
       "author": "@{{author}}"
-    }
+    },
+    "github": "Open source on GitHub"
   },
   "privacy": {
     "eyebrow": "Legal",
@@ -94,8 +94,8 @@
         "body": "The Mac App Store download link sends you to Apple. GitHub links on this site send you to GitHub. Provider connectors call the APIs you configure (Cursor, OpenAI, Anthropic, or your proxy). We do not integrate any other third-party services."
       },
       {
-        "title": "Open source",
-        "body": "$t(app.name) is open source. You can review the application code on GitHub to verify how data is handled."
+        "title": "GitHub",
+        "body": "Links to GitHub on this site point to the public organization page at github.com/token-bar, not to private application source code."
       },
       {
         "title": "Changes",
@@ -129,15 +129,8 @@
       "proxy": "Custom Proxy — optional bearer token + canonical JSON endpoint",
       "demo": "Demo Provider — no credentials (advanced / testing)"
     },
-    "repoDocsTitle": "Repository",
-    "repoDocsDescription": "$t(app.name) is open source. Development setup and contribution guides live on GitHub.",
-    "links": {
-      "development": "Development guide",
-      "architecture": "Architecture",
-      "contributing": "Contributing",
-      "changelog": "Changelog",
-      "security": "Security policy"
-    },
-    "viewOnGitHub": "View repository on GitHub"
+    "githubTitle": "GitHub",
+    "githubDescription": "Follow the public organization on GitHub. Application source is not published.",
+    "viewOrgOnGitHub": "View organization on GitHub"
   }
 }

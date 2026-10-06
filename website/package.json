@@ -1,7 +1,7 @@
 {
   "name": "token-bar-website",
   "version": "1.0.0",
-  "description": "Landing page for TokenBar — AI usage tracker for macOS.",
+  "description": "Landing page for TokenBar \u2014 AI usage tracker for macOS.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -50,11 +50,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/token-bar/token-bar.git"
+    "url": "git+https://github.com/token-bar/.github.git"
   },
   "homepage": "https://token-bar.pages.dev",
   "bugs": {
-    "url": "https://github.com/token-bar/token-bar/issues"
+    "url": "https://github.com/token-bar/.github/issues"
   },
   "keywords": [
     "token",

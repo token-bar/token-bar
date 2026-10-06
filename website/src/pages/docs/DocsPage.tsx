@@ -1,17 +1,9 @@
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { DownloadButton } from '@/components/DownloadButton';
-import { REPO_URL } from '@/utils/releases';
+import { GITHUB_ORG_URL } from '@/utils/releases';
 import { cn } from '@/utils/cn';
-
-const repoDocLinks = [
-  { key: 'development', href: `${REPO_URL}/blob/main/docs/development.md` },
-  { key: 'architecture', href: `${REPO_URL}/blob/main/docs/architecture.md` },
-  { key: 'contributing', href: `${REPO_URL}/blob/main/CONTRIBUTING.md` },
-  { key: 'changelog', href: `${REPO_URL}/blob/main/CHANGELOG.md` },
-  { key: 'security', href: `${REPO_URL}/blob/main/SECURITY.md` },
-] as const;
 
 const providerKeys = [
   'cursorPersonal',
@@ -97,30 +89,17 @@ export default function DocsPage() {
               </ul>
             </DocsSection>
 
-            <DocsSection title={t('docs.repoDocsTitle')} className="border-b-0">
-              <p className="docs-section-lead">{t('docs.repoDocsDescription')}</p>
+            <DocsSection title={t('docs.githubTitle')} className="border-b-0">
+              <p className="docs-section-lead">{t('docs.githubDescription')}</p>
               <ul className="docs-link-list">
-                {repoDocLinks.map(({ key, href }) => (
-                  <li key={key}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="docs-link-row"
-                    >
-                      <span>{t(`docs.links.${key}`)}</span>
-                      <ExternalLink className="size-4 shrink-0 opacity-50" aria-hidden />
-                    </a>
-                  </li>
-                ))}
                 <li>
                   <a
-                    href={REPO_URL}
+                    href={GITHUB_ORG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="docs-link-row docs-link-row-primary"
                   >
-                    <span>{t('docs.viewOnGitHub')}</span>
+                    <span>{t('docs.viewOrgOnGitHub')}</span>
                     <ChevronRight className="size-4 shrink-0 opacity-60" aria-hidden />
                   </a>
                 </li>
