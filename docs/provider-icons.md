@@ -5,7 +5,7 @@ TokenBar shows small provider marks in the menu bar when **Logos** is selected u
 ## Asset catalog layout
 
 ```
-src/TokenBar/Assets.xcassets/
+src/app-macos/TokenBar/Assets.xcassets/
   ProviderOpenAI.imageset/
     provider-openai-black.svg   # light appearance
     provider-openai-white.svg   # dark appearance

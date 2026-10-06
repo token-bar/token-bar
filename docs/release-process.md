@@ -8,8 +8,8 @@ TokenBar uses [semantic versioning](https://semver.org/): `MAJOR.MINOR.PATCH`.
 
 | Location | Field |
 |----------|-------|
-| `src/TokenBar.xcodeproj/project.pbxproj` | `MARKETING_VERSION` |
-| `src/TokenBar.xcodeproj/project.pbxproj` | `CURRENT_PROJECT_VERSION` (build number) |
+| `src/app-macos/TokenBar/TokenBar.xcodeproj/project.pbxproj` | `MARKETING_VERSION` |
+| `src/app-macos/TokenBar/TokenBar.xcodeproj/project.pbxproj` | `CURRENT_PROJECT_VERSION` (build number) |
 | `website/src/utils/releases.ts` | `APP_STORE_URL` |
 
 `AppVersion` reads marketing and build versions from the app bundle at runtime.

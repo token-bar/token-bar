@@ -175,7 +175,7 @@ struct ProviderConnectionForm: View {
                 text: $proxyToken,
                 isSecure: true
             )
-            Text("Endpoint must return canonical usage JSON. See specs/010-provider-connectors.md.")
+            Text("Endpoint must return canonical usage JSON. See specs/app-macos/features/010-provider-connectors.md.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Text(demoCredentialHint)

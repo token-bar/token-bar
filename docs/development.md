@@ -4,7 +4,7 @@
 
 End users install **TokenBar** from the Mac App Store. To run from source:
 
-1. Clone the repository and open `src/TokenBar.xcodeproj` in **Xcode 26+**
+1. Clone the repository and open `src/app-macos/TokenBar/TokenBar.xcodeproj` in **Xcode 26+**
 2. Set your Apple Developer Team in **Signing & Capabilities** (or edit `src/Config/Signing.xcconfig`)
 3. Select the **TokenBar** scheme and **My Mac** as the run destination
 4. Build and run (**⌘R**)
@@ -15,11 +15,11 @@ The app launches to the menu bar only (no Dock icon).
 
 | Directory | Responsibility |
 |-----------|----------------|
-| `src/TokenBar/UI/` | SwiftUI views |
-| `src/TokenBar/Domain/` | Canonical models and pure logic |
-| `src/TokenBar/Providers/` | Provider connectors and registry |
-| `src/TokenBar/Services/` | App state and usage orchestration |
-| `src/TokenBarTests/` | Unit tests |
+| `src/app-macos/TokenBar/UI/` | SwiftUI views |
+| `src/app-macos/TokenBar/Domain/` | Canonical models and pure logic |
+| `src/app-macos/TokenBar/Providers/` | Provider connectors and registry |
+| `src/app-macos/TokenBar/Services/` | App state and usage orchestration |
+| `src/app-macos/TokenBar/TokenBarTests/` | Unit tests |
 
 ## Workflow
 

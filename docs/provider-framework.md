@@ -36,7 +36,7 @@ TokenBar integrates AI providers through a protocol-based plugin layer. UI and d
 * Proxy URLs and member email → `ProviderConfigurationStore` (non-secret)
 * Network timeout: 5 seconds
 
-See `specs/002-provider-framework.md`, `specs/007-provider-authentication.md`, and `specs/010-provider-connectors.md`.
+See `specs/app-macos/features/002-provider-framework.md`, `specs/app-macos/features/007-provider-authentication.md`, and `specs/app-macos/features/010-provider-connectors.md`.
 
 ---
 

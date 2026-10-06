@@ -8,25 +8,25 @@ description: >-
 
 # Provider connectors — TokenBar
 
-UI and domain code must **never** import provider implementations. All provider logic stays in `src/TokenBar/Providers/`.
+UI and domain code must **never** import provider implementations. All provider logic stays in `src/app-macos/TokenBar/TokenBar/Providers/`.
 
 ## Layer rules
 
 | Layer | Allowed |
 |-------|---------|
-| `src/TokenBar/UI/` | Observe `UsageStore` only — no provider imports |
-| `src/TokenBar/Domain/` | Canonical models — no networking |
-| `src/TokenBar/Providers/` | `ProviderConnector`, API clients, mapping to `UsageSnapshot` |
-| `src/TokenBar/Services/` | `UsageService`, `ProviderRegistry`, Keychain, lifecycle |
+| `src/app-macos/TokenBar/TokenBar/UI/` | Observe `UsageStore` only — no provider imports |
+| `src/app-macos/TokenBar/TokenBar/Domain/` | Canonical models — no networking |
+| `src/app-macos/TokenBar/TokenBar/Providers/` | `ProviderConnector`, API clients, mapping to `UsageSnapshot` |
+| `src/app-macos/TokenBar/TokenBar/Services/` | `UsageService`, `ProviderRegistry`, Keychain, lifecycle |
 
 ## Adding a provider
 
-1. Update specs (`specs/010-provider-connectors.md` or new numbered spec).
+1. Update specs (`specs/app-macos/features/010-provider-connectors.md` or new numbered spec).
 2. Implement `ProviderFactory` + `ProviderConnector`.
 3. Map all provider-specific responses into canonical models (`UsageSnapshot`, `ProviderAccount`).
 4. Register in `BuiltinProviderRegistration`.
 5. Add Settings UI for credentials (if required) — still no provider types in views; use descriptors.
-6. Add unit tests in `src/TokenBarTests/Providers/`.
+6. Add unit tests in `src/app-macos/TokenBar/TokenBarTests/Providers/`.
 7. Never invent undocumented API endpoints.
 
 ## Security

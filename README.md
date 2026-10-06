@@ -78,7 +78,7 @@ Requires **Xcode 26** and **macOS 26** or later.
 ```bash
 git clone https://github.com/token-bar/token-bar.git
 cd token-bar
-open "src/TokenBar.xcodeproj"
+open "src/app-macos/TokenBar/TokenBar.xcodeproj"
 ```
 
 Select **My Mac** as the run destination, then **Run** (⌘R).
@@ -95,13 +95,13 @@ Select **My Mac** as the run destination, then **Run** (⌘R).
 
 | Path | Purpose |
 |------|---------|
-| `src/TokenBar/App/` | App entry point, environment, and lifecycle |
-| `src/TokenBar/Domain/` | Usage models, aggregation, forecasting, and alert evaluation |
-| `src/TokenBar/Providers/` | Cursor, OpenAI, Anthropic, proxy, and demo provider connectors |
-| `src/TokenBar/Services/` | Keychain-backed storage, refresh scheduler, notifications, widget snapshots |
-| `src/TokenBar/UI/` | Menu bar panel, settings screens, and shared design components |
-| `src/TokenBarWidget/` | Notification Center / Desktop widget extension |
-| `src/TokenBarTests/` | Unit tests for domain, providers, and services |
+| `src/app-macos/TokenBar/App/` | App entry point, environment, and lifecycle |
+| `src/app-macos/TokenBar/Domain/` | Usage models, aggregation, forecasting, and alert evaluation |
+| `src/app-macos/TokenBar/Providers/` | Cursor, OpenAI, Anthropic, proxy, and demo provider connectors |
+| `src/app-macos/TokenBar/Services/` | Keychain-backed storage, refresh scheduler, notifications, widget snapshots |
+| `src/app-macos/TokenBar/UI/` | Menu bar panel, settings screens, and shared design components |
+| `src/app-macos/TokenBar/TokenBarWidget/` | Notification Center / Desktop widget extension |
+| `src/app-macos/TokenBar/TokenBarTests/` | Unit tests for domain, providers, and services |
 | `website/` | Marketing site (React + Vite, Cloudflare Pages) |
 | `specs/` | Numbered feature specifications |
 | `docs/` | Architecture, development, and release guides |

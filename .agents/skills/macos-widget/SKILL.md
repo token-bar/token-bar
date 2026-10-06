@@ -14,7 +14,7 @@ The widget extension reads cached usage from **App Group** storage written by th
 | Setting | Value |
 |---------|-------|
 | Identifier | `group.icu.charlie.TokenBar` |
-| Store | `src/TokenBar/Services/WidgetSnapshotStore.swift` (JSON file in group container) |
+| Store | `src/app-macos/TokenBar/TokenBar/Services/WidgetSnapshotStore.swift` (JSON file in group container) |
 | Entitlements | Both `TokenBar.entitlements` and `TokenBarWidget.entitlements` |
 
 Register the group on **both** `icu.charlie.TokenBar` and `icu.charlie.TokenBar.TokenBarWidget` in the Apple Developer portal. See [docs/app-store-setup.md](../../docs/app-store-setup.md).
@@ -23,12 +23,12 @@ Register the group on **both** `icu.charlie.TokenBar` and `icu.charlie.TokenBar.
 
 | Target | Path |
 |--------|------|
-| Main app publisher | `src/TokenBar/Services/` (widget snapshot on refresh) |
-| Widget extension | `src/TokenBarWidget/` |
+| Main app publisher | `src/app-macos/TokenBar/TokenBar/Services/` (widget snapshot on refresh) |
+| Widget extension | `src/app-macos/TokenBar/TokenBarWidget/` |
 
 ## Workflow
 
-1. Update spec (`specs/005-widget.md` or successor) if behavior changes.
+1. Update spec (`specs/app-macos/features/005-widget.md` or successor) if behavior changes.
 2. Main app publishes `WidgetUsagePayload` to shared App Group storage after each usage refresh.
 3. Widget reads cached payload — no direct provider or network calls in the extension.
 4. Run the main app at least once before testing widget in Notification Center.

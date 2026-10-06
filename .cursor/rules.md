@@ -5,11 +5,11 @@ Guidance for AI assistants working in this repository.
 ## Architecture
 
 - **Provider-agnostic** macOS menu bar app — UI and domain code never import provider implementations
-- `src/TokenBar/UI/` — SwiftUI only; observes `UsageStore`, no networking or provider imports
-- `src/TokenBar/UI/Design/` — shared Liquid Glass chrome (`TokenBarGlassPanel`, metrics, window configurator)
-- `src/TokenBar/Domain/` — pure logic and canonical models; no networking
-- `src/TokenBar/Providers/` — `ProviderConnector` implementations and registry only
-- `src/TokenBar/Services/` — orchestration, Keychain, persistence, notifications
+- `src/app-macos/TokenBar/TokenBar/UI/` — SwiftUI only; observes `UsageStore`, no networking or provider imports
+- `src/app-macos/TokenBar/TokenBar/UI/Design/` — shared Liquid Glass chrome (`TokenBarGlassPanel`, metrics, window configurator)
+- `src/app-macos/TokenBar/TokenBar/Domain/` — pure logic and canonical models; no networking
+- `src/app-macos/TokenBar/TokenBar/Providers/` — `ProviderConnector` implementations and registry only
+- `src/app-macos/TokenBar/TokenBar/Services/` — orchestration, Keychain, persistence, notifications
 - Provider credentials in **Keychain** only; never log or embed secrets
 - **Mac App Store only** — App Sandbox, App Groups for widget cache, no direct-download distribution
 - Marketing site changes belong in `website/` (React + Vite)
@@ -18,7 +18,7 @@ Guidance for AI assistants working in this repository.
 
 - Read **INSTRUCTIONS.md**, **docs/README.md**, and relevant skills before larger changes
 - Update `specs/` before implementing user-visible behavior ([spec-first](.agents/skills/spec-first/SKILL.md))
-- UI changes: read [ui-design](.agents/skills/ui-design/SKILL.md) and `specs/015-liquid-glass-ui-makeover.md`
+- UI changes: read [ui-design](.agents/skills/ui-design/SKILL.md) and `specs/app-macos/features/015-liquid-glass-ui-makeover.md`
 - Keep diffs small and focused; match existing naming and file layout
 - Update `docs/` when setup or architecture changes
 - Prefer **Xcode MCP** (`xcode-tools`) for local builds and tests

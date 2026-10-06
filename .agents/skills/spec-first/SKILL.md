@@ -19,7 +19,7 @@ TokenBar is spec-driven. Do not implement user-visible behavior without an updat
 
 ## Spec file format
 
-Follow existing numbered specs (`specs/000-product-vision.md` through `specs/014-…`). Each spec should state:
+Follow existing numbered specs (`specs/app-macos/features/000-product-vision.md` through `specs/app-macos/features/014-…`). Each spec should state:
 
 - User-visible behavior
 - Affected layers (`UI`, `Domain`, `Providers`, `Services`)
@@ -29,7 +29,7 @@ Follow existing numbered specs (`specs/000-product-vision.md` through `specs/014
 
 - [ ] Spec updated or added
 - [ ] Code in the correct layer (UI never imports providers)
-- [ ] Unit tests in `src/TokenBarTests/`
+- [ ] Unit tests in `src/app-macos/TokenBar/TokenBarTests/`
 - [ ] `docs/` updated when setup or architecture changes
 - [ ] Phase status in `docs/architecture.md` updated if a phase completes
 - [ ] [CHANGELOG.md](../../CHANGELOG.md) entry for user-facing changes

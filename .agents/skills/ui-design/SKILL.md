@@ -12,11 +12,11 @@ TokenBar targets **macOS 26** with native Liquid Glass (`glassEffect`, `GlassEff
 
 ## Before changing UI
 
-1. Read [specs/015-liquid-glass-ui-makeover.md](../../specs/015-liquid-glass-ui-makeover.md) and [specs/001-menu-bar-ui.md](../../specs/001-menu-bar-ui.md).
-2. For Settings structure, read [specs/003-settings-app.md](../../specs/003-settings-app.md).
+1. Read [specs/015-liquid-glass-ui-makeover.md](../../specs/app-macos/features/015-liquid-glass-ui-makeover.md) and [specs/001-menu-bar-ui.md](../../specs/app-macos/features/001-menu-bar-ui.md).
+2. For Settings structure, read [specs/003-settings-app.md](../../specs/app-macos/features/003-settings-app.md).
 3. Keep UI **provider-agnostic** — views observe `UsageStore` only.
 
-## Shared components (`src/TokenBar/UI/Design/`)
+## Shared components (`src/app-macos/TokenBar/TokenBar/UI/Design/`)
 
 | Component | Use |
 |-----------|-----|

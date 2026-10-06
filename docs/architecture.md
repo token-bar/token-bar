@@ -4,19 +4,19 @@ TokenBar follows a layered, provider-agnostic architecture.
 
 ## Layers
 
-### UI (`src/TokenBar/UI/`)
+### UI (`src/app-macos/TokenBar/UI/`)
 
-SwiftUI views for the menu bar, settings, and widget. Views observe `UsageStore` only. Shared Liquid Glass chrome lives in `UI/Design/`. See [specs/015-liquid-glass-ui-makeover.md](../specs/015-liquid-glass-ui-makeover.md).
+SwiftUI views for the menu bar, settings, and widget. Views observe `UsageStore` only. Shared Liquid Glass chrome lives in `UI/Design/`. See [specs/015-liquid-glass-ui-makeover.md](../specs/app-macos/features/015-liquid-glass-ui-makeover.md).
 
-### Domain (`src/TokenBar/Domain/`)
+### Domain (`src/app-macos/TokenBar/Domain/`)
 
 Pure logic and canonical models: `UsageSnapshot`, `ProviderAccount`, `UsageForecast`, `UsageAlert`, `UsageAlertTrigger`, `UsageHistorySample`, `AggregatedUsageSummary`, `ForecastingEngine`, `UsageAggregator`, `AlertEvaluator`, and display formatting.
 
-### Providers (`src/TokenBar/Providers/`)
+### Providers (`src/app-macos/TokenBar/Providers/`)
 
 `ProviderConnector` implementations and `ProviderRegistry`. Each connector maps provider-specific data into canonical models.
 
-### Services (`src/TokenBar/Services/`)
+### Services (`src/app-macos/TokenBar/Services/`)
 
 `UsageService` orchestrates refresh through the registry. `UsageHistoryStore` persists samples for forecasting. `AlertStateStore` tracks delivered alerts. `NotificationService` delivers native macOS notifications. `UsageStore` is the `@Observable` app state consumed by UI.
 

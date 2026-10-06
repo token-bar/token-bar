@@ -39,17 +39,17 @@ No custom Keychain access groups are needed. Credentials use the app’s default
 
 | File | Sandbox | App Group | Network client |
 |------|---------|-----------|----------------|
-| `src/TokenBar/TokenBar.entitlements` | yes | yes | yes |
-| `src/TokenBarWidget/TokenBarWidget.entitlements` | yes | yes | no |
+| `src/app-macos/TokenBar/TokenBar.entitlements` | yes | yes | yes |
+| `src/app-macos/TokenBar/TokenBarWidget/TokenBarWidget.entitlements` | yes | yes | no |
 
 ## Privacy manifest
 
-`src/TokenBar/PrivacyInfo.xcprivacy` is bundled with the main app and widget extension. It declares `UserDefaults` access (reason `CA92.1`) for app preferences. Widget cache uses App Group file storage.
+`src/app-macos/TokenBar/PrivacyInfo.xcprivacy` is bundled with the main app and widget extension. It declares `UserDefaults` access (reason `CA92.1`) for app preferences. Widget cache uses App Group file storage.
 
 ## Signing
 
 1. Copy `src/Config/Signing.xcconfig.example` → `src/Config/Signing.xcconfig` if needed (repo includes the maintainer team ID).
-2. Open `src/TokenBar.xcodeproj` in Xcode.
+2. Open `src/app-macos/TokenBar/TokenBar.xcodeproj` in Xcode.
 3. Select **TokenBar** scheme → **Signing & Capabilities** → **Automatically manage signing**.
 4. Archive with **Product → Archive** and upload to App Store Connect.
 
